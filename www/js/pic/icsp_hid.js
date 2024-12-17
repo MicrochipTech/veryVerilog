@@ -106,6 +106,7 @@ class ICSP_HID {
         let configWordsAddress = this.getConfigWordsAddress();
         await this.setPC(configWordsAddress * 2);
         let configWords = await this.readWordBlock(this.getConfigWordsSize());
+        console.log('lvpExit');
         await this.lvpExit();
         return {"memory": memory, "eeprom": eeprom, "userId": userId, "configWords": configWords,
             "memoryAddress": 0, "eepromAddress": eepromAddress, 
@@ -290,6 +291,7 @@ class ICSP_HID {
         await this.setPC(0x0000);
         let first_word = await this.readWord();
         console.log(`@0x0000=0x${first_word.toString(16).toUpperCase()}`);
+        console.log('lvpExit');
         await this.lvpExit();
         //console.log(`HW_baud_rate=${await this.getHwBaudRate()}`);
         //console.log(`set_baud_rate=${await this.setHwBaudRate(115200)}`);
