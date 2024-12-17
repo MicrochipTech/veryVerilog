@@ -48,6 +48,8 @@ class ICSP_HID {
             throw new Error('HID device not connected.');
         }
         try {
+            // ensure we exit lvp before disconnecting
+            await this.lvpExit();
             await this.device.close();
             console.log('HID device disconnected.');
         } catch (error) {
