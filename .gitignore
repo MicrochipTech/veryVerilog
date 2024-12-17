@@ -1,113 +1,20 @@
-# PyCharm
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+#PyCharm
+.idea
 
-# AWS User-specific
-.idea/**/aws.xml
+#VSCode
+.vscode
 
-# Generated files
-.idea/**/contentModel.xml
+# MPLabX ignore files
+**/*.X/.generated_files
+**/*.X/dist/
+**/*.X/debug/
+**/*.X/build/
+**/*.X/node_modules/
+**/*.X/nbproject/Makefile-*
+**/*.X/nbproject/Package-*
+**/*.X/nbproject/private/
+**/*.X/defmplabxtrace*
+**/*.X/queuelogs/
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
-# since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
-
-# CMake
-cmake-build-*/
-
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
-
-# File-based project format
-*.iws
-
-# IntelliJ
-out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# SonarLint plugin
-.idea/sonarlint/
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# Editor-based Rest Client
-.idea/httpRequests
-
-# Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
-
-*.bak
-*.pyc
-*.log
-*.log.*
-
-# MPLABX
-*.X/dist/
-*.X/debug/
-*.X/build/
-*.X/queuelogs/
-*.X/*.d
-*.X/*.pre
-*.X/*.p1
-*.X/*.lst
-*.X/*.sym
-*.X/*.obj
-*.X/*.o
-*.X/*.sdb
-*.X/*.obj.dmp
-*.X/*.mk
-*.X/*.map
-*.X/*.properties
-*.X/*.production
-*.X/*.debug
-*.X/html/
-*.X/nbproject/private/
-*.X/nbproject/Package-*.bash
-*.X/nbbuild/
-*.X/nbdist/
-*.X/nbactions.xml
-*.X/nb-configuration.xml
-*.X/funclist
-*.X/nbproject/Makefile-*
-*.X/disassembly/
-*.X/.generated_files/
 
 
