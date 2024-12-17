@@ -13,21 +13,26 @@ The PCB looks like this and is based on a [**MCP2221A**](https://www.microchip.c
 
 The IC on the left-hand side is the MCP2221 and IC on the right-hand side is PIC to be programmed.
 
-# Program a PIC in 5 Steps
+# Program a PIC in 4 Steps
+
+It is that easy:
 
 ## 1. Insert the Hardware
 
 Plug the USB dongle on your computer.
 
-## 2. Web Page
+## 2. Click the Web Page
 
-Open the Web Page [here](http://versatek.com.br/web_icsp)
+Open the Web Page [here](http://versatek.com.br/web_icsp).
+
 You will see the veryVerilog Web Page:
+
 ![Web1](/doc/images/web1.png)
 
 ## 3. Connect to Programmer
 
 Click the button "Connect to Programmer" and select the miniFPGA device:
+
 ![Web2](/doc/images/web2.png)
 
 If you have multiple programmers connected, click "identify Programmer" and the LEDs of the connected board will blink for about 2 seconds.
