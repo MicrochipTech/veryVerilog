@@ -1,0 +1,19 @@
+.lesson-button {
+    margin: 5px;
+}
+
+/* improve checkbox alignment */
+
+.dropdown-menu .form-check {
+    padding-left: 2.5rem;
+}
+.dropdown-menu {
+    transform: translate(2.5rem, 2.5rem) !important;
+}
+
+.dropdown-submenu .dropdown-menu {
+top: 0;
+left: 105%;
+margin-top: -2.5rem;
+margin-left: -2.5rem;
+}
