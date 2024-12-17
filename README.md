@@ -23,7 +23,7 @@ Plug the USB dongle on your computer.
 
 ## 2. Click the Web Page
 
-Open the Web Page [here](http://versatek.com.br/web_icsp).
+Open the Web Page: [https://microchiptech.github.io/veryVerilog](https://microchiptech.github.io/veryVerilog/).
 
 You will see the veryVerilog Web Page:
 
