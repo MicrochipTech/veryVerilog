@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebICSP Programmer</title>
+    <!-- CSS -->
+    <link href="css/bootstrap-5.3.3.min.css" rel="stylesheet">
+    <link href="css/web-icsp.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Page -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>WEB ICSP Programmer</h2>
+                <button id="connect" class="btn btn-primary">Connect to Programmer</button>
+                <div class="btn-group">
+                    <button type="button" id="identify" class="btn btn-secondary" disabled>Identify Programmer</button>
+                    <button type="button" id="settings" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" 
+                        data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu dropend">
+                        <a class="dropdown-item dropdown-toggle" href="#">Settings</a>
+                        <ul class="dropdown-menu">
+                            <li><span class="dropdown-item-text">Memory Areas</span></li>
+                            <li>
+                                <div class="form-check"><input type="checkbox" class="form-check-input" id="program-space" checked>
+                                    <label class="form-check-label" for="dropdownCheck">Program</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check"><input type="checkbox" class="form-check-input" id="eeprom-space" checked>
+                                    <label class="form-check-label" for="dropdownCheck">EEPROM</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check"><input type="checkbox" class="form-check-input" id="userid-space" checked>
+                                    <label class="form-check-label" for="dropdownCheck">UserId</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check"><input type="checkbox" class="form-check-input" id="config-bits-space" checked>
+                                    <label class="form-check-label" for="dropdownCheck">Config Bits</label>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="form-check"><input type="checkbox" class="form-check-input" id="drag-and-flash" checked>
+                                    <label class="form-check-label" for="dropdownCheck">Drag & Flash</label>
+                                </div>
+                            </li>
+                        </ul>
+                      </li>
+                      <li></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><button class="dropdown-item" id="programit" class="btn btn-success mt-3">Programm Device</button></li>
+                      <li><button class="dropdown-item" id="readit" class="btn btn-info mt-3">Read Device</button></li>
+                      <li><button class="dropdown-item" id="showit" class="btn btn-info mt-3">Show Memory</button></li>              
+                    </ul>
+                  </div>
+            </div>
+            <div id="picInfo" class="col-md-6" block>
+                <h2 id="picName">PIC16F18025</h2>
+                <button id="userId" class="btn btn-light" disabled>userId: 456</button>
+            </div>
+        </div>
+        <div id="drop-area" class="border mt-3 p-5 text-center" disabled>
+            Drag and drop HEX file here
+        </div>
+        <h2 class="my-4">Available lessons:</h1>
+        <div id="lessonsContainer"></div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Title</h5>
+                </div>
+                <div class="modal-body" id="modalBody">Content</div>
+                <div class="modal-footer">
+                    <button type="button" id="closeModal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap-5.3.3.min.js"></script>
+    <script src="js/intel-hex.js"></script>
+    <script src="js/pic/icsp_hid.js"></script>
+    <script src="js/pic/pic.js"></script>
+    <script src="lessons/lessons.js"></script>
+    <script src="js/web_icsp.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "layout": {
+        "alternation": "rows",
+        "rows": "2",
+        "cols": "4"
+    },
+    "tabs": {
+        "type": "full"
+    },
+    "cuts": {
+        "type": "vcuts"
+    },
+    "page": {
+        "type": "A4-portrait",
+        "posy": "33%"
+    },
+    "post": {
+        "origin": "bl",
+        "dimensions": "True"
+    }
+}

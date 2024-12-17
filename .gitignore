@@ -1,0 +1,20 @@
+#PyCharm
+.idea
+
+#VSCode
+.vscode
+
+# MPLabX ignore files
+**/*.X/.generated_files
+**/*.X/dist/
+**/*.X/debug/
+**/*.X/build/
+**/*.X/node_modules/
+**/*.X/nbproject/Makefile-*
+**/*.X/nbproject/Package-*
+**/*.X/nbproject/private/
+**/*.X/defmplabxtrace*
+**/*.X/queuelogs/
+
+
+
