@@ -100,7 +100,11 @@ async function programmDevice(){
 
 async function showMemory(){
     if(memory == null) {
-        await readDevice();
+        $('#modalTitle').text("Device Memory");
+        $('#modalBody').empty();
+        $('#modalBody').text("No data to show. Read the device first.");
+        $('#dataModal').modal('show');
+        return;
     }
     $('#modalTitle').text("Device Memory");
     $('#modalBody').empty();
@@ -161,6 +165,7 @@ async function readDevice(){
         $('#modalBody').text("Reading...  Please wait.");
         $('#dataModal').modal('show');
         memory = await icsp_hid.readDevice();
+        await showMemory();
     }
     catch(e) {
         console.error('There was an error reading the HID device:', e);
@@ -237,7 +242,6 @@ async function triggerProgrammer() {
 async function readProgrammer() {
     if($("#picName").text().indexOf("PIC") !== -1) {
         await readDevice();
-        $('#dataModal').modal('hide');
     }
     else {
         showNoPicDetected();
