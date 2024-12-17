@@ -231,7 +231,7 @@ class ICSP_HID {
     /*
      *  hexObject is an object of type MemoryMap, intel-hex.js
      */
-    async programEntireDevice(hexObject, flash=true, eeprom=true, userid=true, config=true){
+    async programEntireDevice(hexObject, flash=true, eeprom=true, userid=true, config=true, verify=false){
         console.log('lvpExit');
         await this.lvpExit();
         console.log('lvpEnter');

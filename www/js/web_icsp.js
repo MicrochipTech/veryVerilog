@@ -84,12 +84,13 @@ async function programmDevice(){
         flash = $("#program-space").prop('checked'),
         eeprom = $("#eeprom-space").prop('checked'),
         userid = $("#userid-space").prop('checked'),
-        config = $("#config-bits-space").prop('checked')    
+        config = $("#config-bits-space").prop('checked'),
     ];
     if(!await icsp_hid.eraseDevice(...args)){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
+    args.push["verify"] = $("#verify").prop('checked');
     if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
         showModalMessage("Error", "Could not write to the flash");
         return false;
