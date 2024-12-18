@@ -84,12 +84,13 @@ async function programmDevice(){
         flash = $("#program-space").prop('checked'),
         eeprom = $("#eeprom-space").prop('checked'),
         userid = $("#userid-space").prop('checked'),
-        config = $("#config-bits-space").prop('checked')    
+        config = $("#config-bits-space").prop('checked'),
     ];
     if(!await icsp_hid.eraseDevice(...args)){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
+    args.push( verify = $("#verify").prop('checked'));
     if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
         showModalMessage("Error", "Could not write to the flash");
         return false;
@@ -100,7 +101,11 @@ async function programmDevice(){
 
 async function showMemory(){
     if(memory == null) {
-        await readDevice();
+        $('#modalTitle').text("Device Memory");
+        $('#modalBody').empty();
+        $('#modalBody').text("No data to show. Read the device first.");
+        $('#dataModal').modal('show');
+        return;
     }
     $('#modalTitle').text("Device Memory");
     $('#modalBody').empty();
@@ -161,6 +166,7 @@ async function readDevice(){
         $('#modalBody').text("Reading...  Please wait.");
         $('#dataModal').modal('show');
         memory = await icsp_hid.readDevice();
+        await showMemory();
     }
     catch(e) {
         console.error('There was an error reading the HID device:', e);
@@ -237,7 +243,6 @@ async function triggerProgrammer() {
 async function readProgrammer() {
     if($("#picName").text().indexOf("PIC") !== -1) {
         await readDevice();
-        $('#dataModal').modal('hide');
     }
     else {
         showNoPicDetected();
@@ -290,6 +295,10 @@ if ("serial" in navigator) {
         $('#programit').click(triggerProgrammer);
         $('#readit').click(readProgrammer);
         $('#showit').click(showProgrammerMemory);
+
+        //Initialize tooltips 
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     });
 } else {
     alert("Web Serial API not supported.");
