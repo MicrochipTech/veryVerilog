@@ -90,7 +90,7 @@ async function programmDevice(){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
-    args.push["verify"] = $("#verify").prop('checked');
+    args.push( verify = $("#verify").prop('checked'));
     if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
         showModalMessage("Error", "Could not write to the flash");
         return false;
@@ -295,6 +295,10 @@ if ("serial" in navigator) {
         $('#programit').click(triggerProgrammer);
         $('#readit').click(readProgrammer);
         $('#showit').click(showProgrammerMemory);
+
+        //Initialize tooltips 
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     });
 } else {
     alert("Web Serial API not supported.");

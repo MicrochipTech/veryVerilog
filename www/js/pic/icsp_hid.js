@@ -253,7 +253,10 @@ class ICSP_HID {
         if(config) {
             console.log('Writing Config bits...');   
             await this.writeConfigWord(hexObject);
-        }        
+        }
+        if(verify) {
+            // check memory for wrong data stored
+        }
         console.log('lvpExit');
         await this.lvpExit();
         return true;
