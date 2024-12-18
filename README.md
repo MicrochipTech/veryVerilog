@@ -1,17 +1,18 @@
 # veryVerilog
 
-veryVerilog enables an easy way to program PICs from family **PIC16F180XY** and **PIC16F131XY** over a Web Browser without the need to install any software using a PIC as a USB HiD device. 
+veryVerilog enables an easy way to program PICs from family **PIC16F180xy** and **PIC16F131xy** over a Web Browser without the need to install any software using a PIC as a USB HiD device. 
 
 The project is based on 3 parts:
 - USB-HID PCB (hardware)
 - USB-HID Hex File (firmware)
 - Web Page to flash Hex files a PIC device attached to the hardware
 
-The PCB looks like this and is based on a [**MCP2221A**](https://www.microchip.com/en-us/product/mcp2221a)
+The PCB looks like this and is based on a [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455)
+The [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455) needs a [**custom firmware**](/firmware/hex/U1_PIC16F1455_v1.20.hex) to perform as ICSP programmer.
 
 ![PCB](/doc/images/pcb.png)
 
-The IC on the left-hand side is the MCP2221 and IC on the right-hand side is PIC to be programmed.
+The IC on the left-hand side is the [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455)-I/P and IC on the right-hand side is the miniFPGA ([**PIC16F13145**](https://www.microchip.com/en-us/product/pic16f13145)-I/P) to be programmed.
 
 # Program a PIC in 4 Steps
 
@@ -19,7 +20,7 @@ It is that easy:
 
 ## 1. Insert the Hardware
 
-Plug the USB dongle on your computer.
+Plug the miniFPGA dongle in your computer.
 
 ## 2. Click the Web Page
 
@@ -43,7 +44,7 @@ The device is recognized and the Web Page displays information about the connect
 
 ## 4. Drag and Drop
 
-Drag a file on the *"Drag and Drop"* area and the program will be transfered automatically to the PIC.
+Drag a HEX file on the *"Drag and Drop"* area and the program will be transfered automatically to the PIC.
 
 ![Web4](/doc/images/web4.png)
 
