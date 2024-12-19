@@ -1,0 +1,18 @@
+github actions are not actived for this repository.
+
+1. The Web page files are under folder www on main branch.
+2. The Web page is hosted over github-pages and files must be on root of branch gh-pages
+
+To copy the files (without github actions) from one branch folder 
+to another branch follow the steps below:
+
+git checkout main (if you are not on main yet...)
+mkdir tmp
+copy -r .\www\* .\tmp\.
+git checkout gh-pages
+copy -r -Force .\tmp\* .
+rm -r .\tmp\  
+git add .
+git commit -m "sync to gh-pages"
+git push
+git checkout main
