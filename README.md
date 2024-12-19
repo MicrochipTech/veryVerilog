@@ -7,7 +7,8 @@ The project is based on 3 parts:
 - USB-HID Hex File (firmware)
 - Web Page to flash Hex files a PIC device attached to the hardware
 
-The PCB looks like this and is based on a [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455)
+The PCB looks like this and is based on a [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455) .
+
 The [**PIC16F1455**](https://www.microchip.com/en-us/product/pic16f1455) needs a [**custom firmware**](/firmware/hex/U1_PIC16F1455_v1.20.hex) to perform as ICSP programmer.
 
 ![PCB](/doc/images/pcb.png)
