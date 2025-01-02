@@ -91,8 +91,8 @@ class ICSP_HID {
 
         console.log('Get contents of EEPROM: setPC 0xF000');     
         let eepromAddress = this.getEEPROMAddress();
-        let eeprom = null;
-        if(eepromAddress != null) {
+        let eeprom = [];
+        if(eepromAddress != null && this.EESIZ != 0) {
             await this.setPC(eepromAddress * 2);
             eeprom = await this.readWordBlock(this.EESIZ);    
         }
