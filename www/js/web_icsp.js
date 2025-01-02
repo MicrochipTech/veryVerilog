@@ -90,7 +90,11 @@ async function programmDevice(){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
-    args.push( verify = $("#verify").prop('checked'));
+    // set/clear the verify flag
+    // when writing to the device's memory, it will be checked 
+    // if the contents are the same as expected. This will cause 
+    // a slower programming time.
+    icsp_hid.setVerify($("#verify").prop('checked'));
     if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
         showModalMessage("Error", "Could not write to the flash");
         return false;
