@@ -14,12 +14,16 @@ class ICSP_HID {
         this.device = null;
         this.responsePromise = null;
         this.responseResolve = null;
+
         this.metaCmd = 255;
         this.cmdBits = 8;
         this.dataBits = 24;
+
         this.devID = null;
         this.revID = null;
         this.userId = null;
+
+        this.verify = false;
     }
 
     /*** public methods ***/
@@ -231,7 +235,7 @@ class ICSP_HID {
     /*
      *  hexObject is an object of type MemoryMap, intel-hex.js
      */
-    async programEntireDevice(hexObject, flash=true, eeprom=true, userid=true, config=true, verify=false){
+    async programEntireDevice(hexObject, flash=true, eeprom=true, userid=true, config=true){
         console.log('lvpExit');
         await this.lvpExit();
         console.log('lvpEnter');
@@ -348,6 +352,14 @@ class ICSP_HID {
         // GPIO cmd -> all to default 
         buffer.push(...this.getCommandBytes(12, 0, true));
         await this.xchgCommandBlock(buffer, 3000);
+    }
+
+    setVerify(state) {
+        this.verify = state;
+    }
+
+    isVerify() {
+        return this.verify;
     }
 
     /*** private methods ***/
