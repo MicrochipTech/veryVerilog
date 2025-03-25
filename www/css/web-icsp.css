@@ -12,8 +12,13 @@
 }
 
 .dropdown-submenu .dropdown-menu {
-top: 0;
-left: 105%;
-margin-top: -2.5rem;
-margin-left: -2.5rem;
+    top: 0;
+    left: 105%;
+    margin-top: -2.5rem;
+    margin-left: -2.5rem;
+}
+
+#versionInfo {
+    font-size: 0.8rem;
+    color: #666;
 }
