@@ -258,6 +258,13 @@ async function showProgrammerMemory() {
     }
 }
 
+// Display the version of the WEB ICSP Programmer
+function displayVersion() {
+    const versionElement = document.getElementById('versionInfo');
+    versionElement.textContent = `v${WEB_ICSP_VERSION}`;
+    document.title = `WebICSP v${WEB_ICSP_VERSION}`;
+}
+
 // Check if the Web Serial API is supported
 if ("serial" in navigator) {
 
@@ -295,6 +302,8 @@ if ("serial" in navigator) {
         $('#programit').click(triggerProgrammer);
         $('#readit').click(readProgrammer);
         $('#showit').click(showProgrammerMemory);
+
+        displayVersion(); // Call the function to display the version
 
         //Initialize tooltips 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
