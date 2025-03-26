@@ -312,6 +312,11 @@ if ("serial" in navigator) {
         //Initialize tooltips 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        //handle programmer disconnected from usb
+        navigator.hid.addEventListener('disconnect', (event) => {
+            if (event.device === icsp_hid.device) { disconnectHID(); }
+        });
     });
 } else {
     alert("Web Serial API not supported.");

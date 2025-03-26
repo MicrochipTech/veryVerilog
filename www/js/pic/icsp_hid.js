@@ -43,6 +43,7 @@ class ICSP_HID {
             this.device.addEventListener('inputreport', this.handleInputReport.bind(this));
             return true;
         } catch (error) {
+            this.device = null;
             console.error('Failed to connect to HID device:', error);
         }
     }
@@ -55,6 +56,7 @@ class ICSP_HID {
             // ensure we exit lvp before disconnecting
             await this.lvpExit();
             await this.device.close();
+            this.device = null;
             console.log('HID device disconnected.');
         } catch (error) {
             console.error('Failed to disconnect HID device:', error);
