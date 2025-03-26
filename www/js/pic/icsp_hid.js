@@ -85,36 +85,56 @@ class ICSP_HID {
         return result;
     }
 
+    async readFlash(){
+        console.log('Get contents of FLASH: setPC 0x0000');        
+        await this.setPC(0x0000 * 2);
+        return await this.readWordBlock(this.WLSIZ * this.URSIZ);
+    }
+
+    async readEEPROM() {
+        console.log('Get contents of EEPROM: setPC 0xF000');     
+        let eepromAddress = this.getEEPROMAddress();
+        let _eeprom = [];
+        if(eepromAddress != null && this.EESIZ != 0) {
+            await this.setPC(eepromAddress * 2);
+            _eeprom = await this.readWordBlock(this.EESIZ);    
+        }
+        return _eeprom;
+    }
+
+    async readUserID() {
+        console.log('Get contents of UserId: setPC 0x8000');        
+        let userIdAddress = this.getUserIdAddress();
+        await this.setPC(userIdAddress * 2);
+        return await this.readWordBlock(4);
+    }
+
+    async readConfigWords() {
+        console.log('Get contents of Config Words: setPC 0x8000');        
+        let configWordsAddress = this.getConfigWordsAddress();
+        await this.setPC(configWordsAddress * 2);
+        return await this.readWordBlock(this.getConfigWordsSize());
+    }
+
     async readDevice() {
         console.log('lvpExit');
         await this.lvpExit();
         console.log('lvpEnter');
         await this.lvpEnter();
 
-        console.log('Get contents of FLASH: setPC 0x0000');        
-        await this.setPC(0x0000 * 2);
-        let memory = await this.readWordBlock(this.WLSIZ * this.URSIZ);
-
-        console.log('Get contents of EEPROM: setPC 0xF000');     
+        let memory = await this.readFlash();
         let eepromAddress = this.getEEPROMAddress();
-        let eeprom = [];
-        if(eepromAddress != null && this.EESIZ != 0) {
-            await this.setPC(eepromAddress * 2);
-            eeprom = await this.readWordBlock(this.EESIZ);    
-        }
-        
-        console.log('Get contents of UserId: setPC 0x8000');        
+        let eeprom = await this.readEEPROM();
         let userIdAddress = this.getUserIdAddress();
-        await this.setPC(userIdAddress * 2);
-        let userId = await this.readWordBlock(4);
-        
-        console.log('Get contents of Config Words: setPC 0x8000');        
+        let userId = await this.readUserID();
         let configWordsAddress = this.getConfigWordsAddress();
-        await this.setPC(configWordsAddress * 2);
-        let configWords = await this.readWordBlock(this.getConfigWordsSize());
+        let configWords = await this.readConfigWords();        
+
         console.log('lvpExit');
         await this.lvpExit();
-        return {"memory": memory, "eeprom": eeprom, "userId": userId, "configWords": configWords,
+
+        return {
+            "memory": memory, "eeprom": eeprom, "userId": userId, "configWords": configWords,
             "memoryAddress": 0, "eepromAddress": eepromAddress, 
             "userIdAddress": userIdAddress, "configWordsAddress": configWordsAddress
         };
@@ -392,6 +412,11 @@ class ICSP_HID {
             throw new Error('HID device not connected.');
         }
 
+        // Clear any existing timeout if a previous xchgData call is still pending
+        if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+        }
+
         try {
             await this.device.sendReport(reportId, data);
             console.log('Report sent:', reportId, data);
@@ -399,9 +424,19 @@ class ICSP_HID {
             // Wait for a response and wait for a promise resolution
             this.responsePromise = new Promise((resolve, reject) => {
                 this.responseResolve = resolve;
-                setTimeout(() => reject(new Error('Response timeout')), timeout);
+                this.timeoutId = setTimeout(() => {
+                    reject(new Error('Response timeout'));
+                }, timeout);
             });
-            return await this.responsePromise;
+
+            // Wait for the response promise to resolve
+            const response = await this.responsePromise;
+
+            // Clear the timeout after resolving
+            clearTimeout(this.timeoutId);
+            this.timeoutId = null; // Reset the timeout ID
+
+            return response;
 
         } catch (error) {
             console.error('Failed to send report:', error);
