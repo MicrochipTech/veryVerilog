@@ -87,7 +87,7 @@ class ICSP_HID {
 
     async readFlash(){
         console.log('Get contents of FLASH: setPC 0x0000');        
-        await this.setPC(0x0000 * 2);
+        await this.setPC(0x0000);
         return await this.readWordBlock(this.WLSIZ * this.URSIZ);
     }
 
@@ -140,26 +140,36 @@ class ICSP_HID {
         };
     }
 
-    async writeFlash(hexObject) {
+    async writeFlash(hexObject, verify = false) {
         // this function considers that the memory is already erased        
+        let verify_ok = true;
         let buffer = [];
         let flashSize = this.ERSIZ * this.URSIZ; // erasable row size * number of user erasable rows.
-        let checkEmpty = arr => arr.every(v => v === 0xFF);
+        let checkEmpty = arr => arr.every(v => v === 0xFFFF);
         let waitTime = this.getTpIntDelayMs() * 1000;
-        let lastAddress = (this.ERSIZ * 2) - 2;
         for (let pc = 0x0000; pc < flashSize; pc += this.ERSIZ){
             let row = hexObject.slicePad(pc * 2, this.ERSIZ * 2);
-            // check if row is empty
-            if(checkEmpty(row)) continue; 
+            let row16 = new Uint16Array(row.buffer);
+            // check if row is empty, it it is empty, we don't need to program it.
+            if(checkEmpty(row16)) continue; 
+            // check if the existing row at flash is the same row to be programmed, if yes skip it,
+            // otherwise include the row to be programmed into the buffer.
+            // we consider that the flash is already programmed.
+            if(verify) {
+                await this.setPC(pc << 1);
+                let programmed_row16 = await this.readWordBlock(this.ERSIZ);
+                if(programmed_row16.every((value, index) => value === (row16[index] & 0x3FFF)))                     
+                   continue;
+                verify_ok = false;
+            }
             // set new PC before loading data
             buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
             // load data into one row in NVM
-            for(let i = 0; i < this.ERSIZ * 2; i += 2) {
-                let data = row[i] + (row[i+1] << 8);
+            for(let i = 0; i < this.ERSIZ; i++) {
                 // load Data for NVM and increment PC. Do not increment PC if it is the last one
-                buffer.push(...this.getCommandBytes(i==lastAddress ? 0x00:0x02, data << 1));    
+                buffer.push(...this.getCommandBytes(i==(this.ERSIZ-1) ? 0x00:0x02, row16[i] << 1));    
             }
-            // flash the row
+            // Fill the buffer with the procedures to flash the this row
             // Set payload to 0 bits
             buffer.push(...this.getCommandBytes(4, 0, true));
             // begin internally timed programming
@@ -170,12 +180,14 @@ class ICSP_HID {
             buffer.push(...this.getCommandBytes(7, waitTime, true));
         }
         await this.xchgCommandBlock(buffer);
+        return verify_ok;    
     }
 
     async writeEEPROM(hexObject) {
         let buffer = [];
-        let eepromSize = this.getEEPROMAddress() + this.EESIZ; 
+        let eepromSize = this.EESIZ; 
         if(eepromSize === 0) return;
+        eepromSize += this.getEEPROMAddress();
         let waitTime = this.getTpIntDelayMs() * 1000 * 2; // less than 2 will store wrong data
         for (let pc = this.getEEPROMAddress(); pc < eepromSize; pc++){
             let eepromWord = hexObject.slicePad(pc * 2, 2);
@@ -254,6 +266,15 @@ class ICSP_HID {
         }
     }
 
+    async verifyFlash(trials){
+        console.log('Verifying Flash...');
+        while(trials > 0) {
+            trials--;
+            if(await this.writeFlash(hexObject, true)) return;
+        }
+        throw new Error('Flash verification failed');
+    }
+
     /*
      *  hexObject is an object of type MemoryMap, intel-hex.js
      */
@@ -262,10 +283,14 @@ class ICSP_HID {
         await this.lvpExit();
         console.log('lvpEnter');
         await this.lvpEnter();
+        let trials = 2;
 
         if(flash) {
             console.log('Writing Flash...');     
-            await this.writeFlash(hexObject);
+            await this.writeFlash(hexObject, false);
+            if(this.verify) {
+                await this.verifyFlash(trials);
+            }
         }
         if(eeprom) {
             console.log('Writing EEPROM...');     
