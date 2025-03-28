@@ -8,20 +8,14 @@
 class ICSP_HID {
 
     constructor() {
-        if (new.target === ICSP_HID) {
-            throw new TypeError("Cannot construct ICSP_HID instances directly, use a specialization, i.e., GenericPIC instead.");
-        }
-        this.device = null;
+        this.hid = null;
+        this.pic = new GenericPIC();
         this.responsePromise = null;
         this.responseResolve = null;
 
         this.metaCmd = 255;
         this.cmdBits = 8;
         this.dataBits = 24;
-
-        this.devID = null;
-        this.revID = null;
-        this.userId = null;
 
         this.verify = false;
     }
@@ -35,28 +29,28 @@ class ICSP_HID {
                 console.log('No HID device detected.');
                 return false;
             }
-            this.device = devices[0];
-            if(!this.device.opened) {
-                await this.device.open();
+            this.hid = devices[0];
+            if(!this.hid.opened) {
+                await this.hid.open();
                 console.log('HID device connected.');
             }
-            this.device.addEventListener('inputreport', this.handleInputReport.bind(this));
+            this.hid.addEventListener('inputreport', this.handleInputReport.bind(this));
             return true;
         } catch (error) {
-            this.device = null;
+            this.hid = null;
             console.error('Failed to connect to HID device:', error);
         }
     }
 
     async disconnect() {
-        if (!this.device) {
+        if (!this.hid) {
             throw new Error('HID device not connected.');
         }
         try {
             // ensure we exit lvp before disconnecting
             await this.lvpExit();
-            await this.device.close();
-            this.device = null;
+            await this.hid.close();
+            this.hid = null;
             console.log('HID device disconnected.');
         } catch (error) {
             console.error('Failed to disconnect HID device:', error);
@@ -69,8 +63,8 @@ class ICSP_HID {
         console.log('lvpEnter');
         await this.lvpEnter();
         // erase flash, eeprom, userid, config
-        let param = this.getEraseBits(flash, eeprom, userid, config);
-        let bulkEraseTime = this.getBulkEraseTimeMs() * 1000 * 2;
+        let param = this.pic.getEraseBits(flash, eeprom, userid, config);
+        let bulkEraseTime = this.pic.getBulkEraseTimeMs() * 1000 * 2;
         console.log("Bulk erasing device...");
         let ret = await this.xchgCommandBlock(
             // bulk erase all areas
@@ -88,32 +82,32 @@ class ICSP_HID {
     async readFlash(){
         console.log('Get contents of FLASH: setPC 0x0000');        
         await this.setPC(0x0000);
-        return await this.readWordBlock(this.WLSIZ * this.URSIZ);
+        return await this.readWordBlock(this.pic.WLSIZ * this.pic.URSIZ);
     }
 
     async readEEPROM() {
         console.log('Get contents of EEPROM: setPC 0xF000');     
-        let eepromAddress = this.getEEPROMAddress();
+        let eepromAddress = this.pic.getEEPROMAddress();
         let _eeprom = [];
-        if(eepromAddress != null && this.EESIZ != 0) {
+        if(eepromAddress != null && this.pic.EESIZ != 0) {
             await this.setPC(eepromAddress * 2);
-            _eeprom = await this.readWordBlock(this.EESIZ);    
+            _eeprom = await this.readWordBlock(this.pic.EESIZ);    
         }
         return _eeprom;
     }
 
     async readUserID() {
         console.log('Get contents of UserId: setPC 0x8000');        
-        let userIdAddress = this.getUserIdAddress();
+        let userIdAddress = this.pic.getUserIdAddress();
         await this.setPC(userIdAddress * 2);
         return await this.readWordBlock(4);
     }
 
     async readConfigWords() {
         console.log('Get contents of Config Words: setPC 0x8000');        
-        let configWordsAddress = this.getConfigWordsAddress();
+        let configWordsAddress = this.pic.getConfigWordsAddress();
         await this.setPC(configWordsAddress * 2);
-        return await this.readWordBlock(this.getConfigWordsSize());
+        return await this.readWordBlock(this.pic.getConfigWordsSize());
     }
 
     async readDevice() {
@@ -123,11 +117,11 @@ class ICSP_HID {
         await this.lvpEnter();
 
         let memory = await this.readFlash();
-        let eepromAddress = this.getEEPROMAddress();
+        let eepromAddress = this.pic.getEEPROMAddress();
         let eeprom = await this.readEEPROM();
-        let userIdAddress = this.getUserIdAddress();
+        let userIdAddress = this.pic.getUserIdAddress();
         let userId = await this.readUserID();
-        let configWordsAddress = this.getConfigWordsAddress();
+        let configWordsAddress = this.pic.getConfigWordsAddress();
         let configWords = await this.readConfigWords();        
 
         console.log('lvpExit');
@@ -144,11 +138,11 @@ class ICSP_HID {
         // this function considers that the memory is already erased        
         let verify_ok = true;
         let buffer = [];
-        let flashSize = this.ERSIZ * this.URSIZ; // erasable row size * number of user erasable rows.
+        let flashSize = this.pic.ERSIZ * this.pic.URSIZ; // erasable row size * number of user erasable rows.
         let checkEmpty = arr => arr.every(v => v === 0xFFFF);
-        let waitTime = this.getTpIntDelayMs() * 1000;
-        for (let pc = 0x0000; pc < flashSize; pc += this.ERSIZ){
-            let row = hexObject.slicePad(pc * 2, this.ERSIZ * 2);
+        let waitTime = this.pic.getTpIntDelayMs() * 1000;
+        for (let pc = 0x0000; pc < flashSize; pc += this.pic.ERSIZ){
+            let row = hexObject.slicePad(pc * 2, this.pic.ERSIZ * 2);
             let row16 = new Uint16Array(row.buffer);
             // check if row is empty, it it is empty, we don't need to program it.
             if(checkEmpty(row16)) continue; 
@@ -157,7 +151,7 @@ class ICSP_HID {
             // we consider that the flash is already programmed.
             if(verify) {
                 await this.setPC(pc << 1);
-                let programmed_row16 = await this.readWordBlock(this.ERSIZ);
+                let programmed_row16 = await this.readWordBlock(this.pic.ERSIZ);
                 if(programmed_row16.every((value, index) => value === (row16[index] & 0x3FFF)))                     
                    continue;
                 verify_ok = false;
@@ -165,9 +159,9 @@ class ICSP_HID {
             // set new PC before loading data
             buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
             // load data into one row in NVM
-            for(let i = 0; i < this.ERSIZ; i++) {
+            for(let i = 0; i < this.pic.ERSIZ; i++) {
                 // load Data for NVM and increment PC. Do not increment PC if it is the last one
-                buffer.push(...this.getCommandBytes(i==(this.ERSIZ-1) ? 0x00:0x02, row16[i] << 1));    
+                buffer.push(...this.getCommandBytes(i==(this.pic.ERSIZ-1) ? 0x00:0x02, row16[i] << 1));    
             }
             // Fill the buffer with the procedures to flash the this row
             // Set payload to 0 bits
@@ -183,17 +177,29 @@ class ICSP_HID {
         return verify_ok;    
     }
 
-    async writeEEPROM(hexObject) {
+    async writeEEPROM(hexObject, verify = false) {
+        // this function considers that the memory is already erased        
+        let verify_ok = true;
         let buffer = [];
-        let eepromSize = this.EESIZ; 
+        let eepromSize = this.pic.EESIZ; 
         if(eepromSize === 0) return;
-        eepromSize += this.getEEPROMAddress();
-        let waitTime = this.getTpIntDelayMs() * 1000 * 2; // less than 2 will store wrong data
-        for (let pc = this.getEEPROMAddress(); pc < eepromSize; pc++){
+        eepromSize += this.pic.getEEPROMAddress();
+        let waitTime = this.pic.getTpIntDelayMs() * 1000 * 2; // less than 2 will store wrong data
+        for (let pc = this.pic.getEEPROMAddress(); pc < eepromSize; pc++){
             let eepromWord = hexObject.slicePad(pc * 2, 2);
             let data = eepromWord[0];
             // check if row is empty
             if(data == 0xFF) continue; 
+            // check if the existing data at EEPROM is the same data to be programmed, if yes skip it,
+            // otherwise include the row to be programmed into the buffer.
+            // we consider that the flash is already programmed.
+            if(verify) {
+                await this.setPC(pc << 1);
+                let programmed_data = await this.readWordBlock(1);
+                if(programmed_data === data)                     
+                   continue;
+                verify_ok = false;
+            }
             // set new PC before loading data
             buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
             // load data into one byte of EEPROM address
@@ -208,15 +214,16 @@ class ICSP_HID {
             buffer.push(...this.getCommandBytes(7, waitTime, true));
         }
         await this.xchgCommandBlock(buffer);
+        return verify_ok;
     }
 
     async writeUserId(hexObject) {
         let buffer = [];
         let userId = [];
-        let userIdSize = this.getUserIdAddress() + 4; // userID: four 14 bits words.
-        let waitTime = this.getTpIntDelayMs() * 1000;
+        let userIdSize = this.pic.getUserIdAddress() + 4; // userID: four 14 bits words.
+        let waitTime = this.pic.getTpIntDelayMs() * 1000;
         let checkEmpty = arr => arr.every(v => v === 0xFF);
-        for (let pc = this.getUserIdAddress(); pc < userIdSize; pc++){
+        for (let pc = this.pic.getUserIdAddress(); pc < userIdSize; pc++){
             let userIdx = hexObject.slicePad(pc * 2, 2);
             // check if row is empty
             if(checkEmpty(userIdx)) {
@@ -243,10 +250,10 @@ class ICSP_HID {
     }
 
     async writeConfigWord(hexObject) {
-        let waitTime = this.getTpIntConfWordDelayMs() * 1000 * 5;
-        for (let idx = 0; idx < this.getConfigWordsSize(); idx++) {
+        let waitTime = this.pic.getTpIntConfWordDelayMs() * 1000 * 5;
+        for (let idx = 0; idx < this.pic.getConfigWordsSize(); idx++) {
             let buffer = [];
-            let pc = this.getConfigWordsAddress() + idx;
+            let pc = this.pic.getConfigWordsAddress() + idx;
             let confWord = hexObject.slicePad(pc * 2, 2);
             let data = confWord[0] + (confWord[1] << 8);
             if((data & 0x3FFF) === 0x3FFF) continue;
@@ -294,7 +301,10 @@ class ICSP_HID {
         }
         if(eeprom) {
             console.log('Writing EEPROM...');     
-            await this.writeEEPROM(hexObject);
+            await this.writeEEPROM(hexObject, false);
+            if(this.verify) {
+                await this.verifyEEPROM(trials);
+            }
         }
         if(userid) {
             console.log('Writing UserID...');   
@@ -314,7 +324,7 @@ class ICSP_HID {
     }
 
     readUserIdFields(userId){
-        this.userId = userId.map(byte => byte.toString(16).toUpperCase().padStart(4, '0')).join('.');
+        this.pic.userId = userId.map(byte => byte.toString(16).toUpperCase().padStart(4, '0')).join('.');
     }
 
     async getConnectionInfo() {
@@ -322,25 +332,29 @@ class ICSP_HID {
         await this.lvpExit();
         console.log('lvpEnter');
         await this.lvpEnter();
-        const devIDaddress = this.getDeviceIdAddress();
+        let devIDaddress = this.pic.getDeviceIdAddress();
         console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
         await this.setPC(devIDaddress * 2);
-        this.devID = await this.readWord();
-        this.devIDx = '0x' + this.devID.toString(16).toUpperCase();
-        console.log(`DEVID=${this.devIDx}`);
-        const refIDaddress = this.getRevisionIdAddress();
-        console.log('GetRevID: setPC 0x' + refIDaddress.toString(16));
-        await this.setPC(refIDaddress * 2);
-        this.revID = await this.readWord();
-        this.revIDx = '0x' + this.revID.toString(16).toUpperCase();
-        console.log(`REVID=${this.revIDx}`);
-        await this.setPC(this.getDiaAddress() * 2);
-        this.readDiaFields(await this.readWordBlock(this.getDiaSize()));
-        await this.setPC(this.getDciAddress() * 2);
-        this.readDciFields(await this.readWordBlock(this.getDciSize()));
-        await this.setPC(this.getUserIdAddress() * 2);
+        let devID = await this.readWord();
+        let devIDx = '0x' + devID.toString(16).toUpperCase();
+        console.log(`DEVID=${devIDx}`);
+
+        this.pic = GenericPIC.getPicByDevId(devID);
+        this.pic.devIDx = devIDx;
+
+        let revIDaddress = this.pic.getRevisionIdAddress();
+        console.log('GetRevID: setPC 0x' + revIDaddress.toString(16));
+        await this.setPC(revIDaddress * 2);
+        this.pic.revID = await this.readWord();
+        this.pic.revIDx = '0x' + this.pic.revID.toString(16).toUpperCase();
+        console.log(`REVID=${this.pic.revIDx}`);
+        await this.setPC(this.pic.getDiaAddress() * 2);
+        this.pic.readDiaFields(await this.readWordBlock(this.pic.getDiaSize()));
+        await this.setPC(this.pic.getDciAddress() * 2);
+        this.pic.readDciFields(await this.readWordBlock(this.pic.getDciSize()));
+        await this.setPC(this.pic.getUserIdAddress() * 2);
         this.readUserIdFields(await this.readWordBlock(4));
-        console.log(`UserId=${this.userId}`);
+        console.log(`UserId=${this.pic.userId}`);
         console.log('Get contents of FLASH init: setPC 0x0000');        
         await this.setPC(0x0000);
         let first_word = await this.readWord();
@@ -433,7 +447,7 @@ class ICSP_HID {
 
     // exchange one block of data
     async xchgData(data, reportId = 0, timeout = 1000) {
-        if (!this.device) {
+        if (!this.hid) {
             throw new Error('HID device not connected.');
         }
 
@@ -443,7 +457,7 @@ class ICSP_HID {
         }
 
         try {
-            await this.device.sendReport(reportId, data);
+            await this.hid.sendReport(reportId, data);
             console.log('Report sent:', reportId, data);
 
             // Wait for a response and wait for a promise resolution
@@ -590,69 +604,4 @@ class ICSP_HID {
         }    
         return chunks;
     }
-
-    /*** virtual methods ***/
-    // the methos defined here must be implemented by a child class of ICSP_HID
-
-    getDeviceIdAddress() {
-        throw new Error('Function getDeviceIdAddress is abstract and must be implemented');
-    };
-    
-    getRevisionIdAddress() {
-        throw new Error('Function getRevisionIdAddress is abstract and must be implemented');
-    };
-
-    getDeviceNameById(devID) {
-        throw new Error('Function getDeviceNameById is abstract and must be implemented');
-    };
-
-    getConfigWordsAddress() {
-        throw new Error('Function getConfigWordsAddress is abstract and must be implemented');
-    }
-
-    getConfigWordsSize() {
-        throw new Error('Function getConfigWordsSize is abstract and must be implemented');
-    }
-
-    getTpIntDelayMs() {
-        throw new Error('Function getTpIntDelayMs is abstract and must be implemented');
-    }
-
-    getTpIntConfWordDelayMs() {
-        throw new Error('Function getTpIntConfWordDelayMs is abstract and must be implemented');
-    }
-
-    getEraseBits(flash=true, eeprom=false, userid=false, config=false) {
-        throw new Error('Function getEraseBits is abstract and must be implemented');
-    }
-
-    getBulkEraseTimeMs() {
-        throw new Error('Function getBulkEraseTimeMs is abstract and must be implemented');
-    }
-
-    getLVPConfigAddress() {
-        throw new Error('Function getLVPConfigAddress is abstract and must be implemented');
-    }
-
-    getLVPSafeMask() {
-        // this function should return a MASK to be ORed with a value to guarantee LVP is kept
-        throw new Error('Function getLVPSafeMask is abstract and must be implemented');
-    }
-
-    getEEPROMAddress() {
-        throw new Error('Function getEEPROMAddress is abstract and must be implemented');
-    }
-
-    getUserIdAddress() {
-        throw new Error('Function getUserIdAddress is abstract and must be implemented');
-    }
-
-    readDciFields(){
-        throw new Error('Function readDciFields is abstract and must be implemented');
-    }
-
-    readDiaFields(){
-        throw new Error('Function readDiaFields is abstract and must be implemented');
-    }
-
 }
