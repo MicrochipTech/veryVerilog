@@ -91,15 +91,16 @@ async function programmDevice(){
         return false;
     }
     // set/clear the verify flag
-    // when writing to the device's memory, it will be checked 
-    // if the contents are the same as expected. This will cause 
-    // a slower programming time.
+    // when writing to the device's memory, it will be checked if the contents are 
+    // the same as expected. This will cause a slower programming time.
     icsp_hid.setVerify($("#verify").prop('checked'));
-    if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
-        showModalMessage("Error", "Could not write to the flash");
+    try {
+        await icsp_hid.programEntireDevice(hexObject, ...args);
+    } catch(e) {
+        showModalMessage("Error", e);
         return false;
     }
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     return true;
 }
 

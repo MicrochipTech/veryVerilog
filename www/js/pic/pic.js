@@ -206,7 +206,7 @@ class PIC16F131XY extends GenericPIC {
     }
 
     getTpIntConfWordDelayMs() {
-        return 13;
+        return 13.5;
     }
 
     getBulkEraseTimeMs() {
