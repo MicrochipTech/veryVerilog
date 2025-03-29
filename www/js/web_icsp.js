@@ -31,8 +31,8 @@ function disconnectHID() {
 }
 
 function showInfoHID(params) {
-    $("#picName").text(icsp_hid.getDeviceNameById(icsp_hid.devID));
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.userId);
+    $("#picName").text(icsp_hid.pic.name);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     $('#picInfo').show();
 }
 
@@ -46,7 +46,7 @@ function showPicDetails(){
     fields = ["devIDx", "revIDx", "MUI", "ERSIZ", "WLSIZ", "URSIZ", "EESIZ", "PCNT"];
     fields.forEach(element => {
         $('#modalBody tbody').append(
-            '<tr><td>' + element + '</td><td>' + icsp_hid[element] + '</td></tr>'
+            '<tr><td>' + element + '</td><td>' + icsp_hid.pic[element] + '</td></tr>'
         );
     });
     $('#dataModal').modal('show');
@@ -90,12 +90,17 @@ async function programmDevice(){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
-    args.push( verify = $("#verify").prop('checked'));
-    if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
-        showModalMessage("Error", "Could not write to the flash");
+    // set/clear the verify flag
+    // when writing to the device's memory, it will be checked if the contents are 
+    // the same as expected. This will cause a slower programming time.
+    icsp_hid.setVerify($("#verify").prop('checked'));
+    try {
+        await icsp_hid.programEntireDevice(hexObject, ...args);
+    } catch(e) {
+        showModalMessage("Error", e);
         return false;
     }
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     return true;
 }
 
@@ -183,7 +188,7 @@ async function identifyProgrammer() {
 async function connectProgrammer() {
     if($('#connect').hasClass("btn-primary")) {
         try {
-            icsp_hid = new GenericPIC();
+            icsp_hid = new ICSP_HID();
             if(await icsp_hid.connect()) {
                 await icsp_hid.getConnectionInfo();
                 showInfoHID();
@@ -308,6 +313,11 @@ if ("serial" in navigator) {
         //Initialize tooltips 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        //handle programmer disconnected from usb
+        navigator.hid.addEventListener('disconnect', (event) => {
+            if (event.device === icsp_hid.hid) { disconnectHID(); }
+        });
     });
 } else {
     alert("Web Serial API not supported.");
