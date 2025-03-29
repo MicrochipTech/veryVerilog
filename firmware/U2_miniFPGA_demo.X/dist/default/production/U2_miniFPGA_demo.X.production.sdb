@@ -1,0 +1,906 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F13145 ]
+[d frameptr 6 ]
+"53 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/nvm/src/nvm.c
+[e E6511 . `uc
+NVM_OK 0
+NVM_ERROR 1
+]
+"80 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr2.c
+[e E6527 . `uc
+TMR2_ROP_STARTS_TMRON 0
+TMR2_ROP_STARTS_TMRON_ERSHIGH 1
+TMR2_ROP_STARTS_TMRON_ERSLOW 2
+TMR2_ROP_RESETS_ERSBOTHEDGE 3
+TMR2_ROP_RESETS_ERSRISINGEDGE 4
+TMR2_ROP_RESETS_ERSFALLINGEDGE 5
+TMR2_ROP_RESETS_ERSLOW 6
+TMR2_ROP_RESETS_ERSHIGH 7
+TMR2_OS_STARTS_TMRON 8
+TMR2_OS_STARTS_ERSRISINGEDGE 9
+TMR2_OS_STARTS_ERSFALLINGEDGE 10
+TMR2_OS_STARTS_ERSBOTHEDGE 11
+TMR2_OS_STARTS_ERSFIRSTRISINGEDGE 12
+TMR2_OS_STARTS_ERSFIRSTFALLINGEDGE 13
+TMR2_OS_STARTS_ERSRISINGEDGEDETECT 14
+TMR2_OS_STARTS_ERSFALLINGEDGEDETECT 15
+TMR2_OS_STARTS_TMRON_ERSHIGH 22
+TMR2_OS_STARTS_TMRON_ERSLOW 23
+TMR2_MS_STARTS_TMRON_ERSRISINGEDGEDETECT 17
+TMR2_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT 18
+TMR2_MS_STARTS_TMRON_ERSBOTHEDGE 19
+]
+"86
+[e E6550 . `uc
+TMR2_T2INPPS_PIN 0
+TMR2_CCP1OUT 4
+TMR2_CCP2OUT 5
+TMR2_C1OUT 14
+TMR2_C2OUT 15
+TMR2_CLC1OUT 17
+TMR2_CLC2OUT 18
+TMR2_CLC3OUT 19
+TMR2_CLC4OUT 20
+TMR2_CLBOUT7 21
+TMR2_CLBOUT8 22
+TMR2_CLBOUT9 23
+TMR2_CLBOUT10 24
+TMR2_CLBOUT11 25
+TMR2_CLBOUT12 26
+TMR2_CLBOUT13 27
+TMR2_CLBOUT14 28
+TMR2_PWM1OUT 29
+TMR2_PWM2OUT 30
+]
+"1177 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1817
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/clb/src/clb1.c
+[v _CLB1_Initialize CLB1_Initialize `(v  1 e 1 0 ]
+"103
+[v _CLB1_IsCLBSWINBusy CLB1_IsCLBSWINBusy `T(a  1 e 1 0 ]
+"108
+[v _CLB1_Configure CLB1_Configure `(v  1 e 1 0 ]
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_Initialize CRC_Initialize `(v  1 e 1 0 ]
+"133
+[v _CRC_ReverseValue CRC_ReverseValue `(ul  1 s 4 CRC_ReverseValue ]
+"192
+[v _CRC_StartNvmScanner CRC_StartNvmScanner `T(v  1 e 1 0 ]
+"202
+[v _CRC_StopNvmScanner CRC_StopNvmScanner `T(v  1 e 1 0 ]
+"212
+[v _CRC_SetScannerAddressLimit CRC_SetScannerAddressLimit `(v  1 e 1 0 ]
+"220
+[v _CRC_IsScannerBusy CRC_IsScannerBusy `T(a  1 e 1 0 ]
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/fvr/src/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_Initialize NVM_Initialize `(v  1 e 1 0 ]
+"65
+[v _NVM_StatusClear NVM_StatusClear `(v  1 e 1 0 ]
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/pwm/src/pwm1.c
+[v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
+"39 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+"40 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"62
+[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
+"71
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+"75
+[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
+"38 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"39 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"53 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+"75
+[v _TMR0_Start TMR0_Start `(v  1 e 1 0 ]
+"80
+[v _TMR0_Stop TMR0_Stop `(v  1 e 1 0 ]
+"101
+[v _TMR0_Reload TMR0_Reload `(v  1 e 1 0 ]
+"108
+[v _TMR0_OverflowCallbackRegister TMR0_OverflowCallbackRegister `(v  1 e 1 0 ]
+"113
+[v _TMR0_DefaultOverflowCallback TMR0_DefaultOverflowCallback `(v  1 s 1 TMR0_DefaultOverflowCallback ]
+"119
+[v _TMR0_Tasks TMR0_Tasks `(v  1 e 1 0 ]
+"57 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+"92
+[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
+"98
+[v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
+"117
+[v _TMR2_PeriodCountSet TMR2_PeriodCountSet `(v  1 e 1 0 ]
+"122
+[v _TMR2_OverflowCallbackRegister TMR2_OverflowCallbackRegister `(v  1 e 1 0 ]
+"127
+[v _TMR2_DefaultOverflowCallback TMR2_DefaultOverflowCallback `(v  1 s 1 TMR2_DefaultOverflowCallback ]
+"133
+[v _TMR2_Tasks TMR2_Tasks `(v  1 e 1 0 ]
+"94 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+"115
+[v _EUSART1_Deinitialize EUSART1_Deinitialize `(v  1 e 1 0 ]
+"136
+[v _EUSART1_TransmitEnable EUSART1_TransmitEnable `(v  1 e 1 0 ]
+"141
+[v _EUSART1_TransmitDisable EUSART1_TransmitDisable `(v  1 e 1 0 ]
+"166
+[v _EUSART1_AutoBaudSet EUSART1_AutoBaudSet `(v  1 e 1 0 ]
+"178
+[v _EUSART1_AutoBaudQuery EUSART1_AutoBaudQuery `(a  1 e 1 0 ]
+"193
+[v _EUSART1_IsRxReady EUSART1_IsRxReady `(a  1 e 1 0 ]
+"198
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+"203
+[v _EUSART1_IsTxDone EUSART1_IsTxDone `(a  1 e 1 0 ]
+"208
+[v _EUSART1_ErrorGet EUSART1_ErrorGet `(ui  1 e 2 0 ]
+"213
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"235
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+"249
+[v _putch putch `(v  1 e 1 0 ]
+"258
+[v _EUSART1_DefaultFramingErrorCallback EUSART1_DefaultFramingErrorCallback `(v  1 s 1 EUSART1_DefaultFramingErrorCallback ]
+"263
+[v _EUSART1_DefaultOverrunErrorCallback EUSART1_DefaultOverrunErrorCallback `(v  1 s 1 EUSART1_DefaultOverrunErrorCallback ]
+"270
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+"278
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+[s S429 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"426 C:/Users/M71906/.mchp_packs/Microchip/PIC16F1xxxx_DFP/1.25.389/xc8\pic\include\proc\pic16f13145.h
+[u S434 . 1 `S429 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES434  1 e 1 @11 ]
+"597
+[v _TRISA TRISA `VEuc  1 e 1 @18 ]
+"642
+[v _TRISB TRISB `VEuc  1 e 1 @19 ]
+"681
+[v _TRISC TRISC `VEuc  1 e 1 @20 ]
+"743
+[v _LATA LATA `VEuc  1 e 1 @24 ]
+"788
+[v _LATB LATB `VEuc  1 e 1 @25 ]
+"827
+[v _LATC LATC `VEuc  1 e 1 @26 ]
+[s S576 . 1 `uc 1 INTF 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIF 1 0 :1:4 
+`uc 1 TMR0IF 1 0 :1:5 
+]
+"902
+[u S581 . 1 `S576 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES581  1 e 1 @140 ]
+[s S198 . 1 `uc 1 NVMIF 1 0 :1:0 
+`uc 1 CRCIF 1 0 :1:1 
+`uc 1 SCANIF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CSWIF 1 0 :1:4 
+`uc 1 OSFIF 1 0 :1:5 
+`uc 1 TMR1IF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"939
+[u S207 . 1 `S198 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES207  1 e 1 @141 ]
+[s S830 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR2IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 CCP1IF 1 0 :1:5 
+`uc 1 CCP2IF 1 0 :1:6 
+]
+"993
+[u S836 . 1 `S830 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES836  1 e 1 @142 ]
+[s S1346 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CLC1IF 1 0 :1:2 
+`uc 1 CLC2IF 1 0 :1:3 
+`uc 1 CLC3IF 1 0 :1:4 
+`uc 1 CLC4IF 1 0 :1:5 
+`uc 1 TX1IF 1 0 :1:6 
+`uc 1 RC1IF 1 0 :1:7 
+]
+"1036
+[u S1354 . 1 `S1346 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES1354  1 e 1 @144 ]
+[s S53 . 1 `uc 1 CLB1IF0 1 0 :1:0 
+`uc 1 CLB1IF1 1 0 :1:1 
+`uc 1 CLB1IF2 1 0 :1:2 
+`uc 1 CLB1IF3 1 0 :1:3 
+]
+"1150
+[u S58 . 1 `S53 1 . 1 0 ]
+[v _PIR7bits PIR7bits `VES58  1 e 1 @147 ]
+[s S219 . 1 `uc 1 NVMIE 1 0 :1:0 
+`uc 1 CRCIE 1 0 :1:1 
+`uc 1 SCANIE 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CSWIE 1 0 :1:4 
+`uc 1 OSFIE 1 0 :1:5 
+`uc 1 TMR1IE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1225
+[u S228 . 1 `S219 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES228  1 e 1 @151 ]
+[s S66 . 1 `uc 1 CLB1IE0 1 0 :1:0 
+`uc 1 CLB1IE1 1 0 :1:1 
+`uc 1 CLB1IE2 1 0 :1:2 
+`uc 1 CLB1IE3 1 0 :1:3 
+]
+"1436
+[u S71 . 1 `S66 1 . 1 0 ]
+[v _PIE7bits PIE7bits `VES71  1 e 1 @157 ]
+"2298
+[v _TMR0L TMR0L `VEuc  1 e 1 @412 ]
+"2436
+[v _TMR0H TMR0H `VEuc  1 e 1 @413 ]
+"2690
+[v _T0CON0 T0CON0 `VEuc  1 e 1 @414 ]
+[s S693 . 1 `uc 1 OUTPS 1 0 :4:0 
+`uc 1 MD16 1 0 :1:4 
+`uc 1 OUT 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"2724
+[s S699 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+`uc 1 T0MD16 1 0 :1:4 
+`uc 1 T0OUT 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 T0EN 1 0 :1:7 
+]
+[s S705 . 1 `uc 1 OUTPS0 1 0 :1:0 
+`uc 1 OUTPS1 1 0 :1:1 
+`uc 1 OUTPS2 1 0 :1:2 
+`uc 1 OUTPS3 1 0 :1:3 
+`uc 1 T016BIT 1 0 :1:4 
+]
+[s S711 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+`uc 1 T0OUTPS1 1 0 :1:1 
+`uc 1 T0OUTPS2 1 0 :1:2 
+`uc 1 T0OUTPS3 1 0 :1:3 
+]
+[u S716 . 1 `S693 1 . 1 0 `S699 1 . 1 0 `S705 1 . 1 0 `S711 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES716  1 e 1 @414 ]
+"2814
+[v _T0CON1 T0CON1 `VEuc  1 e 1 @415 ]
+"2956
+[v _FVRCON FVRCON `VEuc  1 e 1 @524 ]
+[s S356 . 1 `uc 1 ADFVR 1 0 :2:0 
+`uc 1 CDAFVR 1 0 :2:2 
+`uc 1 TSRNG 1 0 :1:4 
+`uc 1 TSEN 1 0 :1:5 
+`uc 1 RDY 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"2980
+[s S363 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 CDAFVR0 1 0 :1:2 
+`uc 1 CDAFVR1 1 0 :1:3 
+`uc 1 . 1 0 :2:4 
+`uc 1 FVRRDY 1 0 :1:6 
+`uc 1 FVREN 1 0 :1:7 
+]
+[u S371 . 1 `S356 1 . 1 0 `S363 1 . 1 0 ]
+[v _FVRCONbits FVRCONbits `VES371  1 e 1 @524 ]
+"3135
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @653 ]
+"3275
+[v _OSCCON3 OSCCON3 `VEuc  1 e 1 @655 ]
+"3366
+[v _OSCEN OSCEN `VEuc  1 e 1 @657 ]
+"3418
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @658 ]
+"3476
+[v _OSCFRQ OSCFRQ `VEuc  1 e 1 @659 ]
+"4437
+[v _T2TMR T2TMR `VEuc  1 e 1 @908 ]
+"4442
+[v _TMR2 TMR2 `VEuc  1 e 1 @908 ]
+"4491
+[v _T2PR T2PR `VEuc  1 e 1 @909 ]
+"4496
+[v _PR2 PR2 `VEuc  1 e 1 @909 ]
+"4545
+[v _T2CON T2CON `VEuc  1 e 1 @910 ]
+[s S980 . 1 `uc 1 OUTPS 1 0 :4:0 
+`uc 1 CKPS 1 0 :3:4 
+`uc 1 ON 1 0 :1:7 
+]
+"4581
+[s S984 . 1 `uc 1 T2OUTPS 1 0 :4:0 
+`uc 1 T2CKPS 1 0 :3:4 
+`uc 1 T2ON 1 0 :1:7 
+]
+[s S988 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
+`uc 1 T2OUTPS1 1 0 :1:1 
+`uc 1 T2OUTPS2 1 0 :1:2 
+`uc 1 T2OUTPS3 1 0 :1:3 
+`uc 1 T2CKPS0 1 0 :1:4 
+`uc 1 T2CKPS1 1 0 :1:5 
+`uc 1 T2CKPS2 1 0 :1:6 
+]
+[s S996 . 1 `uc 1 OUTPS0 1 0 :1:0 
+`uc 1 OUTPS1 1 0 :1:1 
+`uc 1 OUTPS2 1 0 :1:2 
+`uc 1 OUTPS3 1 0 :1:3 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+`uc 1 CKPS2 1 0 :1:6 
+`uc 1 TMR2ON 1 0 :1:7 
+]
+[u S1005 . 1 `S980 1 . 1 0 `S984 1 . 1 0 `S988 1 . 1 0 `S996 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES1005  1 e 1 @910 ]
+"4691
+[v _T2HLT T2HLT `VEuc  1 e 1 @911 ]
+[s S868 . 1 `uc 1 MODE 1 0 :5:0 
+`uc 1 CSYNC 1 0 :1:5 
+`uc 1 CPOL 1 0 :1:6 
+`uc 1 PSYNC 1 0 :1:7 
+]
+"4726
+[s S873 . 1 `uc 1 MODE0 1 0 :1:0 
+`uc 1 MODE1 1 0 :1:1 
+`uc 1 MODE2 1 0 :1:2 
+`uc 1 MODE3 1 0 :1:3 
+`uc 1 MODE4 1 0 :1:4 
+`uc 1 CKSYNC 1 0 :1:5 
+`uc 1 CKPOL 1 0 :1:6 
+]
+[s S881 . 1 `uc 1 T2MODE 1 0 :5:0 
+`uc 1 T2CSYNC 1 0 :1:5 
+`uc 1 T2CPOL 1 0 :1:6 
+`uc 1 T2PSYNC 1 0 :1:7 
+]
+[s S886 . 1 `uc 1 T2MODE0 1 0 :1:0 
+`uc 1 T2MODE1 1 0 :1:1 
+`uc 1 T2MODE2 1 0 :1:2 
+`uc 1 T2MODE3 1 0 :1:3 
+`uc 1 T2MODE4 1 0 :1:4 
+]
+[u S892 . 1 `S868 1 . 1 0 `S873 1 . 1 0 `S881 1 . 1 0 `S886 1 . 1 0 ]
+[v _T2HLTbits T2HLTbits `VES892  1 e 1 @911 ]
+"4831
+[v _T2CLKCON T2CLKCON `VEuc  1 e 1 @912 ]
+"5013
+[v _T2RST T2RST `VEuc  1 e 1 @913 ]
+[s S942 . 1 `uc 1 RSEL 1 0 :8:0 
+]
+"5040
+[s S944 . 1 `uc 1 RSEL0 1 0 :1:0 
+`uc 1 RSEL1 1 0 :1:1 
+`uc 1 RSEL2 1 0 :1:2 
+`uc 1 RSEL3 1 0 :1:3 
+`uc 1 RSEL4 1 0 :1:4 
+]
+[s S950 . 1 `uc 1 T2RSEL 1 0 :8:0 
+]
+[s S952 . 1 `uc 1 T2RSEL0 1 0 :1:0 
+`uc 1 T2RSEL1 1 0 :1:1 
+`uc 1 T2RSEL2 1 0 :1:2 
+`uc 1 T2RSEL3 1 0 :1:3 
+`uc 1 T2RSEL4 1 0 :1:4 
+]
+[u S958 . 1 `S942 1 . 1 0 `S944 1 . 1 0 `S950 1 . 1 0 `S952 1 . 1 0 ]
+[v _T2RSTbits T2RSTbits `VES958  1 e 1 @913 ]
+"5639
+[v _CLBCON CLBCON `VEuc  1 e 1 @1292 ]
+[s S22 . 1 `uc 1 BUSY 1 0 :1:0 
+`uc 1 RDHOLD 1 0 :1:1 
+`uc 1 . 1 0 :5:2 
+`uc 1 EN 1 0 :1:7 
+]
+"5656
+[s S27 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CLBEN 1 0 :1:7 
+]
+[u S30 . 1 `S22 1 . 1 0 `S27 1 . 1 0 ]
+[v _CLBCONbits CLBCONbits `VES30  1 e 1 @1292 ]
+"5681
+[v _CLBSWINU CLBSWINU `VEuc  1 e 1 @1293 ]
+"5751
+[v _CLBSWINH CLBSWINH `VEuc  1 e 1 @1294 ]
+"5821
+[v _CLBSWINM CLBSWINM `VEuc  1 e 1 @1295 ]
+"5891
+[v _CLBSWINL CLBSWINL `VEuc  1 e 1 @1296 ]
+"5961
+[v _CLBCLK CLBCLK `VEuc  1 e 1 @1301 ]
+"6007
+[v _CLBPPSCON4 CLBPPSCON4 `VEuc  1 e 1 @1302 ]
+"6033
+[v _CLBPPSCON3 CLBPPSCON3 `VEuc  1 e 1 @1303 ]
+"6059
+[v _CLBPPSCON2 CLBPPSCON2 `VEuc  1 e 1 @1304 ]
+"6085
+[v _CLBPPSCON1 CLBPPSCON1 `VEuc  1 e 1 @1305 ]
+"6797
+[v _RC1REG RC1REG `VEuc  1 e 1 @1804 ]
+"6817
+[v _TX1REG TX1REG `VEuc  1 e 1 @1805 ]
+"6844
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @1806 ]
+"6864
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @1807 ]
+"6884
+[v _RC1STA RC1STA `VEuc  1 e 1 @1808 ]
+[s S1283 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"6901
+[u S1292 . 1 `S1283 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES1292  1 e 1 @1808 ]
+"6946
+[v _TX1STA TX1STA `VEuc  1 e 1 @1809 ]
+[s S1304 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"6963
+[u S1313 . 1 `S1304 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES1313  1 e 1 @1809 ]
+"7008
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @1810 ]
+[s S1325 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"7025
+[u S1334 . 1 `S1325 1 . 1 0 ]
+[v _BAUD1CONbits BAUD1CONbits `VES1334  1 e 1 @1810 ]
+"8540
+[v _PWM1DCL PWM1DCL `VEuc  1 e 1 @2080 ]
+"8561
+[v _PWM1DCH PWM1DCH `VEuc  1 e 1 @2081 ]
+"8581
+[v _PWM1CON PWM1CON `VEuc  1 e 1 @2082 ]
+[s S481 . 1 `uc 1 P1TSEL 1 0 :2:0 
+`uc 1 P2TSEL 1 0 :2:2 
+]
+"8752
+[u S484 . 1 `S481 1 . 1 0 ]
+[v _PWMTMRS0bits PWMTMRS0bits `VES484  1 e 1 @2095 ]
+"8868
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @7308 ]
+"8938
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @7309 ]
+"9009
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @7310 ]
+"9079
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @7311 ]
+[s S403 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 NVMREGS 1 0 :1:6 
+]
+"9153
+[u S411 . 1 `S403 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES411  1 e 1 @7312 ]
+"9193
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @7313 ]
+"9213
+[v _SCANCON0 SCANCON0 `VEuc  1 e 1 @7314 ]
+[s S261 . 1 `uc 1 MD 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 INTM 1 0 :1:3 
+`uc 1 DABORT 1 0 :1:4 
+`uc 1 BUSY 1 0 :1:5 
+`uc 1 SGO 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"9233
+[s S269 . 1 `uc 1 MD0 1 0 :1:0 
+`uc 1 MD1 1 0 :1:1 
+]
+[u S272 . 1 `S261 1 . 1 0 `S269 1 . 1 0 ]
+[v _SCANCON0bits SCANCON0bits `VES272  1 e 1 @7314 ]
+"9285
+[v _SCANLADRL SCANLADRL `VEuc  1 e 1 @7315 ]
+"9305
+[v _SCANLADRH SCANLADRH `VEuc  1 e 1 @7316 ]
+"9332
+[v _SCANHADRL SCANHADRL `VEuc  1 e 1 @7318 ]
+"9352
+[v _SCANHADRH SCANHADRH `VEuc  1 e 1 @7319 ]
+[s S287 . 1 `uc 1 DPS 1 0 :1:0 
+]
+"9382
+[u S289 . 1 `S287 1 . 1 0 ]
+[v _SCANDPSbits SCANDPSbits `VES289  1 e 1 @7321 ]
+"9392
+[v _SCANTRIG SCANTRIG `VEuc  1 e 1 @7322 ]
+"9419
+[v _CRCDATAL CRCDATAL `VEuc  1 e 1 @7325 ]
+"9489
+[v _CRCDATAH CRCDATAH `VEuc  1 e 1 @7326 ]
+"9559
+[v _CRCDATAU CRCDATAU `VEuc  1 e 1 @7327 ]
+"9629
+[v _CRCDATAT CRCDATAT `VEuc  1 e 1 @7328 ]
+"9715
+[v _CRCOUTL CRCOUTL `VEuc  1 e 1 @7329 ]
+"9923
+[v _CRCXORL CRCXORL `VEuc  1 e 1 @7329 ]
+"9993
+[v _CRCOUTH CRCOUTH `VEuc  1 e 1 @7330 ]
+"10201
+[v _CRCXORH CRCXORH `VEuc  1 e 1 @7330 ]
+"10271
+[v _CRCOUTU CRCOUTU `VEuc  1 e 1 @7331 ]
+"10479
+[v _CRCXORU CRCXORU `VEuc  1 e 1 @7331 ]
+"10549
+[v _CRCOUTT CRCOUTT `VEuc  1 e 1 @7332 ]
+"10757
+[v _CRCXORT CRCXORT `VEuc  1 e 1 @7332 ]
+"10827
+[v _CRCCON0 CRCCON0 `VEuc  1 e 1 @7333 ]
+[s S143 . 1 `uc 1 FULL 1 0 :1:0 
+`uc 1 SHIFTM 1 0 :1:1 
+`uc 1 SETUP 1 0 :2:2 
+`uc 1 ACCMOD 1 0 :1:4 
+`uc 1 CRCBUSY 1 0 :1:5 
+`uc 1 CRCGO 1 0 :1:6 
+`uc 1 CRCEN 1 0 :1:7 
+]
+"10853
+[s S151 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LENDIAN 1 0 :1:1 
+`uc 1 SETUP0 1 0 :1:2 
+`uc 1 SETUP1 1 0 :1:3 
+`uc 1 ACCM 1 0 :1:4 
+`uc 1 BUSY 1 0 :1:5 
+`uc 1 GO 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+[u S160 . 1 `S143 1 . 1 0 `S151 1 . 1 0 ]
+[v _CRCCON0bits CRCCON0bits `VES160  1 e 1 @7333 ]
+"10928
+[v _CRCCON1 CRCCON1 `VEuc  1 e 1 @7334 ]
+[s S241 . 1 `uc 1 PLEN 1 0 :5:0 
+]
+"10945
+[s S243 . 1 `uc 1 PLEN0 1 0 :1:0 
+`uc 1 PLEN1 1 0 :1:1 
+`uc 1 PLEN2 1 0 :1:2 
+`uc 1 PLEN3 1 0 :1:3 
+`uc 1 PLEN4 1 0 :1:4 
+]
+[u S249 . 1 `S241 1 . 1 0 `S243 1 . 1 0 ]
+[v _CRCCON1bits CRCCON1bits `VES249  1 e 1 @7334 ]
+"10980
+[v _CRCCON2 CRCCON2 `VEuc  1 e 1 @7335 ]
+"15102
+[v _RB4PPS RB4PPS `VEuc  1 e 1 @7576 ]
+"15182
+[v _RC0PPS RC0PPS `VEuc  1 e 1 @7580 ]
+"15202
+[v _RC1PPS RC1PPS `VEuc  1 e 1 @7581 ]
+"15222
+[v _RC2PPS RC2PPS `VEuc  1 e 1 @7582 ]
+"15972
+[v _RX1PPS RX1PPS `VEuc  1 e 1 @7746 ]
+"16186
+[v _CLBIN0PPS CLBIN0PPS `VEuc  1 e 1 @7767 ]
+"16206
+[v _CLBIN1PPS CLBIN1PPS `VEuc  1 e 1 @7768 ]
+"16226
+[v _CLBIN2PPS CLBIN2PPS `VEuc  1 e 1 @7769 ]
+"16246
+[v _CLBIN3PPS CLBIN3PPS `VEuc  1 e 1 @7770 ]
+"16266
+[v _ANSELA ANSELA `VEuc  1 e 1 @7820 ]
+"16344
+[v _WPUA WPUA `VEuc  1 e 1 @7821 ]
+"16394
+[v _ODCONA ODCONA `VEuc  1 e 1 @7822 ]
+"16439
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @7823 ]
+"16484
+[v _INLVLA INLVLA `VEuc  1 e 1 @7824 ]
+"16534
+[v _IOCAP IOCAP `VEuc  1 e 1 @7825 ]
+"16584
+[v _IOCAN IOCAN `VEuc  1 e 1 @7826 ]
+"16634
+[v _IOCAF IOCAF `VEuc  1 e 1 @7827 ]
+"16684
+[v _ANSELB ANSELB `VEuc  1 e 1 @7830 ]
+"16750
+[v _WPUB WPUB `VEuc  1 e 1 @7831 ]
+"16789
+[v _ODCONB ODCONB `VEuc  1 e 1 @7832 ]
+"16828
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @7833 ]
+"16867
+[v _INLVLB INLVLB `VEuc  1 e 1 @7834 ]
+"16906
+[v _IOCBP IOCBP `VEuc  1 e 1 @7835 ]
+"16945
+[v _IOCBN IOCBN `VEuc  1 e 1 @7836 ]
+"16984
+[v _IOCBF IOCBF `VEuc  1 e 1 @7837 ]
+"17023
+[v _ANSELC ANSELC `VEuc  1 e 1 @7840 ]
+"17135
+[v _WPUC WPUC `VEuc  1 e 1 @7841 ]
+"17197
+[v _ODCONC ODCONC `VEuc  1 e 1 @7842 ]
+"17259
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @7843 ]
+"17321
+[v _INLVLC INLVLC `VEuc  1 e 1 @7844 ]
+"17383
+[v _IOCCP IOCCP `VEuc  1 e 1 @7845 ]
+"17445
+[v _IOCCN IOCCN `VEuc  1 e 1 @7846 ]
+"17507
+[v _IOCCF IOCCF `VEuc  1 e 1 @7847 ]
+"153 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"154
+[v _flags flags `uc  1 s 1 flags ]
+"39 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/clb/src/clb1.c
+[v _start_clb_config start_clb_config `us  1 e 2 0 ]
+"40 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/nvm/src/nvm.c
+[v _unlockKeyLow unlockKeyLow `VNEuc  1 s 1 unlockKeyLow ]
+"41
+[v _unlockKeyHigh unlockKeyHigh `VNEuc  1 s 1 unlockKeyHigh ]
+"38 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/interrupt.c
+[v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
+"46 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_OverflowCallback TMR0_OverflowCallback `*.37(v  1 s 2 TMR0_OverflowCallback ]
+"50 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr2.c
+[v _TMR2_OverflowCallback TMR2_OverflowCallback `*.37(v  1 s 2 TMR2_OverflowCallback ]
+[s S1258 . 1 `uc 1 perr 1 0 :1:0 
+`uc 1 ferr 1 0 :1:1 
+`uc 1 oerr 1 0 :1:2 
+`uc 1 reserved 1 0 :5:3 
+]
+"77 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/uart/src/eusart1.c
+[u S1263 . 2 `S1258 1 . 1 0 `ui 1 status 2 0 ]
+[v _eusart1RxLastError eusart1RxLastError `VES1263  1 s 2 eusart1RxLastError ]
+"83
+[v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.37(v  1 s 2 EUSART1_FramingErrorHandler ]
+"84
+[v _EUSART1_OverrunErrorHandler EUSART1_OverrunErrorHandler `*.37(v  1 s 2 EUSART1_OverrunErrorHandler ]
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"70
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.4v  1 a 1 17 ]
+"5
+[v printf@fmt fmt `*.25DCuc  1 p 2 15 ]
+"13
+} 0
+"1817 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1820
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 13 ]
+[s S1835 _IO_FILE 0 ]
+"1817
+[v vfprintf@fp fp `*.39S1835  1 p 2 8 ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 10 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 12 ]
+"1840
+} 0
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[s S1835 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.39S1835  1 p 2 0 ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 2 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 3 ]
+"1814
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 2 ]
+[u S1814 . 2 `*.39uc 1 buffer 2 0 `*.39DCuc 1 source 2 0 ]
+[s S1817 _IO_FILE 11 `S1814 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.39S1817  1 p 2 4 ]
+"24
+} 0
+"249 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/uart/src/eusart1.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@txData txData `uc  1 a 1 wreg ]
+[v putch@txData txData `uc  1 a 1 wreg ]
+[v putch@txData txData `uc  1 a 1 1 ]
+"256
+} 0
+"235
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v EUSART1_Write@txData txData `uc  1 p 1 0 ]
+"238
+} 0
+"198
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+{
+"201
+} 0
+"39 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"52
+} 0
+"57 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+{
+"78
+} 0
+"122
+[v _TMR2_OverflowCallbackRegister TMR2_OverflowCallbackRegister `(v  1 e 1 0 ]
+{
+[v TMR2_OverflowCallbackRegister@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"125
+} 0
+"53 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+{
+"73
+} 0
+"108
+[v _TMR0_OverflowCallbackRegister TMR0_OverflowCallbackRegister `(v  1 e 1 0 ]
+{
+[v TMR0_OverflowCallbackRegister@CallbackHandler CallbackHandler `*.37(v  1 p 2 0 ]
+"111
+} 0
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/pwm/src/pwm1.c
+[v _PWM1_Initialize PWM1_Initialize `(v  1 e 1 0 ]
+{
+"61
+} 0
+"38 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"119
+} 0
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_Initialize NVM_Initialize `(v  1 e 1 0 ]
+{
+"46
+} 0
+"65
+[v _NVM_StatusClear NVM_StatusClear `(v  1 e 1 0 ]
+{
+"68
+} 0
+"40 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"50
+} 0
+"71
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"73
+} 0
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/fvr/src/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+{
+"47
+} 0
+"94 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+{
+"113
+} 0
+"278
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_OverrunErrorCallbackRegister@callbackHandler callbackHandler `*.37(v  1 p 2 0 ]
+"284
+} 0
+"270
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_FramingErrorCallbackRegister@callbackHandler callbackHandler `*.37(v  1 p 2 0 ]
+"276
+} 0
+"43 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_Initialize CRC_Initialize `(v  1 e 1 0 ]
+{
+"109
+} 0
+"39 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+{
+"54
+} 0
+"45 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/clb/src/clb1.c
+[v _CLB1_Initialize CLB1_Initialize `(v  1 e 1 0 ]
+{
+"91
+} 0
+"108
+[v _CLB1_Configure CLB1_Configure `(v  1 e 1 0 ]
+{
+"111
+[v CLB1_Configure@end_address end_address `us  1 a 2 6 ]
+"108
+[v CLB1_Configure@start_address start_address `us  1 p 2 4 ]
+"126
+} 0
+"202 C:\Users\M71906\Projects\veryVerilog\firmware\U2_miniFPGA_demo.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_StopNvmScanner CRC_StopNvmScanner `T(v  1 e 1 0 ]
+{
+"210
+} 0
+"192
+[v _CRC_StartNvmScanner CRC_StartNvmScanner `T(v  1 e 1 0 ]
+{
+"200
+} 0
+"212
+[v _CRC_SetScannerAddressLimit CRC_SetScannerAddressLimit `(v  1 e 1 0 ]
+{
+[v CRC_SetScannerAddressLimit@startAddr startAddr `us  1 p 2 0 ]
+[v CRC_SetScannerAddressLimit@endAddr endAddr `us  1 p 2 2 ]
+"218
+} 0
+"220
+[v _CRC_IsScannerBusy CRC_IsScannerBusy `T(a  1 e 1 0 ]
+{
+"223
+} 0
