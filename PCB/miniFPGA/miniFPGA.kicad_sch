@@ -7,7 +7,7 @@
 	(title_block
 		(title "Education board for miniFPGA")
 		(date "2024-05-23")
-		(rev "v2.0")
+		(rev "v3.0")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_PIC_ICSP_ICD"
@@ -190,6 +190,108 @@
 						)
 					)
 					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -515,6 +617,319 @@
 						)
 					)
 					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Connector_Generic:Conn_02x04_Counter_Clockwise"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_02x04_Counter_Clockwise"
+				(at 1.27 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, double row, 02x04, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_2x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_02x04_Counter_Clockwise_1_1"
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 3.81)
+					(end 3.81 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start 3.81 -4.953)
+					(end 2.54 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 -2.413)
+					(end 2.54 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 0.127)
+					(end 2.54 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 2.667)
+					(end 2.54 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -5.08 180)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 3.81)
+					(name "Pin_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "Pin_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 3.81)
+					(name "Pin_8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2394,22 +2809,28 @@
 		)
 	)
 	(junction
-		(at 35.56 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "004fa77c-7fbc-41c1-bd91-adbb9198f11b")
-	)
-	(junction
 		(at 152.4 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0794267e-3c62-4248-957a-5a830f0a1992")
 	)
 	(junction
-		(at 35.56 140.97)
+		(at 35.56 85.09)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1093eba6-575f-49d8-ac9a-a251f60b0386")
+		(uuid "0807c0c3-cf0a-4b0e-ad6f-a9ea51647140")
+	)
+	(junction
+		(at 57.15 85.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0cb33456-da6e-47c4-ba35-1e408638cb28")
+	)
+	(junction
+		(at 35.56 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "12ed9c60-0cfa-4753-beb8-99c5165af546")
 	)
 	(junction
 		(at 39.37 85.09)
@@ -2472,10 +2893,28 @@
 		(uuid "78bace89-043b-4046-aef7-2a6189f7244f")
 	)
 	(junction
+		(at 170.18 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8078ad2e-e2df-458d-a2c2-2e76fd59ee62")
+	)
+	(junction
 		(at 49.53 85.09)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8c33059f-ba9c-4bdd-b234-70412384d87d")
+	)
+	(junction
+		(at 57.15 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a165c166-c523-4573-8b36-4e4776122b24")
+	)
+	(junction
+		(at 57.15 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a7dd4e98-c5c3-4b1f-94a9-26b5ede51a86")
 	)
 	(junction
 		(at 265.43 119.38)
@@ -2484,16 +2923,22 @@
 		(uuid "a8a60e39-fa4d-4f42-83c4-4ad6078a0039")
 	)
 	(junction
-		(at 35.56 121.92)
+		(at 57.15 140.97)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c5fde13f-79ff-4e6a-95f4-e14123b7633d")
+		(uuid "b026150a-37ec-420c-8f6d-795326124bad")
 	)
 	(junction
 		(at 115.57 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f88f7973-7b5d-4fca-886a-d8b7ef80f94f")
+	)
+	(junction
+		(at 35.56 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ff403016-6877-460c-a9ee-7deeab5263a1")
 	)
 	(no_connect
 		(at 168.91 132.08)
@@ -2512,6 +2957,10 @@
 		(uuid "6b86e7f7-27de-451b-866c-7295777ffbda")
 	)
 	(no_connect
+		(at 162.56 54.61)
+		(uuid "6bab8786-9548-4269-a4b9-a89c3f628b45")
+	)
+	(no_connect
 		(at 168.91 129.54)
 		(uuid "7e5e5b8f-7bd0-4b50-97fc-4327d8656dfb")
 	)
@@ -2527,7 +2976,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 121.92) (xy 68.58 121.92)
+			(xy 73.66 121.92) (xy 82.55 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2617,7 +3066,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 85.09) (xy 49.53 85.09)
+			(xy 66.04 85.09) (xy 57.15 85.09)
 		)
 		(stroke
 			(width 0)
@@ -2697,6 +3146,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 85.09) (xy 35.56 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33cf91ce-57b1-4f74-86b4-44d280feb17a")
+	)
+	(wire
+		(pts
 			(xy 138.43 44.45) (xy 152.4 44.45)
 		)
 		(stroke
@@ -2707,13 +3166,13 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 102.87) (xy 35.56 121.92)
+			(xy 57.15 93.98) (xy 57.15 95.25)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3d21f0e7-6ae3-42e5-91a0-32c274ef337a")
+		(uuid "43d47af0-dbcc-4721-b67b-9115af30c462")
 	)
 	(wire
 		(pts
@@ -2737,7 +3196,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 140.97) (xy 68.58 140.97)
+			(xy 73.66 140.97) (xy 82.55 140.97)
 		)
 		(stroke
 			(width 0)
@@ -2747,7 +3206,17 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 85.09) (xy 68.58 85.09)
+			(xy 57.15 140.97) (xy 49.53 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54be357d-c87b-4198-bc5b-e61002352bac")
+	)
+	(wire
+		(pts
+			(xy 73.66 85.09) (xy 82.55 85.09)
 		)
 		(stroke
 			(width 0)
@@ -2877,6 +3346,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 85.09) (xy 57.15 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69d1e062-04f5-4051-b309-4f628db48413")
+	)
+	(wire
+		(pts
 			(xy 127 119.38) (xy 135.89 119.38)
 		)
 		(stroke
@@ -2904,6 +3383,16 @@
 			(type default)
 		)
 		(uuid "6d4f47af-1fd2-43d7-b4ce-be4248089ba7")
+	)
+	(wire
+		(pts
+			(xy 128.27 173.99) (xy 121.92 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72b514ae-cd9e-41c7-a9bb-a54e96c5b34a")
 	)
 	(wire
 		(pts
@@ -2937,6 +3426,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 76.2) (xy 35.56 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "777c768e-1e62-4d7a-9d5f-87eb04f725c0")
+	)
+	(wire
+		(pts
 			(xy 127 111.76) (xy 135.89 111.76)
 		)
 		(stroke
@@ -2967,17 +3466,17 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 121.92) (xy 35.56 140.97)
+			(xy 186.69 55.88) (xy 194.31 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7d41329f-3ff7-4e49-8e17-713e58437046")
+		(uuid "7cef0ff2-c1f1-4a98-834c-853d913c095b")
 	)
 	(wire
 		(pts
-			(xy 52.07 140.97) (xy 49.53 140.97)
+			(xy 66.04 140.97) (xy 57.15 140.97)
 		)
 		(stroke
 			(width 0)
@@ -3027,16 +3526,6 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 140.97) (xy 35.56 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "888137e3-53b0-4da3-8e41-e3634f2423c3")
-	)
-	(wire
-		(pts
 			(xy 248.92 102.87) (xy 252.73 102.87)
 		)
 		(stroke
@@ -3047,6 +3536,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 102.87) (xy 49.53 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c6bf14e-595a-4626-976c-a2d9a86037f0")
+	)
+	(wire
+		(pts
 			(xy 223.52 39.37) (xy 223.52 44.45)
 		)
 		(stroke
@@ -3054,16 +3553,6 @@
 			(type default)
 		)
 		(uuid "8f12f876-1f3a-4750-a455-f4f17f49f257")
-	)
-	(wire
-		(pts
-			(xy 35.56 85.09) (xy 35.56 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f666d6c-20af-4187-ae1b-394138a7b900")
 	)
 	(wire
 		(pts
@@ -3084,6 +3573,16 @@
 			(type default)
 		)
 		(uuid "901f460d-980f-4919-9ec2-f7e94ef7b0cf")
+	)
+	(wire
+		(pts
+			(xy 35.56 102.87) (xy 35.56 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90e8c6ce-7a74-43ca-9a30-070a7e5d05f1")
 	)
 	(wire
 		(pts
@@ -3127,6 +3626,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 111.76) (xy 57.15 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e35f47b-3a36-41e0-9767-293ed9ba3c8a")
+	)
+	(wire
+		(pts
 			(xy 39.37 85.09) (xy 35.56 85.09)
 		)
 		(stroke
@@ -3137,7 +3646,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 165.1) (xy 129.54 165.1)
+			(xy 59.69 46.99) (xy 68.58 46.99)
 		)
 		(stroke
 			(width 0)
@@ -3167,6 +3676,16 @@
 	)
 	(wire
 		(pts
+			(xy 128.27 168.91) (xy 121.92 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a851ebc2-9edb-4cc7-92d9-b44f3441dc64")
+	)
+	(wire
+		(pts
 			(xy 219.71 44.45) (xy 219.71 48.26)
 		)
 		(stroke
@@ -3184,6 +3703,26 @@
 			(type default)
 		)
 		(uuid "b02df0bf-2071-4887-80ef-7af05db85131")
+	)
+	(wire
+		(pts
+			(xy 35.56 140.97) (xy 39.37 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2024fdb-3709-439c-9124-939507040664")
+	)
+	(wire
+		(pts
+			(xy 170.18 59.69) (xy 172.72 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2808d1a-22fd-4cf1-8ace-f580449f4c8e")
 	)
 	(wire
 		(pts
@@ -3207,7 +3746,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 102.87) (xy 68.58 102.87)
+			(xy 73.66 102.87) (xy 82.55 102.87)
 		)
 		(stroke
 			(width 0)
@@ -3217,7 +3756,17 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 121.92) (xy 49.53 121.92)
+			(xy 57.15 121.92) (xy 49.53 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf638098-453d-4777-97cf-9a44d9dad6c2")
+	)
+	(wire
+		(pts
+			(xy 66.04 121.92) (xy 57.15 121.92)
 		)
 		(stroke
 			(width 0)
@@ -3247,13 +3796,23 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 140.97) (xy 35.56 158.75)
+			(xy 35.56 121.92) (xy 35.56 140.97)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c2e2b1cd-e30c-4808-acb9-068a353bd717")
+		(uuid "c3e487c4-dabd-478b-8de1-1128982823f1")
+	)
+	(wire
+		(pts
+			(xy 57.15 85.09) (xy 49.53 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c54f9df0-d94e-4b63-bb69-a41271b21dd8")
 	)
 	(wire
 		(pts
@@ -3277,7 +3836,67 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 162.56) (xy 129.54 162.56)
+			(xy 57.15 121.92) (xy 57.15 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb599600-27ec-4d1b-b2c4-c7773adb5ed3")
+	)
+	(wire
+		(pts
+			(xy 102.87 176.53) (xy 109.22 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc9ce42f-74df-4ccc-b7fc-a92292bc0edb")
+	)
+	(wire
+		(pts
+			(xy 170.18 55.88) (xy 170.18 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ccb2801d-d9a3-4940-9a3d-88efa8a66090")
+	)
+	(wire
+		(pts
+			(xy 179.07 55.88) (xy 170.18 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd70c7aa-f0dc-48ea-94b5-be8cd7ea8b6b")
+	)
+	(wire
+		(pts
+			(xy 57.15 102.87) (xy 57.15 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce924e0e-c5ca-4f9f-a4a9-616f117bbe86")
+	)
+	(wire
+		(pts
+			(xy 57.15 140.97) (xy 57.15 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d26bf6be-650c-4650-91b2-fcda6bcd039e")
+	)
+	(wire
+		(pts
+			(xy 59.69 44.45) (xy 68.58 44.45)
 		)
 		(stroke
 			(width 0)
@@ -3287,13 +3906,43 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 102.87) (xy 49.53 102.87)
+			(xy 102.87 171.45) (xy 109.22 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3ff8d5d-d358-4799-808e-28bba071ec29")
+	)
+	(wire
+		(pts
+			(xy 57.15 149.86) (xy 57.15 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d42fed6a-32de-4e95-8d76-2f4f749b00e7")
+	)
+	(wire
+		(pts
+			(xy 66.04 102.87) (xy 57.15 102.87)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "d45786a9-5e5f-411a-a7c3-2b8ea8772049")
+	)
+	(wire
+		(pts
+			(xy 57.15 130.81) (xy 57.15 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5c3777b-0709-4514-a51b-f536b1e43409")
 	)
 	(wire
 		(pts
@@ -3317,7 +3966,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 59.69) (xy 172.72 59.69)
+			(xy 162.56 59.69) (xy 170.18 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3397,7 +4046,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 167.64) (xy 129.54 167.64)
+			(xy 59.69 49.53) (xy 68.58 49.53)
 		)
 		(stroke
 			(width 0)
@@ -3457,7 +4106,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 157.48) (xy 129.54 157.48)
+			(xy 59.69 39.37) (xy 68.58 39.37)
 		)
 		(stroke
 			(width 0)
@@ -3504,6 +4153,18 @@
 			(type default)
 		)
 		(uuid "ffcadb07-91f0-42c8-9d88-eeb158f06ffb")
+	)
+	(rectangle
+		(start 90.17 158.75)
+		(end 143.51 186.69)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid b5c8690a-6b10-49f8-8c46-236f97f7575d)
 	)
 	(image
 		(at 234.315 173.99)
@@ -3632,7 +4293,7 @@
 	)
 	(text "RC0"
 		(exclude_from_sim no)
-		(at 157.48 55.88 0)
+		(at 157.48 56.388 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3670,9 +4331,20 @@
 		)
 		(uuid "7fa629ef-da29-44d0-b99a-61b63eda1469")
 	)
+	(text "* All resistors 0.25W"
+		(exclude_from_sim no)
+		(at 17.018 191.262 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9433ac57-0c3e-4461-8153-f3891f24578c")
+	)
 	(text "RC2"
 		(exclude_from_sim no)
-		(at 156.21 76.2 0)
+		(at 156.718 76.708 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3702,7 +4374,7 @@
 		(uuid "03803a7f-2e2b-4d43-992a-71f12c535a81")
 	)
 	(label "RC5"
-		(at 60.96 102.87 0)
+		(at 74.93 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3735,7 +4407,7 @@
 		(uuid "1c371d38-f04d-4261-b8ce-7f766389cd8d")
 	)
 	(label "RA2"
-		(at 121.92 167.64 0)
+		(at 60.96 49.53 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3779,7 +4451,7 @@
 		(uuid "494d9812-9574-4e9a-968f-998d841c74fb")
 	)
 	(label "RC3"
-		(at 60.96 140.97 0)
+		(at 74.93 140.97 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3812,7 +4484,7 @@
 		(uuid "5117e653-c7d8-482b-8a8f-dd2a06cfdcc3")
 	)
 	(label "RA4"
-		(at 60.96 121.92 0)
+		(at 74.93 121.92 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3867,7 +4539,7 @@
 		(uuid "691c7f64-a17c-44a9-a032-b916c531ffa5")
 	)
 	(label "RC4"
-		(at 60.96 85.09 0)
+		(at 74.93 85.09 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3922,7 +4594,7 @@
 		(uuid "88d529e5-1aab-4034-8a84-028b3889d929")
 	)
 	(label "RA1"
-		(at 121.92 165.1 0)
+		(at 60.96 46.99 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3944,7 +4616,7 @@
 		(uuid "9553943e-e8a5-4c11-a4bf-2abb36691bdf")
 	)
 	(label "RA0"
-		(at 121.92 162.56 0)
+		(at 60.96 44.45 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3977,7 +4649,7 @@
 		(uuid "a310476b-915b-45b4-a292-01fb61238a66")
 	)
 	(label "~{MCLR}"
-		(at 121.92 157.48 0)
+		(at 60.96 39.37 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4041,7 +4713,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "02f99a5b-2984-453b-a2cd-f4965dd5ca9c")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR08"
 			(at 152.4 88.9 0)
 			(effects
 				(font
@@ -4091,7 +4763,71 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR010")
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 121.92 176.53 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "046d6b4c-9f74-4059-9a6a-f1943824f969")
+		(property "Reference" "TP5"
+			(at 128.778 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5"
+			(at 127 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 121.92 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "722abf2d-acd4-4c94-907b-fb023feffa00")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -4099,15 +4835,14 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 219.71 52.07 0)
-		(mirror y)
+		(at 219.71 52.07 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "0bae355b-c6b0-4011-8062-6ee862fe2b64")
-		(property "Reference" "R14"
+		(property "Reference" "R12"
 			(at 219.71 52.07 90)
 			(effects
 				(font
@@ -4159,7 +4894,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R14")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -4201,7 +4936,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
 			(at 44.45 80.01 0)
 			(effects
 				(font
@@ -4211,6 +4946,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 44.45 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
 			(at 44.45 85.09 0)
 			(effects
 				(font
@@ -4301,6 +5045,136 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 121.92 171.45 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0fecdeef-bc0d-4fa4-a8da-65130a97396e")
+		(property "Reference" "TP7"
+			(at 128.778 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "7"
+			(at 127 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 121.92 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "51f5f324-e4cc-425b-93ba-df94a8454bb2")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 35.56 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "134a74ef-b595-4272-b9a8-c65a25394a66")
+		(property "Reference" "#PWR016"
+			(at 35.56 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 35.56 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 35.56 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8095c996-4e57-402e-9637-04eb429e7305")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 162.56 44.45 90)
 		(unit 1)
@@ -4362,6 +5236,73 @@
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 57.15 127 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "23b56c5b-0d01-4623-a17f-09418a39fa3d")
+		(property "Reference" "R19"
+			(at 57.15 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "680Ω"
+			(at 59.69 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 55.372 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f1f2093d-c7ef-43e2-81ee-8a27664cb96b")
+		)
+		(pin "2"
+			(uuid "75c8e9e2-ff57-4182-92ff-97d57c64c21b")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -4437,6 +5378,139 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDD")
+		(at 57.15 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "266876c7-24d5-4be6-a9f5-f8df3f30e937")
+		(property "Reference" "#PWR018"
+			(at 57.15 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 57.15 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4c912414-4ee4-48a9-8480-ab87bfd229e0")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 57.15 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "29b6f093-869b-47ae-a072-fe8dc229c2d4")
+		(property "Reference" "R21"
+			(at 57.15 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "680Ω"
+			(at 59.69 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 55.372 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2b3b4aca-0418-44ce-93d0-564bbcb32a53")
+		)
+		(pin "2"
+			(uuid "acfd733d-d961-46d6-a29e-8d77a950f39d")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Jumper:Jumper_2_Open")
 		(at 44.45 127 0)
 		(mirror y)
@@ -4506,6 +5580,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector_Generic:Conn_02x04_Counter_Clockwise")
+		(at 114.3 171.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "2cf135ed-c042-40dd-9111-100212f71cb2")
+		(property "Reference" "A1"
+			(at 115.57 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8pin proto area"
+			(at 115.57 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:8pin_proto"
+			(at 114.3 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x04, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 114.3 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "dd19d876-c30a-465c-b06a-851d5421e348")
+		)
+		(pin "3"
+			(uuid "f7b1a370-7423-4488-ac7e-b49fdba151cc")
+		)
+		(pin "5"
+			(uuid "a8edc033-04cd-40a3-acbc-4f4a67b467ad")
+		)
+		(pin "8"
+			(uuid "e556e6b9-0dda-411d-ace3-03dae9d0567e")
+		)
+		(pin "1"
+			(uuid "65b39ba7-ebaf-473e-9ac5-e5dfc5ddd8a5")
+		)
+		(pin "4"
+			(uuid "6cbc8512-ba3c-425a-aaae-2738e6e12b9a")
+		)
+		(pin "2"
+			(uuid "91f185a5-b0bd-4ffa-93ff-532c5a4e11b4")
+		)
+		(pin "7"
+			(uuid "5c17f8e6-57c6-434e-a9cc-121260c96363")
+		)
+		(instances
+			(project ""
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "A1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GNDD")
 		(at 152.4 139.7 0)
 		(unit 1)
@@ -4515,7 +5674,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e425d22-e4ed-4756-bed0-0c20e3c5025e")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR010"
 			(at 152.4 146.05 0)
 			(effects
 				(font
@@ -4565,7 +5724,71 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR08")
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 109.22 168.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "316e50a3-6cc1-4512-98cc-101478512d4b")
+		(property "Reference" "TP1"
+			(at 102.362 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1"
+			(at 104.14 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.5x1.5mm"
+			(at 109.22 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 109.22 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 109.22 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d7eec051-7265-4daa-bb78-5b62a8d0554f")
+		)
+		(instances
+			(project ""
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -4607,7 +5830,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
 			(at 44.45 97.79 0)
 			(effects
 				(font
@@ -4617,6 +5840,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 44.45 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
 			(at 44.45 102.87 0)
 			(effects
 				(font
@@ -4642,7 +5874,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 55.88 85.09 270)
+		(at 69.85 85.09 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4651,23 +5883,23 @@
 		(dnp no)
 		(uuid "3a8343b3-c400-4e92-964e-8e126263146d")
 		(property "Reference" "R1"
-			(at 55.88 85.09 90)
+			(at 69.85 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "10kΩ"
-			(at 55.88 87.63 90)
+		(property "Value" "680Ω"
+			(at 69.85 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
-			(at 55.88 86.868 90)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 69.85 86.868 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4676,7 +5908,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 55.88 85.09 0)
+			(at 69.85 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4685,7 +5917,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 55.88 85.09 0)
+			(at 69.85 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4786,7 +6018,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3e64abeb-0e70-4f8e-8e97-e12b381c8217")
-		(property "Reference" "R9"
+		(property "Reference" "R7"
 			(at 176.53 59.69 90)
 			(effects
 				(font
@@ -4795,7 +6027,7 @@
 			)
 		)
 		(property "Value" "680Ω"
-			(at 176.53 57.15 90)
+			(at 176.53 57.658 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4838,7 +6070,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R9")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -4853,7 +6085,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "490532fe-097c-442d-8098-efaa24f48fa4")
-		(property "Reference" "R11"
+		(property "Reference" "R9"
 			(at 184.15 106.68 90)
 			(effects
 				(font
@@ -4905,7 +6137,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R11")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -4921,7 +6153,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4cd5312b-05e8-46ec-819e-7910afeb69f7")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR014"
 			(at 265.43 146.05 0)
 			(effects
 				(font
@@ -4971,7 +6203,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR01")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -4986,7 +6218,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "513319f4-3cf3-4bc5-ba75-b08ee64d92a3")
-		(property "Reference" "R7"
+		(property "Reference" "R5"
 			(at 138.43 48.26 90)
 			(effects
 				(font
@@ -4994,7 +6226,7 @@
 				)
 			)
 		)
-		(property "Value" "10kΩ"
+		(property "Value" "4k7"
 			(at 140.97 48.26 90)
 			(effects
 				(font
@@ -5038,7 +6270,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R7")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -5112,16 +6344,15 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_PIC_ICSP_ICD")
-		(at 107.95 162.56 0)
+		(at 46.99 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "52bb04b4-b5ac-4683-8144-10e02a736438")
 		(property "Reference" "J2"
-			(at 99.06 161.29 0)
+			(at 37.846 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5129,8 +6360,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "ICSP_FPGA"
-			(at 99.06 163.83 0)
+		(property "Value" "ICSP_DEBUG_miniFPGA"
+			(at 65.278 54.102 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5139,7 +6370,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal"
-			(at 109.22 158.75 0)
+			(at 48.26 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5148,7 +6379,7 @@
 			)
 		)
 		(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
-			(at 100.33 166.37 90)
+			(at 39.37 48.26 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5157,7 +6388,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 107.95 162.56 0)
+			(at 46.99 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5193,32 +6424,32 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 55.88 102.87 270)
+		(lib_id "Connector:TestPoint")
+		(at 102.87 176.53 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5a55a29a-9968-4ead-a687-e5255d6b7bc4")
-		(property "Reference" "R2"
-			(at 55.88 102.87 90)
+		(uuid "52d0d351-29e4-4eb7-aded-5e0c23d13f1c")
+		(property "Reference" "TP4"
+			(at 96.012 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "10kΩ"
-			(at 55.88 105.41 90)
+		(property "Value" "4"
+			(at 97.79 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
-			(at 55.88 101.092 90)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 102.87 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5227,7 +6458,135 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 55.88 102.87 0)
+			(at 102.87 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 102.87 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "83c8329e-0652-4532-9d29-afe09490cd67")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 102.87 171.45 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "58d619ee-0d42-4e2d-bee8-c38e1e20eb40")
+		(property "Reference" "TP2"
+			(at 96.012 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2"
+			(at 97.79 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 102.87 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 102.87 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 102.87 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "95d89af2-8971-44c1-b834-f28874d2e2e1")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 69.85 102.87 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5a55a29a-9968-4ead-a687-e5255d6b7bc4")
+		(property "Reference" "R2"
+			(at 69.85 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "680Ω"
+			(at 69.85 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 69.85 101.092 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 69.85 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5236,7 +6595,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 55.88 102.87 0)
+			(at 69.85 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5328,7 +6687,7 @@
 	)
 	(symbol
 		(lib_id "power:VDD")
-		(at 102.87 152.4 0)
+		(at 41.91 34.29 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5336,8 +6695,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6090610f-6b21-4da0-8254-c089a7680e3c")
-		(property "Reference" "#PWR05"
-			(at 102.87 156.21 0)
+		(property "Reference" "#PWR03"
+			(at 41.91 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5346,7 +6705,7 @@
 			)
 		)
 		(property "Value" "VDD"
-			(at 102.87 147.32 0)
+			(at 41.91 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5354,7 +6713,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 102.87 152.4 0)
+			(at 41.91 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5363,7 +6722,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 152.4 0)
+			(at 41.91 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5372,7 +6731,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 102.87 152.4 0)
+			(at 41.91 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5386,7 +6745,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR05")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -5402,7 +6761,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "699a4d10-d4b6-47b1-8137-211b1ea82074")
-		(property "Reference" "R6"
+		(property "Reference" "R15"
 			(at 245.11 119.38 90)
 			(effects
 				(font
@@ -5454,7 +6813,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R6")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -5462,7 +6821,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 55.88 140.97 270)
+		(at 69.85 140.97 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5470,23 +6829,23 @@
 		(dnp no)
 		(uuid "78a10039-5f61-4d86-950d-5b7062742d28")
 		(property "Reference" "R4"
-			(at 55.88 140.97 90)
+			(at 69.85 140.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "10kΩ"
-			(at 55.88 143.51 90)
+		(property "Value" "680Ω"
+			(at 69.85 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
-			(at 55.88 139.192 90)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 69.85 139.192 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5495,7 +6854,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 55.88 140.97 0)
+			(at 69.85 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5504,7 +6863,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 55.88 140.97 0)
+			(at 69.85 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5602,7 +6961,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8422f27a-8fb5-4faa-b531-3515fe597ac6")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR06"
 			(at 115.57 45.72 0)
 			(effects
 				(font
@@ -5652,7 +7011,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR04")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -5761,7 +7120,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
 			(at 44.45 116.84 0)
 			(effects
 				(font
@@ -5771,6 +7130,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 44.45 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
 			(at 44.45 121.92 0)
 			(effects
 				(font
@@ -5796,7 +7164,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 55.88 121.92 270)
+		(at 69.85 121.92 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5805,23 +7173,23 @@
 		(dnp no)
 		(uuid "912736da-3cc3-4a86-8b0b-4133121edbda")
 		(property "Reference" "R3"
-			(at 55.88 121.92 90)
+			(at 69.85 121.92 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "10kΩ"
-			(at 55.88 124.46 90)
+		(property "Value" "680Ω"
+			(at 69.85 124.46 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
-			(at 55.88 123.698 90)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 69.85 123.698 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5830,7 +7198,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 55.88 121.92 0)
+			(at 69.85 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5839,7 +7207,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 55.88 121.92 0)
+			(at 69.85 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5938,7 +7306,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "928d5251-0725-4365-95d2-f353a3ceacee")
-		(property "Reference" "U3"
+		(property "Reference" "U2"
 			(at 140.97 102.87 0)
 			(effects
 				(font
@@ -6044,7 +7412,7 @@
 		(instances
 			(project ""
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "U3")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -6059,7 +7427,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "95eaeff6-c238-4966-a39c-4dd07a3797a9")
-		(property "Reference" "R12"
+		(property "Reference" "R10"
 			(at 184.15 109.22 90)
 			(effects
 				(font
@@ -6111,7 +7479,73 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R12")
+					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDD")
+		(at 57.15 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9cb35849-2d89-4623-8395-1bce49ff51e7")
+		(property "Reference" "#PWR019"
+			(at 57.15 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 57.15 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2564b1ca-3358-4f07-a06f-37dd4dce1bad")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -6274,7 +7708,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4µ7F"
+		(property "Value" "4µ7"
 			(at 92.71 62.611 0)
 			(effects
 				(font
@@ -6335,7 +7769,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "abae4f0d-bb8a-4571-b14e-ef650b98c203")
-		(property "Reference" "R10"
+		(property "Reference" "R8"
 			(at 176.53 62.23 90)
 			(effects
 				(font
@@ -6344,7 +7778,7 @@
 			)
 		)
 		(property "Value" "680Ω"
-			(at 176.53 64.77 90)
+			(at 176.53 64.516 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6387,7 +7821,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R10")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -6403,7 +7837,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ae6417d6-fc55-4489-b018-8125bbc55e33")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR05"
 			(at 107.95 88.9 0)
 			(effects
 				(font
@@ -6453,7 +7887,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR03")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -6531,6 +7965,140 @@
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
 					(reference "LED2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 57.15 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1a26c0f-2d77-45ab-b4e1-6f415ecca5e5")
+		(property "Reference" "R17"
+			(at 57.15 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "680Ω"
+			(at 59.69 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 55.372 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06a0d8e1-0edf-45f1-ab5f-d603dd0c5f9e")
+		)
+		(pin "2"
+			(uuid "c5016703-5cad-41cf-803d-73dc1c6c8312")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VDD")
+		(at 194.31 55.88 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b6e786a0-7edf-447d-94de-687148346b7d")
+		(property "Reference" "#PWR015"
+			(at 194.31 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 194.31 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 194.31 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 194.31 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 194.31 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "27b3aa23-9ad1-42d1-8446-b7617eaa9a25")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -6681,6 +8249,70 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 128.27 173.99 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c595ef2c-f252-4148-97c0-267b22c5203b")
+		(property "Reference" "TP6"
+			(at 135.128 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "6"
+			(at 133.35 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 128.27 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 128.27 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06704afa-b9ee-4953-a666-36ea122aa429")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 203.2 107.95 0)
 		(unit 1)
@@ -6689,7 +8321,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c6bf08b5-e657-4f9b-9e99-3a34fa465403")
-		(property "Reference" "R13"
+		(property "Reference" "R11"
 			(at 203.2 107.95 90)
 			(effects
 				(font
@@ -6697,7 +8329,7 @@
 				)
 			)
 		)
-		(property "Value" "10kΩ"
+		(property "Value" "4k7"
 			(at 205.74 107.95 90)
 			(effects
 				(font
@@ -6741,24 +8373,39 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R13")
+					(reference "R11")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "power:GNDD")
-		(at 102.87 172.72 0)
+		(lib_id "Device:R")
+		(at 57.15 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d7c50e7e-c416-405a-bb42-5b86d0501e77")
-		(property "Reference" "#PWR06"
-			(at 102.87 179.07 0)
+		(uuid "c9720215-2cca-465c-bd78-568dd50db1a6")
+		(property "Reference" "R20"
+			(at 57.15 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "680Ω"
+			(at 59.69 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
+			(at 55.372 107.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6766,25 +8413,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDD"
-			(at 102.87 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 102.87 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 172.72 0)
+		(property "Datasheet" "~"
+			(at 57.15 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6793,7 +8423,140 @@
 			)
 		)
 		(property "Description" ""
-			(at 102.87 172.72 0)
+			(at 57.15 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1186a649-9a9b-4244-8d3a-bbc0380aa497")
+		)
+		(pin "2"
+			(uuid "2892e350-44eb-465a-9a5d-5e1a9de762af")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 128.27 168.91 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce32740e-d284-474c-a40a-eeb53909dcd0")
+		(property "Reference" "TP8"
+			(at 135.128 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8"
+			(at 133.35 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 128.27 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 128.27 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a6fb0234-3f2f-459b-bae6-8a062cc8e06e")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDD")
+		(at 41.91 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7c50e7e-c416-405a-bb42-5b86d0501e77")
+		(property "Reference" "#PWR04"
+			(at 41.91 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 41.91 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 41.91 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 41.91 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 41.91 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6807,7 +8570,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR06")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -6889,7 +8652,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dd5adf29-7556-4896-a0b3-6bdce1e44590")
-		(property "Reference" "R8"
+		(property "Reference" "R6"
 			(at 176.53 52.07 90)
 			(effects
 				(font
@@ -6941,7 +8704,73 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R8")
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDD")
+		(at 57.15 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "def27eb8-c851-43c2-95e1-f18cfa28374d")
+		(property "Reference" "#PWR017"
+			(at 57.15 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 57.15 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f85a39ca-19cb-4022-aa2b-51dedbc428dd")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -6983,7 +8812,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
 			(at 44.45 135.89 0)
 			(effects
 				(font
@@ -6993,6 +8822,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 44.45 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
 			(at 44.45 140.97 0)
 			(effects
 				(font
@@ -7017,6 +8855,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 182.88 55.88 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e069c3d1-721c-4574-ba83-c25276e9060d")
+		(property "Reference" "R18"
+			(at 182.88 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4k7"
+			(at 182.88 53.594 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
+			(at 182.88 57.658 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a17a4392-02c9-4ec3-8214-f6f09d7c6fdd")
+		)
+		(pin "2"
+			(uuid "bc2e13a9-e8c8-4b31-8f28-0fc1af42cb1d")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VDD")
 		(at 152.4 41.91 0)
 		(unit 1)
@@ -7026,7 +8932,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e1d0cc1c-227f-4d5d-9667-36f790f6084a")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR07"
 			(at 152.4 45.72 0)
 			(effects
 				(font
@@ -7076,7 +8982,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR09")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -7091,7 +8997,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e3731f75-8ab6-47bc-a294-e4193e1fd643")
-		(property "Reference" "R5"
+		(property "Reference" "R14"
 			(at 245.11 102.87 90)
 			(effects
 				(font
@@ -7143,7 +9049,71 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R5")
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 109.22 173.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec638af6-c38d-487a-af11-b433af0cdc09")
+		(property "Reference" "TP3"
+			(at 102.362 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3"
+			(at 104.14 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 109.22 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 109.22 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 109.22 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c6ad8bf6-e9c9-4c5c-990b-395dd160bc74")
+		)
+		(instances
+			(project "miniFPGA"
+				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -7157,10 +9127,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ed6e7865-dbaa-4e01-b106-dc8717c114f0")
-		(property "Reference" "U2"
-			(at 154.5941 80.01 0)
+		(property "Reference" "U1"
+			(at 144.78 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7168,8 +9137,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MCP2221A-IP"
-			(at 154.5941 82.55 0)
+		(property "Value" "PIC16F1455-I/P"
+			(at 152.654 78.994 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7258,7 +9227,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "U2")
+					(reference "U1")
 					(unit 1)
 				)
 			)
@@ -7266,7 +9235,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDD")
-		(at 35.56 158.75 0)
+		(at 57.15 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7274,8 +9243,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ee16b10a-d9ed-46d4-9ff8-3d82fadbc6c0")
-		(property "Reference" "#PWR014"
-			(at 35.56 165.1 0)
+		(property "Reference" "#PWR01"
+			(at 57.15 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7284,7 +9253,7 @@
 			)
 		)
 		(property "Value" "GNDD"
-			(at 35.56 162.56 0)
+			(at 57.15 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7292,7 +9261,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 35.56 158.75 0)
+			(at 57.15 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7301,7 +9270,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 35.56 158.75 0)
+			(at 57.15 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7310,7 +9279,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 35.56 158.75 0)
+			(at 57.15 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7324,7 +9293,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR014")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -7339,7 +9308,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ee9c900d-2cef-438e-ab0a-f399de28786a")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR09"
 			(at 152.4 101.6 0)
 			(effects
 				(font
@@ -7389,7 +9358,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "#PWR07")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -7398,13 +9367,14 @@
 	(symbol
 		(lib_id "Device:R")
 		(at 223.52 52.07 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "f1174975-b248-452f-afea-bf86a75042f4")
-		(property "Reference" "R15"
+		(property "Reference" "R13"
 			(at 223.52 52.07 90)
 			(effects
 				(font
@@ -7465,7 +9435,7 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-					(reference "R15")
+					(reference "R13")
 					(unit 1)
 				)
 			)
