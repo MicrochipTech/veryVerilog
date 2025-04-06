@@ -104,8 +104,8 @@ async function programmDevice(){
     return true;
 }
 
-async function showMemory(){
-    if(memory == null) {
+async function showMemory() {
+    if(memory == null){
         $('#modalTitle').text("Device Memory");
         $('#modalBody').empty();
         $('#modalBody').text("No data to show. Read the device first.");
@@ -115,9 +115,9 @@ async function showMemory(){
     $('#modalTitle').text("Device Memory");
     $('#modalBody').empty();
     let fields = {
-        "memory": ["Program Flash", 16], 
+        "memory": ["Program Flash", 16],
         "eeprom": ["EEPROM", 8],
-        "userId": ["UserId", 4,], 
+        "userId": ["UserId", 4],
         "configWords": ["Config Words", 1]
     };
     $('#modalBody').html(
@@ -127,12 +127,12 @@ async function showMemory(){
         // create entry for memory area
         $('#memmoryBtn').append(
             `<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" `
-            + `data-bs-target="#${key}Div" aria-expanded="false" aria-controls="#${key}Div">${value[0]}</button>`
+            + `data-bs-target="#${key}Div" aria-expanded="false" aria-controls="${key}Div">${value[0]}</button>`
         );
         $('#memmoryTables').append(
             `<div class="collapse" data-bs-parent="#memmoryTables" id="${key}Div">`
             + `<table id="${key}Table" class="table table-sm"></table></div>`);
-            
+
         // create table header and body. header spans over the amount of columns defined on 'value'
         $('#' + key + 'Table').append(`<thead><tr><th>Address</th><th colspan="${value[1]}">Data</th></tr></thead>`);
         $('#' + key + 'Table').append(`<tbody></tbody>`);
@@ -144,14 +144,13 @@ async function showMemory(){
                 const row = tableBody.insertRow();
                 const cell1 = row.insertCell(0);
                 cell1.textContent = `0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`;
-                for(let j = 0; j<value[1]; j++) {
+                for (let j = 0; j < value[1]; j++) {
                     const cell = row.insertCell();
-                    cell.textContent = `${memory[key][i].toString(16).padStart(key==="eeprom"?2:4, '0').toUpperCase()}`;
+                    cell.textContent = `${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`;
                     i++;
                 }
-            }        
-        }
-        else {
+            }
+        } else {
             // replace colspan to 1 as we have only one column
             $('#' + key + 'Table thead th:last-child').attr('colspan', 1);
             const row = tableBody.insertRow();
