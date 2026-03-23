@@ -18,6 +18,7 @@ class ICSP_HID {
         this.dataBits = 24;
 
         this.verify = false;
+        this.progressCallback = null;
     }
 
     /*** public methods ***/
@@ -116,20 +117,33 @@ class ICSP_HID {
         console.log('lvpEnter');
         await this.lvpEnter();
 
+        const totalSteps = 6;
+        let currentStep = 0;
+
+        if (this.progressCallback) this.progressCallback(++currentStep / totalSteps, 'Reading Flash...');
         let memory = await this.readFlash();
+
+        if (this.progressCallback) this.progressCallback(++currentStep / totalSteps, 'Reading EEPROM...');
         let eepromAddress = this.pic.getEEPROMAddress();
         let eeprom = await this.readEEPROM();
+
+        if (this.progressCallback) this.progressCallback(++currentStep / totalSteps, 'Reading UserID...');
         let userIdAddress = this.pic.getUserIdAddress();
         let userId = await this.readUserID();
-        let configWordsAddress = this.pic.getConfigWordsAddress();
-        let configWords = await this.readConfigWords();        
 
+        if (this.progressCallback) this.progressCallback(++currentStep / totalSteps, 'Reading Config Words...');
+        let configWordsAddress = this.pic.getConfigWordsAddress();
+        let configWords = await this.readConfigWords();
+
+        if (this.progressCallback) this.progressCallback(++currentStep / totalSteps, 'Exiting LVP...');
         console.log('lvpExit');
         await this.lvpExit();
 
+        if (this.progressCallback) this.progressCallback(1, 'Complete');
+
         return {
             "memory": memory, "eeprom": eeprom, "userId": userId, "configWords": configWords,
-            "memoryAddress": 0, "eepromAddress": eepromAddress, 
+            "memoryAddress": 0, "eepromAddress": eepromAddress,
             "userIdAddress": userIdAddress, "configWordsAddress": configWordsAddress
         };
     }
@@ -304,26 +318,46 @@ class ICSP_HID {
         console.log('lvpEnter');
         await this.lvpEnter();
         const trials = 2;
-    
+
         const operations = [
             { enabled: flash, label: 'Flash', writeMethod: this.writeFlash },
             { enabled: eeprom, label: 'EEPROM', writeMethod: this.writeEEPROM },
             { enabled: userid, label: 'UserID', writeMethod: this.writeUserId },
             { enabled: config, label: 'Config bits', writeMethod: this.writeConfigWord }
         ];
-    
+
+        const enabledOps = operations.filter(op => op.enabled);
+        const totalOps = enabledOps.length * (this.verify ? 2 : 1) + 1; // +1 for exit
+        let currentOp = 0;
+
         for (const { enabled, label, writeMethod } of operations) {
             if (enabled) {
                 console.log(`Writing ${label}...`);
-                await writeMethod.call(this, hexObject, false); 
+                if (this.progressCallback) {
+                    this.progressCallback(currentOp / totalOps, `Writing ${label}...`);
+                }
+                await writeMethod.call(this, hexObject, false);
+                currentOp++;
+
                 if (this.verify) {
+                    if (this.progressCallback) {
+                        this.progressCallback(currentOp / totalOps, `Verifying ${label}...`);
+                    }
                     await this.verifyFlashedData(trials, label, writeMethod);
+                    currentOp++;
                 }
             }
         }
-    
+
+        if (this.progressCallback) {
+            this.progressCallback(currentOp / totalOps, 'Exiting LVP...');
+        }
         console.log('lvpExit');
         await this.lvpExit();
+
+        if (this.progressCallback) {
+            this.progressCallback(1, 'Complete');
+        }
     }
 
     readUserIdFields(userId){
@@ -424,6 +458,10 @@ class ICSP_HID {
 
     isVerify() {
         return this.verify;
+    }
+
+    setProgressCallback(callback) {
+        this.progressCallback = callback;
     }
 
     /*** private methods ***/

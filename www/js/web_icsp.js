@@ -52,13 +52,34 @@ function showPicDetails(){
     $('#dataModal').modal('show');
 }
 
+function showProgressModal(title, message) {
+    const progressHtml = `
+        <div id="progressMessage" class="mb-2">${message}</div>
+        <div class="progress" style="height: 8px;">
+            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                 role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+    `;
+    $('#modalTitle').text(title);
+    $('#modalBody').empty();
+    $('#modalBody').html(progressHtml);
+    $('#dataModal').modal('show');
+}
+
+function updateProgress(percent, message) {
+    $('#progressBar').css('width', percent + '%');
+    $('#progressBar').attr('aria-valuenow', percent);
+    $('#progressMessage').text(message);
+}
+
 async function showModalMessage(title="", msg="", text=true){
     $('#modalTitle').text(title);
     $('#modalBody').empty();
     if(text) $('#modalBody').text(msg);
     else $('#modalBody').html(msg);
     $('#dataModal').modal('show');
-    return new Promise(resolve => 
+    return new Promise(resolve =>
         $('#closeModal').on('click', () => {
                 $('#dataModal').modal('hide');
                 resolve();
@@ -134,20 +155,37 @@ async function programmDevice(){
         userid = $("#userid-space").prop('checked'),
         config = $("#config-bits-space").prop('checked'),
     ];
+
+    // Show progress modal
+    showProgressModal("Programming Device", "Erasing device...");
+
     if(!await icsp_hid.eraseDevice(...args)){
+        $('#dataModal').modal('hide');
         showModalMessage("Error", "Could not erase device");
         return false;
     }
+
     // set/clear the verify flag
-    // when writing to the device's memory, it will be checked if the contents are 
+    // when writing to the device's memory, it will be checked if the contents are
     // the same as expected. This will cause a slower programming time.
     icsp_hid.setVerify($("#verify").prop('checked'));
+
+    // Set progress callback
+    icsp_hid.setProgressCallback((progress, status) => {
+        updateProgress(progress * 100, status);
+    });
+
     try {
         await icsp_hid.programEntireDevice(hexObject, ...args);
     } catch(e) {
+        icsp_hid.setProgressCallback(null);
+        $('#dataModal').modal('hide');
         showModalMessage("Error", e);
         return false;
     }
+
+    icsp_hid.setProgressCallback(null);
+    $('#dataModal').modal('hide');
     $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     return true;
 }
@@ -213,14 +251,24 @@ async function showMemory() {
 
 async function readDevice(){
     try {
-        $('#modalTitle').text("Device Memory");
-        $('#modalBody').empty();
-        $('#modalBody').text("Reading...  Please wait.");
-        $('#dataModal').modal('show');
+        // Show progress modal
+        showProgressModal("Reading Device", "Starting read...");
+
+        // Set progress callback
+        icsp_hid.setProgressCallback((progress, status) => {
+            updateProgress(progress * 100, status);
+        });
+
         memory = await icsp_hid.readDevice();
+
+        icsp_hid.setProgressCallback(null);
+        $('#dataModal').modal('hide');
+
         await showMemory();
     }
     catch(e) {
+        icsp_hid.setProgressCallback(null);
+        $('#dataModal').modal('hide');
         console.error('There was an error reading the HID device:', e);
         showModalMessage("Error", "There was an error reading the HID device: " + e.message);
     }
