@@ -27,7 +27,12 @@ class GenericPIC {
                 return pic;
             }
         }
-        return new GenericPIC();
+        let pic = new GenericPIC();
+        pic.devID = devID;
+        pic.name = `Unknown PIC with DEVID 0x${devID.toString(16).toUpperCase().padStart(4, '0')}`;
+        pic.revID = 0;
+        pic.userId = 0;
+        return pic;
     }
 
 
