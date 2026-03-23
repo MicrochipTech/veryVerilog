@@ -323,6 +323,34 @@ async function connectProgrammer() {
     }
 }
 
+function loadHexFile(file) {
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            let intelHexString = e.target.result;
+            hexObject = MemoryMap.fromHex(intelHexString);
+            // Update drop area to show loaded file name
+            $('#drop-area').html(`
+                <div>HEX file loaded: <strong>${file.name}</strong></div>
+                <div class="mt-3">
+                    <button id="browse-file" class="btn btn-secondary">Browse for HEX file</button>
+                    <input type="file" id="file-input" accept=".hex" style="display: none;">
+                </div>
+            `);
+            // Re-attach event listeners after updating HTML
+            $('#browse-file').click(function() {
+                $('#file-input').click();
+            });
+            $('#file-input').change(handleFileSelect);
+
+            if($("#drag-and-flash").prop("checked")) {
+                $('#programit').click();
+            }
+        };
+        reader.readAsText(file);
+    }
+}
+
 function handleDroppedFile(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -330,17 +358,13 @@ function handleDroppedFile(event) {
     $(this).removeClass('border-primary');
     const dataTransfer = event.originalEvent.dataTransfer;
     if (dataTransfer && dataTransfer.files.length) {
-        const file = dataTransfer.files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            let intelHexString = e.target.result;
-            hexObject = MemoryMap.fromHex(intelHexString);
-            if($("#drag-and-flash").prop("checked")) {
-                $('#programit').click();
-            }
-        };
-        reader.readAsText(file);
+        loadHexFile(dataTransfer.files[0]);
     }
+}
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    loadHexFile(file);
 }
 
 async function triggerProgrammer() {
@@ -412,6 +436,12 @@ if ("serial" in navigator) {
             $(this).removeClass('border-primary');
         });
         $('#drop-area').on('drop', handleDroppedFile);
+
+        // Browse button and file input handlers
+        $(document).on('click', '#browse-file', function() {
+            $('#file-input').click();
+        });
+        $(document).on('change', '#file-input', handleFileSelect);
 
         $('#picInfo').click(showPicDetails);
         $('#closeModal').click(function(){
