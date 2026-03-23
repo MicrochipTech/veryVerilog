@@ -218,3 +218,45 @@ class PIC16F131XY extends GenericPIC {
     }
 }
 GenericPIC.registerPic(PIC16F131XY);
+
+class PIC16F132XY extends GenericPIC {
+
+    static deviceIdMap = {
+        // PIC16F132XY
+        0x3130: "PIC16F13214",
+        0x3135: "PIC16F13215",
+        0x3131: "PIC16F13224",
+        0x3136: "PIC16F13225",
+        0x3141: "PIC16F13226",
+        0x3132: "PIC16F13244",
+        0x3137: "PIC16F13245",
+        0x3142: "PIC16F13246",
+        0x3133: "PIC16F13254",
+        0x3138: "PIC16F13255",
+        0x3143: "PIC16F13256",
+        0x3134: "PIC16F13274",
+        0x3139: "PIC16F13275",
+        0x3144: "PIC16F13276",
+    }
+
+    constructor() {
+        super();
+    }
+
+    getTpIntDelayMs() { // TPINT DS40002646A pg.32
+        return 8;
+    }
+
+    getTpIntConfWordDelayMs() { // TPINT DS40002646A pg.32
+        return 13.5;
+    }
+
+    getBulkEraseTimeMs() { // TERAB DS40002646A pg.31
+        return 40; 
+    }
+
+    getRowEraseTimeMs() { // TERAR DS40002646A pg.32
+        return 10; 
+    }
+}
+GenericPIC.registerPic(PIC16F132XY);
