@@ -1,0 +1,19 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"2 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 2: __persistent unsigned char __BTEMP_BLK0[8];
+[v ___BTEMP_BLK0 `Suc ~T0 @X0 -> 8 `i e ]
+"3
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 3: __persistent unsigned char __BTEMP_BLK1[8];
+[v ___BTEMP_BLK1 `Suc ~T0 @X0 -> 8 `i e ]
+"4
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 4: __persistent unsigned char __BTEMP_BLK2[8];
+[v ___BTEMP_BLK2 `Suc ~T0 @X0 -> 8 `i e ]
+"5
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 5: __persistent unsigned char __BTEMP_BLK3[8];
+[v ___BTEMP_BLK3 `Suc ~T0 @X0 -> 8 `i e ]
+"6
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 6: __persistent unsigned char __BTEMP_BLK4[8];
+[v ___BTEMP_BLK4 `Suc ~T0 @X0 -> 8 `i e ]
+"7
+[; ;C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\compiler_support.c: 7: __persistent unsigned char __BTEMP_BLK5[8];
+[v ___BTEMP_BLK5 `Suc ~T0 @X0 -> 8 `i e ]
