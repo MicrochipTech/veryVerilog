@@ -6,9 +6,10 @@
     },
     "tabs": {
         "type": "full"
-    },
+    },		
     "cuts": {
-        "type": "vcuts"
+        "type": "vcuts",
+        "layer": "Edge.Cuts"
     },
     "page": {
         "type": "A4-portrait",

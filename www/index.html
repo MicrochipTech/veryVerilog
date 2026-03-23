@@ -13,7 +13,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <h2>WEB ICSP Programmer</h2>
+                <h2>WEB ICSP Programmer <div id="versionInfo"></div></h2>
                 <button id="connect" class="btn btn-primary">Connect to Programmer</button>
                 <div class="btn-group">
                     <button type="button" id="identify" class="btn btn-secondary" disabled>Identify Programmer</button>
@@ -77,15 +77,17 @@
                   </div>
             </div>
             <div id="picInfo" class="col-md-6" block>
-                <h2 id="picName">PIC16F18025</h2>
+                <h2 id="picName">No device detected</h2>
                 <button id="userId" class="btn btn-light" disabled>userId: 456</button>
             </div>
         </div>
         <div id="drop-area" class="border mt-3 p-5 text-center" disabled>
             Drag and drop HEX file here
         </div>
-        <h2 class="my-4">Available lessons:</h1>
-        <div id="lessonsContainer"></div>
+        <div class="d-none">
+            <h2 class="my-4">Available lessons:</h2>
+            <div id="lessonsContainer"></div>
+        </div>        
     </div>
     <!-- Modal -->
     <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
@@ -101,6 +103,19 @@
             </div>
         </div>
     </div>
+    <div class="card fixed-bottom-card">
+        <div class="card-header">
+            Important weblinks
+        </div>
+        <div class="card-body">
+            <div>
+                <a class="card-link" href="https://try.microchip.com/training/logic-circuit-design-101">Logic Circuit Design 101</a>
+            </div>
+            <div>
+                <a class="card-link" href="https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/core-independent-and-analog-peripherals/system-flexibility/configurable-logic-block">Configurable Logic Block</a>
+            </div>
+        </div>
+    </div>
     <!-- Scripts -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap-5.3.3.min.js"></script>
@@ -108,6 +123,7 @@
     <script src="js/pic/icsp_hid.js"></script>
     <script src="js/pic/pic.js"></script>
     <script src="lessons/lessons.js"></script>
+    <script src="js/version.js"></script>
     <script src="js/web_icsp.js"></script>
 </body>
 </html>

@@ -12,8 +12,26 @@
 }
 
 .dropdown-submenu .dropdown-menu {
-top: 0;
-left: 105%;
-margin-top: -2.5rem;
-margin-left: -2.5rem;
+    top: 0;
+    left: 105%;
+    margin-top: -2.5rem;
+    margin-left: -2.5rem;
+}
+
+#versionInfo {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.modal-lg {
+    max-width: 850px; /* 800px is the default */
+}
+
+.fixed-bottom-card {
+    position: fixed; /* Fix the card to the viewport */
+    bottom: 0; /* Position it at the bottom */
+    /* left: 0; /* Align it to the left */
+    /* right: 0; /* Align it to the right */
+    width: 100%; /* Make the card span the full width of the page */
+    /* z-index: 1030; /* Ensure the card is above other content */
 }

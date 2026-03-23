@@ -1,0 +1,819 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F13145 ]
+[d frameptr 6 ]
+"136 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\main.c
+[e E6973 . `uc
+ADC_CHANNEL_ADCG1 3
+ADC_CHANNEL_VSS 58
+ADC_CHANNEL_TEMP 59
+ADC_CHANNEL_DAC1 60
+ADC_CHANNEL_FVR_BUF1 62
+ADC_CHANNEL_FVR_BUF2 63
+ADC_CHANNEL_ANA0 0
+ADC_CHANNEL_ANA1 1
+ADC_CHANNEL_ANA2 2
+ADC_CHANNEL_ANA4 4
+ADC_CHANNEL_ANB4 12
+ADC_CHANNEL_ANB5 13
+ADC_CHANNEL_ANB6 14
+ADC_CHANNEL_ANB7 15
+ADC_CHANNEL_ANC1 17
+ADC_CHANNEL_ANC2 18
+ADC_CHANNEL_ANC3 19
+ADC_CHANNEL_ANC4 20
+ADC_CHANNEL_ANC5 21
+ADC_CHANNEL_ANC6 22
+ADC_CHANNEL_ANC7 23
+]
+"166 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/adc/src/adc.c
+[e E6511 . `uc
+ADC_CHANNEL_ADCG1 3
+ADC_CHANNEL_VSS 58
+ADC_CHANNEL_TEMP 59
+ADC_CHANNEL_DAC1 60
+ADC_CHANNEL_FVR_BUF1 62
+ADC_CHANNEL_FVR_BUF2 63
+ADC_CHANNEL_ANA0 0
+ADC_CHANNEL_ANA1 1
+ADC_CHANNEL_ANA2 2
+ADC_CHANNEL_ANA4 4
+ADC_CHANNEL_ANB4 12
+ADC_CHANNEL_ANB5 13
+ADC_CHANNEL_ANB6 14
+ADC_CHANNEL_ANB7 15
+ADC_CHANNEL_ANC1 17
+ADC_CHANNEL_ANC2 18
+ADC_CHANNEL_ANC3 19
+ADC_CHANNEL_ANC4 20
+ADC_CHANNEL_ANC5 21
+ADC_CHANNEL_ANC6 22
+ADC_CHANNEL_ANC7 23
+]
+"194
+[e E6534 . `uc
+ADC_BASIC 0
+ADC_SERIES_ACCUMULATE 1
+ADC_SERIES_AVERAGE 2
+ADC_BURST_AVERAGE 3
+ADC_LOW_PASS_FILTER 4
+]
+"199
+[e E6548 . `uc
+ADC_NEVER_INTERRUPT 0
+ADC_BELOW_LOWER_THRESHOLD 1
+ADC_ABOVE_LOWER_THRESHOLD 2
+ADC_INSIDE_LOWER_AND_UPPER_THRESHOLD 3
+ADC_OUTSIDE_LOWER_AND_UPPER_THRESHOLD 4
+ADC_BELOW_UPPER_THRESHOLD 5
+ADC_ABOVE_UPPER_THRESHOLD 6
+ADC_ALWAYS_INTERRUPT 7
+]
+"353
+[e E6587 . `uc
+ADC_NOT_CONVERTING 0
+ADC_1ST_PRECHARGE 1
+ADC_1ST_ACQUISITION 2
+ADC_1ST_CONVERSION 3
+ADC_COMPUTATION_SUSPENDED_BETWEEN_1ST_AND_2ND_SAMPLE 4
+ADC_2ND_PRECHARGE 5
+ADC_2ND_ACQUISITION 6
+ADC_2ND_CONVERSION 7
+]
+"358
+[e E6541 . `uc
+ADC_FIRST_DERIVATIVE_OF_SINGLE_MEASUREMENT 0
+ADC_ACTUAL_RESULT_VS_SETPOINT 1
+ADC_ACTUAL_RESULT_VS_FILTERED_VALUE 2
+ADC_FIRST_DERIVATIVE_OF_FILTERED_VALUE 4
+ADC_FILTERED_VALUE_VS_SETPOINT 5
+]
+"378
+[e E6558 . `uc
+ADC_TRIGGER_SOURCE_DISABLED 0
+ADC_TRIGGER_SOURCE_ADACTPPS 1
+ADC_TRIGGER_SOURCE_TMR0 2
+ADC_TRIGGER_SOURCE_TMR1 3
+ADC_TRIGGER_SOURCE_TMR2 4
+ADC_TRIGGER_SOURCE_CCP1 8
+ADC_TRIGGER_SOURCE_CCP2 9
+ADC_TRIGGER_SOURCE_C1OUT 19
+ADC_TRIGGER_SOURCE_C2OUT 20
+ADC_TRIGGER_SOURCE_IOC 21
+ADC_TRIGGER_SOURCE_CLC1 22
+ADC_TRIGGER_SOURCE_CLC2 23
+ADC_TRIGGER_SOURCE_CLC3 24
+ADC_TRIGGER_SOURCE_CLC4 25
+ADC_TRIGGER_SOURCE_ADERRH 29
+ADC_TRIGGER_SOURCE_ADRESH 30
+ADC_TRIGGER_SOURCE_ADPCH 31
+ADC_TRIGGER_SOURCE_PWM1OUT 32
+ADC_TRIGGER_SOURCE_PWM2OUT 33
+ADC_TRIGGER_SOURCE_CLB_BLE0 34
+ADC_TRIGGER_SOURCE_CLB_BLE1 35
+ADC_TRIGGER_SOURCE_CLB_BLE2 36
+ADC_TRIGGER_SOURCE_CLB_BLE3 37
+ADC_TRIGGER_SOURCE_CLB_BLE4 38
+ADC_TRIGGER_SOURCE_CLB_BLE5 39
+ADC_TRIGGER_SOURCE_CLB_BLE6 40
+ADC_TRIGGER_SOURCE_CLB_BLE7 41
+]
+"1 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"1177 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1817
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"50 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\main.c
+[v _print8pins print8pins `(v  1 e 1 0 ]
+"57
+[v _compare8pins compare8pins `(v  1 e 1 0 ]
+"73
+[v _main main `(i  1 e 2 0 ]
+"44 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"226
+[v _ADC_ChannelSelectAndConvert ADC_ChannelSelectAndConvert `(s  1 e 2 0 ]
+"256
+[v _ADC_SampleCapacitorDischarge ADC_SampleCapacitorDischarge `(v  1 e 1 0 ]
+"428
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+"441
+[v _ADC_ThresholdISR ADC_ThresholdISR `(v  1 e 1 0 ]
+"39 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+"40 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"59
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"92
+[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
+"101
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+"105
+[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
+"38 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"39 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"99 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+"120
+[v _EUSART1_Deinitialize EUSART1_Deinitialize `(v  1 e 1 0 ]
+"141
+[v _EUSART1_TransmitEnable EUSART1_TransmitEnable `(v  1 e 1 0 ]
+"146
+[v _EUSART1_TransmitDisable EUSART1_TransmitDisable `(v  1 e 1 0 ]
+"171
+[v _EUSART1_AutoBaudSet EUSART1_AutoBaudSet `(v  1 e 1 0 ]
+"183
+[v _EUSART1_AutoBaudQuery EUSART1_AutoBaudQuery `(a  1 e 1 0 ]
+"198
+[v _EUSART1_IsRxReady EUSART1_IsRxReady `(a  1 e 1 0 ]
+"203
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+"208
+[v _EUSART1_IsTxDone EUSART1_IsTxDone `(a  1 e 1 0 ]
+"213
+[v _EUSART1_ErrorGet EUSART1_ErrorGet `(ui  1 e 2 0 ]
+"218
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"240
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+"254
+[v _putch putch `(v  1 e 1 0 ]
+"263
+[v _EUSART1_DefaultFramingErrorCallback EUSART1_DefaultFramingErrorCallback `(v  1 s 1 EUSART1_DefaultFramingErrorCallback ]
+"268
+[v _EUSART1_DefaultOverrunErrorCallback EUSART1_DefaultOverrunErrorCallback `(v  1 s 1 EUSART1_DefaultOverrunErrorCallback ]
+"275
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+"283
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+[s S42 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"354 C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC16F1xxxx_DFP/1.29.444/xc8\pic\include\proc/pic16f13145.h
+[u S47 . 1 `S42 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES47  1 e 1 @11 ]
+"374
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"424
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+"463
+[v _PORTC PORTC `VEuc  1 e 1 @14 ]
+"525
+[v _TRISA TRISA `VEuc  1 e 1 @18 ]
+"570
+[v _TRISB TRISB `VEuc  1 e 1 @19 ]
+"609
+[v _TRISC TRISC `VEuc  1 e 1 @20 ]
+"671
+[v _LATA LATA `VEuc  1 e 1 @24 ]
+"716
+[v _LATB LATB `VEuc  1 e 1 @25 ]
+"755
+[v _LATC LATC `VEuc  1 e 1 @26 ]
+[s S29 . 1 `uc 1 INTF 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIF 1 0 :1:4 
+`uc 1 TMR0IF 1 0 :1:5 
+]
+"830
+[u S34 . 1 `S29 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES34  1 e 1 @140 ]
+[s S580 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CLC1IF 1 0 :1:2 
+`uc 1 CLC2IF 1 0 :1:3 
+`uc 1 CLC3IF 1 0 :1:4 
+`uc 1 CLC4IF 1 0 :1:5 
+`uc 1 TX1IF 1 0 :1:6 
+`uc 1 RC1IF 1 0 :1:7 
+]
+"964
+[u S588 . 1 `S580 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES588  1 e 1 @144 ]
+[s S74 . 1 `uc 1 ADIF 1 0 :1:0 
+`uc 1 ADTIF 1 0 :1:1 
+]
+"1050
+[u S77 . 1 `S74 1 . 1 0 ]
+[v _PIR6bits PIR6bits `VES77  1 e 1 @146 ]
+[s S65 . 1 `uc 1 ADIE 1 0 :1:0 
+`uc 1 ADTIE 1 0 :1:1 
+]
+"1336
+[u S68 . 1 `S65 1 . 1 0 ]
+[v _PIE6bits PIE6bits `VES68  1 e 1 @156 ]
+"3063
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @653 ]
+"3203
+[v _OSCCON3 OSCCON3 `VEuc  1 e 1 @655 ]
+"3294
+[v _OSCEN OSCEN `VEuc  1 e 1 @657 ]
+"3346
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @658 ]
+"3404
+[v _OSCFRQ OSCFRQ `VEuc  1 e 1 @659 ]
+"6719
+[v _RC1REG RC1REG `VEuc  1 e 1 @1804 ]
+"6739
+[v _TX1REG TX1REG `VEuc  1 e 1 @1805 ]
+"6766
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @1806 ]
+"6786
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @1807 ]
+"6806
+[v _RC1STA RC1STA `VEuc  1 e 1 @1808 ]
+[s S517 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"6823
+[u S526 . 1 `S517 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES526  1 e 1 @1808 ]
+"6868
+[v _TX1STA TX1STA `VEuc  1 e 1 @1809 ]
+[s S538 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"6885
+[u S547 . 1 `S538 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES547  1 e 1 @1809 ]
+"6930
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @1810 ]
+[s S559 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"6947
+[u S568 . 1 `S559 1 . 1 0 ]
+[v _BAUD1CONbits BAUD1CONbits `VES568  1 e 1 @1810 ]
+"10961
+[v _ADLTHL ADLTHL `VEuc  1 e 1 @7436 ]
+"11089
+[v _ADLTHH ADLTHH `VEuc  1 e 1 @7437 ]
+"11224
+[v _ADUTHL ADUTHL `VEuc  1 e 1 @7438 ]
+"11352
+[v _ADUTHH ADUTHH `VEuc  1 e 1 @7439 ]
+"11487
+[v _ADERRL ADERRL `VEuc  1 e 1 @7440 ]
+"11615
+[v _ADERRH ADERRH `VEuc  1 e 1 @7441 ]
+"11750
+[v _ADSTPTL ADSTPTL `VEuc  1 e 1 @7442 ]
+"11878
+[v _ADSTPTH ADSTPTH `VEuc  1 e 1 @7443 ]
+"12013
+[v _ADFLTRL ADFLTRL `VEuc  1 e 1 @7444 ]
+"12141
+[v _ADFLTRH ADFLTRH `VEuc  1 e 1 @7445 ]
+"12278
+[v _ADACCL ADACCL `VEuc  1 e 1 @7446 ]
+"12406
+[v _ADACCH ADACCH `VEuc  1 e 1 @7447 ]
+"12534
+[v _ADACCU ADACCU `VEuc  1 e 1 @7448 ]
+"12590
+[v _ADCNT ADCNT `VEuc  1 e 1 @7449 ]
+"12718
+[v _ADRPT ADRPT `VEuc  1 e 1 @7450 ]
+"12853
+[v _ADPREVL ADPREVL `VEuc  1 e 1 @7451 ]
+"12981
+[v _ADPREVH ADPREVH `VEuc  1 e 1 @7452 ]
+"13116
+[v _ADRESL ADRESL `VEuc  1 e 1 @7453 ]
+"13244
+[v _ADRESH ADRESH `VEuc  1 e 1 @7454 ]
+"13364
+[v _ADPCH ADPCH `VEuc  1 e 1 @7455 ]
+"13429
+[v _ADACQL ADACQL `VEuc  1 e 1 @7457 ]
+"13557
+[v _ADACQH ADACQH `VEuc  1 e 1 @7458 ]
+"13649
+[v _ADCAP ADCAP `VEuc  1 e 1 @7459 ]
+"13708
+[v _ADPREL ADPREL `VEuc  1 e 1 @7460 ]
+"13836
+[v _ADPREH ADPREH `VEuc  1 e 1 @7461 ]
+"13928
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @7462 ]
+[s S715 . 1 `uc 1 GO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 FM 1 0 :2:2 
+`uc 1 CS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CONT 1 0 :1:6 
+`uc 1 ON 1 0 :1:7 
+]
+"13963
+[s S723 . 1 `uc 1 ADGO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM 1 0 :2:2 
+`uc 1 ADCS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ADCONT 1 0 :1:6 
+`uc 1 ADON 1 0 :1:7 
+]
+[s S731 . 1 `uc 1 DONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 FM0 1 0 :1:2 
+]
+[s S735 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM0 1 0 :1:2 
+]
+[u S739 . 1 `S715 1 . 1 0 `S723 1 . 1 0 `S731 1 . 1 0 `S735 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES739  1 e 1 @7462 ]
+"14038
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @7463 ]
+[s S1026 . 1 `uc 1 DSEN 1 0 :1:0 
+`uc 1 PCSC 1 0 :1:1 
+`uc 1 . 1 0 :3:2 
+`uc 1 GPOL 1 0 :1:5 
+`uc 1 IPEN 1 0 :1:6 
+`uc 1 PPOL 1 0 :1:7 
+]
+"14060
+[s S1033 . 1 `uc 1 ADDSEN 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 ADGPOL 1 0 :1:5 
+`uc 1 ADIPEN 1 0 :1:6 
+`uc 1 ADPPOL 1 0 :1:7 
+]
+[u S1039 . 1 `S1026 1 . 1 0 `S1033 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES1039  1 e 1 @7463 ]
+"14110
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @7464 ]
+[s S841 . 1 `uc 1 MD 1 0 :3:0 
+`uc 1 ACLR 1 0 :1:3 
+`uc 1 CRS 1 0 :3:4 
+`uc 1 PSIS 1 0 :1:7 
+]
+"14147
+[s S846 . 1 `uc 1 ADMD0 1 0 :1:0 
+`uc 1 ADMD1 1 0 :1:1 
+`uc 1 ADMD2 1 0 :1:2 
+`uc 1 ADACLR 1 0 :1:3 
+`uc 1 ADCRS0 1 0 :1:4 
+`uc 1 ADCRS1 1 0 :1:5 
+`uc 1 ADCRS2 1 0 :1:6 
+`uc 1 ADPSIS 1 0 :1:7 
+]
+[s S855 . 1 `uc 1 ADMD 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCRS 1 0 :3:4 
+]
+[s S859 . 1 `uc 1 MD0 1 0 :1:0 
+`uc 1 MD1 1 0 :1:1 
+`uc 1 MD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CRS0 1 0 :1:4 
+`uc 1 CRS1 1 0 :1:5 
+`uc 1 CRS2 1 0 :1:6 
+]
+[u S867 . 1 `S841 1 . 1 0 `S846 1 . 1 0 `S855 1 . 1 0 `S859 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES867  1 e 1 @7464 ]
+"14252
+[v _ADCON3 ADCON3 `VEuc  1 e 1 @7465 ]
+[s S908 . 1 `uc 1 TMD 1 0 :3:0 
+`uc 1 SOI 1 0 :1:3 
+`uc 1 CALC 1 0 :3:4 
+]
+"14287
+[s S912 . 1 `uc 1 ADTMD0 1 0 :1:0 
+`uc 1 ADTMD1 1 0 :1:1 
+`uc 1 ADTMD2 1 0 :1:2 
+`uc 1 ADSOI 1 0 :1:3 
+`uc 1 ADCALC0 1 0 :1:4 
+`uc 1 ADCALC1 1 0 :1:5 
+`uc 1 ADCALC2 1 0 :1:6 
+]
+[s S920 . 1 `uc 1 ADTMD 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCALC 1 0 :3:4 
+]
+[s S924 . 1 `uc 1 TMD0 1 0 :1:0 
+`uc 1 TMD1 1 0 :1:1 
+`uc 1 TMD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CALC0 1 0 :1:4 
+`uc 1 CALC1 1 0 :1:5 
+`uc 1 CALC2 1 0 :1:6 
+]
+[u S932 . 1 `S908 1 . 1 0 `S912 1 . 1 0 `S920 1 . 1 0 `S924 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES932  1 e 1 @7465 ]
+"14382
+[v _ADSTAT ADSTAT `VEuc  1 e 1 @7466 ]
+[s S962 . 1 `uc 1 STAT 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 MATH 1 0 :1:4 
+`uc 1 LTHR 1 0 :1:5 
+`uc 1 UTHR 1 0 :1:6 
+`uc 1 AOV 1 0 :1:7 
+]
+"14419
+[s S969 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+`uc 1 ADSTAT1 1 0 :1:1 
+`uc 1 ADSTAT2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADMATH 1 0 :1:4 
+`uc 1 ADLTHR 1 0 :1:5 
+`uc 1 ADUTHR 1 0 :1:6 
+`uc 1 ADAOV 1 0 :1:7 
+]
+[s S978 . 1 `uc 1 ADSTAT 1 0 :3:0 
+`uc 1 . 1 0 :4:3 
+`uc 1 ADOV 1 0 :1:7 
+]
+[s S982 . 1 `uc 1 STAT0 1 0 :1:0 
+`uc 1 STAT1 1 0 :1:1 
+`uc 1 STAT2 1 0 :1:2 
+`uc 1 . 1 0 :4:3 
+`uc 1 OV 1 0 :1:7 
+]
+[u S988 . 1 `S962 1 . 1 0 `S969 1 . 1 0 `S978 1 . 1 0 `S982 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES988  1 e 1 @7466 ]
+"14514
+[v _ADREF ADREF `VEuc  1 e 1 @7467 ]
+"14570
+[v _ADACT ADACT `VEuc  1 e 1 @7468 ]
+"14674
+[v _ADCLK ADCLK `VEuc  1 e 1 @7469 ]
+"14778
+[v _ADCG1A ADCG1A `VEuc  1 e 1 @7470 ]
+"14823
+[v _ADCG1B ADCG1B `VEuc  1 e 1 @7471 ]
+"14862
+[v _ADCG1C ADCG1C `VEuc  1 e 1 @7472 ]
+"15104
+[v _RC0PPS RC0PPS `VEuc  1 e 1 @7580 ]
+"15894
+[v _RX1PPS RX1PPS `VEuc  1 e 1 @7746 ]
+"16188
+[v _ANSELA ANSELA `VEuc  1 e 1 @7820 ]
+"16266
+[v _WPUA WPUA `VEuc  1 e 1 @7821 ]
+"16316
+[v _ODCONA ODCONA `VEuc  1 e 1 @7822 ]
+"16361
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @7823 ]
+"16406
+[v _INLVLA INLVLA `VEuc  1 e 1 @7824 ]
+"16456
+[v _IOCAP IOCAP `VEuc  1 e 1 @7825 ]
+"16506
+[v _IOCAN IOCAN `VEuc  1 e 1 @7826 ]
+"16556
+[v _IOCAF IOCAF `VEuc  1 e 1 @7827 ]
+"16606
+[v _ANSELB ANSELB `VEuc  1 e 1 @7830 ]
+"16672
+[v _WPUB WPUB `VEuc  1 e 1 @7831 ]
+"16711
+[v _ODCONB ODCONB `VEuc  1 e 1 @7832 ]
+"16750
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @7833 ]
+"16789
+[v _INLVLB INLVLB `VEuc  1 e 1 @7834 ]
+"16828
+[v _IOCBP IOCBP `VEuc  1 e 1 @7835 ]
+"16867
+[v _IOCBN IOCBN `VEuc  1 e 1 @7836 ]
+"16906
+[v _IOCBF IOCBF `VEuc  1 e 1 @7837 ]
+"16945
+[v _ANSELC ANSELC `VEuc  1 e 1 @7840 ]
+"17057
+[v _WPUC WPUC `VEuc  1 e 1 @7841 ]
+"17119
+[v _ODCONC ODCONC `VEuc  1 e 1 @7842 ]
+"17181
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @7843 ]
+"17243
+[v _INLVLC INLVLC `VEuc  1 e 1 @7844 ]
+"17305
+[v _IOCCP IOCCP `VEuc  1 e 1 @7845 ]
+"17367
+[v _IOCCN IOCCN `VEuc  1 e 1 @7846 ]
+"17429
+[v _IOCCF IOCCF `VEuc  1 e 1 @7847 ]
+"153 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"154
+[v _flags flags `uc  1 s 1 flags ]
+"185
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"41 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ConversionDoneCallback ADC_ConversionDoneCallback `*.37(v  1 s 2 ADC_ConversionDoneCallback ]
+"42
+[v _ADC_ThresholdCallback ADC_ThresholdCallback `*.37(v  1 s 2 ADC_ThresholdCallback ]
+"38 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/interrupt.c
+[v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
+[s S492 . 1 `uc 1 perr 1 0 :1:0 
+`uc 1 ferr 1 0 :1:1 
+`uc 1 oerr 1 0 :1:2 
+`uc 1 reserved 1 0 :5:3 
+]
+"82 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/uart/src/eusart1.c
+[u S497 . 2 `S492 1 . 1 0 `ui 1 status 2 0 ]
+[v _eusart1RxLastError eusart1RxLastError `VES497  1 s 2 eusart1RxLastError ]
+"88
+[v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.37(v  1 s 2 EUSART1_FramingErrorHandler ]
+"89
+[v _EUSART1_OverrunErrorHandler EUSART1_OverrunErrorHandler `*.37(v  1 s 2 EUSART1_OverrunErrorHandler ]
+"73 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"76
+[v main@counter counter `i  1 a 2 52 ]
+"75
+[v main@PCpu PCpu `uc  1 a 1 56 ]
+[v main@PBpu PBpu `uc  1 a 1 55 ]
+[v main@PApu PApu `uc  1 a 1 54 ]
+"166
+} 0
+"50
+[v _print8pins print8pins `(v  1 e 1 0 ]
+{
+"51
+[v print8pins@i i `i  1 a 2 39 ]
+"50
+[v print8pins@prefix prefix `*.25uc  1 p 2 33 ]
+[v print8pins@portValue portValue `uc  1 p 1 35 ]
+"55
+} 0
+"57
+[v _compare8pins compare8pins `(v  1 e 1 0 ]
+{
+"58
+[v compare8pins@i i `i  1 a 2 48 ]
+"59
+[v compare8pins@same same `a  1 a 1 47 ]
+"57
+[v compare8pins@prefixSame prefixSame `*.25uc  1 p 2 33 ]
+[v compare8pins@prefixDifferent prefixDifferent `*.25uc  1 p 2 35 ]
+[v compare8pins@portValueNow portValueNow `uc  1 p 1 37 ]
+[v compare8pins@portValueOther portValueOther `uc  1 p 1 38 ]
+"64
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.4v  1 a 1 32 ]
+"5
+[v printf@fmt fmt `*.25DCuc  1 p 2 24 ]
+"13
+} 0
+"1817 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1820
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 12 ]
+[s S1555 _IO_FILE 0 ]
+"1817
+[v vfprintf@fp fp `*.2S1555  1 p 2 19 ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 21 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 23 ]
+"1840
+} 0
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+"1669
+[v vfpfcnvrt@cp_1602 cp `*.26uc  1 a 2 9 ]
+[u S1568 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+"1188
+[v vfpfcnvrt@convarg convarg `S1568  1 a 4 14 ]
+"1179
+[v vfpfcnvrt@cp cp `*.25uc  1 a 2 11 ]
+[v vfpfcnvrt@c c `uc  1 a 1 18 ]
+"1180
+[v vfpfcnvrt@done done `a  1 a 1 13 ]
+[s S1555 _IO_FILE 0 ]
+"1177
+[v vfpfcnvrt@fp fp `*.2S1555  1 p 2 0 ]
+[v vfpfcnvrt@fmt fmt `*.30*.25uc  1 p 1 2 ]
+[v vfpfcnvrt@ap ap `*.39*.4v  1 p 2 3 ]
+"1814
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 2 ]
+[u S1534 . 2 `*.2uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
+[s S1537 _IO_FILE 11 `S1534 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.2S1537  1 p 2 4 ]
+"24
+} 0
+"254 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/uart/src/eusart1.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@txData txData `uc  1 p 1 wreg ]
+[v putch@txData txData `uc  1 p 1 wreg ]
+[v putch@txData txData `uc  1 p 1 1 ]
+"261
+} 1
+"240
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v EUSART1_Write@txData txData `uc  1 p 1 0 ]
+"243
+} 0
+"203
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+{
+"206
+} 0
+"1 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 6 ]
+"4
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"39 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"46
+} 0
+"38 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"112
+} 0
+"40 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"50
+} 0
+"101
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"103
+} 0
+"99 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+{
+"118
+} 0
+"283
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_OverrunErrorCallbackRegister@callbackHandler callbackHandler `*.37(v  1 p 2 0 ]
+"289
+} 0
+"275
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_FramingErrorCallbackRegister@callbackHandler callbackHandler `*.37(v  1 p 2 0 ]
+"281
+} 0
+"39 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+{
+"54
+} 0
+"44 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"116
+} 0
+"256
+[v _ADC_SampleCapacitorDischarge ADC_SampleCapacitorDischarge `(v  1 e 1 0 ]
+{
+"259
+} 0
+"226
+[v _ADC_ChannelSelectAndConvert ADC_ChannelSelectAndConvert `(s  1 e 2 0 ]
+{
+[v ADC_ChannelSelectAndConvert@channel channel `E6511  1 p 1 wreg ]
+"231
+[v ADC_ChannelSelectAndConvert@conversionResult conversionResult `us  1 a 2 9 ]
+"230
+[v ADC_ChannelSelectAndConvert@readValHigh readValHigh `us  1 a 2 7 ]
+"229
+[v ADC_ChannelSelectAndConvert@readValLow readValLow `us  1 a 2 5 ]
+"226
+[v ADC_ChannelSelectAndConvert@channel channel `E6511  1 p 1 wreg ]
+"228
+[v ADC_ChannelSelectAndConvert@channel channel `E6511  1 p 1 11 ]
+"244
+} 1
+"59 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"81
+} 0
+"441 C:\projects\miniPFGA_school\U2_13145_PORT_monitor.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ThresholdISR ADC_ThresholdISR `(v  1 e 1 0 ]
+{
+"453
+} 0
+"428
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+{
+"440
+} 0

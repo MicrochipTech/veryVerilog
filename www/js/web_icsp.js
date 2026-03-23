@@ -31,8 +31,8 @@ function disconnectHID() {
 }
 
 function showInfoHID(params) {
-    $("#picName").text(icsp_hid.getDeviceNameById(icsp_hid.devID));
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.userId);
+    $("#picName").text(icsp_hid.pic.name);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     $('#picInfo').show();
 }
 
@@ -46,7 +46,7 @@ function showPicDetails(){
     fields = ["devIDx", "revIDx", "MUI", "ERSIZ", "WLSIZ", "URSIZ", "EESIZ", "PCNT"];
     fields.forEach(element => {
         $('#modalBody tbody').append(
-            '<tr><td>' + element + '</td><td>' + icsp_hid[element] + '</td></tr>'
+            '<tr><td>' + element + '</td><td>' + icsp_hid.pic[element] + '</td></tr>'
         );
     });
     $('#dataModal').modal('show');
@@ -90,17 +90,22 @@ async function programmDevice(){
         showModalMessage("Error", "Could not erase device");
         return false;
     }
-    args.push( verify = $("#verify").prop('checked'));
-    if(!await icsp_hid.programEntireDevice(hexObject, ...args)){
-        showModalMessage("Error", "Could not write to the flash");
+    // set/clear the verify flag
+    // when writing to the device's memory, it will be checked if the contents are 
+    // the same as expected. This will cause a slower programming time.
+    icsp_hid.setVerify($("#verify").prop('checked'));
+    try {
+        await icsp_hid.programEntireDevice(hexObject, ...args);
+    } catch(e) {
+        showModalMessage("Error", e);
         return false;
     }
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     return true;
 }
 
-async function showMemory(){
-    if(memory == null) {
+async function showMemory() {
+    if(memory == null){
         $('#modalTitle').text("Device Memory");
         $('#modalBody').empty();
         $('#modalBody').text("No data to show. Read the device first.");
@@ -110,9 +115,9 @@ async function showMemory(){
     $('#modalTitle').text("Device Memory");
     $('#modalBody').empty();
     let fields = {
-        "memory": ["Program Flash", 16], 
+        "memory": ["Program Flash", 16],
         "eeprom": ["EEPROM", 8],
-        "userId": ["UserId", 4,], 
+        "userId": ["UserId", 4],
         "configWords": ["Config Words", 1]
     };
     $('#modalBody').html(
@@ -122,12 +127,12 @@ async function showMemory(){
         // create entry for memory area
         $('#memmoryBtn').append(
             `<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" `
-            + `data-bs-target="#${key}Div" aria-expanded="false" aria-controls="#${key}Div">${value[0]}</button>`
+            + `data-bs-target="#${key}Div" aria-expanded="false" aria-controls="${key}Div">${value[0]}</button>`
         );
         $('#memmoryTables').append(
             `<div class="collapse" data-bs-parent="#memmoryTables" id="${key}Div">`
             + `<table id="${key}Table" class="table table-sm"></table></div>`);
-            
+
         // create table header and body. header spans over the amount of columns defined on 'value'
         $('#' + key + 'Table').append(`<thead><tr><th>Address</th><th colspan="${value[1]}">Data</th></tr></thead>`);
         $('#' + key + 'Table').append(`<tbody></tbody>`);
@@ -139,14 +144,13 @@ async function showMemory(){
                 const row = tableBody.insertRow();
                 const cell1 = row.insertCell(0);
                 cell1.textContent = `0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`;
-                for(let j = 0; j<value[1]; j++) {
+                for (let j = 0; j < value[1]; j++) {
                     const cell = row.insertCell();
-                    cell.textContent = `${memory[key][i].toString(16).padStart(key==="eeprom"?2:4, '0').toUpperCase()}`;
+                    cell.textContent = `${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`;
                     i++;
                 }
-            }        
-        }
-        else {
+            }
+        } else {
             // replace colspan to 1 as we have only one column
             $('#' + key + 'Table thead th:last-child').attr('colspan', 1);
             const row = tableBody.insertRow();
@@ -183,7 +187,7 @@ async function identifyProgrammer() {
 async function connectProgrammer() {
     if($('#connect').hasClass("btn-primary")) {
         try {
-            icsp_hid = new GenericPIC();
+            icsp_hid = new ICSP_HID();
             if(await icsp_hid.connect()) {
                 await icsp_hid.getConnectionInfo();
                 showInfoHID();
@@ -258,6 +262,13 @@ async function showProgrammerMemory() {
     }
 }
 
+// Display the version of the WEB ICSP Programmer
+function displayVersion() {
+    const versionElement = document.getElementById('versionInfo');
+    versionElement.textContent = `v${WEB_ICSP_VERSION}`;
+    document.title = `WebICSP v${WEB_ICSP_VERSION}`;
+}
+
 // Check if the Web Serial API is supported
 if ("serial" in navigator) {
 
@@ -296,9 +307,16 @@ if ("serial" in navigator) {
         $('#readit').click(readProgrammer);
         $('#showit').click(showProgrammerMemory);
 
+        displayVersion(); // Call the function to display the version
+
         //Initialize tooltips 
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        //handle programmer disconnected from usb
+        navigator.hid.addEventListener('disconnect', (event) => {
+            if (event.device === icsp_hid.hid) { disconnectHID(); }
+        });
     });
 } else {
     alert("Web Serial API not supported.");

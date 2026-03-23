@@ -1,0 +1,13 @@
+
+# MPLABX ignores
+*.X/dist/
+*.X/nbproject/private/
+*.X/build/
+*.X/queuelogs/
+
+*.X/**/*.log
+*.X/**/*.bak
+*.X/**/*.log.*
+*.X/**/*.bak.*
+*.X/**/*.disasm
+
