@@ -370,9 +370,10 @@ class ICSP_HID {
     }
 
     async getHwBaudRate() {
-        let reply = this.xchgCommandBlock(
+        let reply = await this.xchgCommandBlock(
             this.getCommandBytes(9, 0, true)
-        )[0];
+        );
+        reply = reply[0];
         if (reply[0] === this.metaCmd) {
             return reply[1] + (reply[2] << 8) + (reply[3] << 16);
         } else {
