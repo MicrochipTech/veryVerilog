@@ -23,9 +23,9 @@ function disconnectHID() {
     $('#connect').text("Connect to Programmer");
     $('#connect').addClass("btn-primary");
     $('#connect').removeClass("btn-danger");
-    $('#identify').prop('disabled', true);
-    $('#settings').prop('disabled', true);
-    $('#reset-target').prop('disabled', true);
+    $('#identify').addClass('d-none').prop('disabled', true).prop('hidden', true);
+    $('#settings').addClass('d-none').prop('disabled', true).prop('hidden', true);
+    $('#reset-target').addClass('d-none').prop('disabled', true).prop('hidden', true);
     $('#drop-area').hide();
     $('#picInfo').hide();
     memory = null;
@@ -308,9 +308,9 @@ async function connectProgrammer() {
                 $('#connect').text("Disconnect Programmer");
                 $('#connect').removeClass("btn-primary");
                 $('#connect').addClass("btn-danger");
-                $('#identify').prop('disabled', false);
-                $('#settings').prop('disabled', false);
-                $('#reset-target').prop('disabled', false);
+                $('#identify').removeClass('d-none').prop('disabled', false).prop('hidden', false);
+                $('#settings').removeClass('d-none').prop('disabled', false).prop('hidden', false);
+                $('#reset-target').removeClass('d-none').prop('disabled', false).prop('hidden', false);
                 $('#drop-area').show();
             }
         } catch (e) {
