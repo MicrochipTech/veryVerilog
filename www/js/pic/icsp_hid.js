@@ -365,7 +365,7 @@ class ICSP_HID {
         console.log('lvpExit');
         await this.lvpExit();
         //console.log(`HW_baud_rate=${await this.getHwBaudRate()}`);
-        //console.log(`set_baud_rate=${await this.setHwBaudRate(115200)}`);
+        //console.log(`set_baud_rate=${await this.setHwBaudRate(9600)}`);
         //console.log(`HW_baud_rate=${await this.getHwBaudRate()}`);
     }
 
@@ -382,10 +382,11 @@ class ICSP_HID {
     }
 
     async setHwBaudRate(newBaud) {
-        let reply = this.xchgCommandBlock(
+        let reply = await this.xchgCommandBlock(
             this.getCommandBytes(1, Math.floor(newBaud / 100), true)
                 .concat(this.getCommandBytes(9, 0, true))
         );
+        reply = reply[0];
         if (reply[4] === this.metaCmd) {
             return reply[5] + (reply[6] << 8) + (reply[7] << 16);
         } else {
