@@ -40,16 +40,30 @@ function showPicDetails(){
     $('#modalTitle').text($('#picName').text());
     $('#modalBody').empty();
     $('#modalBody').html('<table class="table table-bordered" id="picInfoTable">'
-        +'<thead><tr><th>Parameter</th><th>Value</th></tr></thead>'
+        +'<thead><tr><th>MCU Parameter</th><th>Value</th></tr></thead>'
+        +'<tbody></tbody></table>'
+        +'<table class="table table-bordered" id="programmerInfoTable">'
+        +'<thead><tr><th>Programmer parameter</th><th>Value</th></tr></thead>'
         +'<tbody></tbody></table>'
     );
     fields = ["devIDx", "revIDx", "MUI", "ERSIZ", "WLSIZ", "URSIZ", "EESIZ", "PCNT"];
     fields.forEach(element => {
-        $('#modalBody tbody').append(
+        $('#modalBody #picInfoTable tbody').append(
             '<tr><td>' + element + '</td><td>' + icsp_hid.pic[element] + '</td></tr>'
         );
     });
+    $('#modalBody #programmerInfoTable tbody').append(
+            '<tr><td>HW UART baud</td><td id="HWUART_BAUD_VALUE">Reading programmer...</td></tr>'
+        );
     $('#dataModal').modal('show');
+    icsp_hid.getHwBaudRate()
+    .then(baud => {
+        $('#HWUART_BAUD_VALUE').text(baud ? baud : "115200 (*)");
+    })
+    .catch(err => {
+        $('#HWUART_BAUD_VALUE').text("115200 (*)");
+        console.error('Get Baudrate error: HIDD comm issue ('+err+')');
+    })
 }
 
 async function showModalMessage(title="", msg="", text=true){
