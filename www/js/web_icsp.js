@@ -178,8 +178,11 @@ function showInfoHID(params) {
 
 function showPicDetails(){
     const tableHtml = '<table class="table table-bordered" id="picInfoTable">'
-        +'<thead><tr><th>Parameter</th><th>Value</th></tr></thead>'
-        +'<tbody></tbody></table>';
+        +'<thead><tr><th>MCU Parameter</th><th>Value</th></tr></thead>'
+        +'<tbody></tbody></table>'
+        +'<table class="table table-bordered" id="programmerInfoTable">'
+        +'<thead><tr><th>Programmer parameter</th><th>Value</th></tr></thead>'
+        +'<tbody></tbody></table>'
 
     ModalManager.show($('#picName').text(), tableHtml);
 

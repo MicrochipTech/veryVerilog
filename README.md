@@ -67,6 +67,10 @@ When you connect to a programmer:
 
 This helps in debugging connectivity issues or identifying when an unsupported PIC is connected.
 
+**Tip:** Click on the **UserId** display to open a detailed information window showing:
+- **MCU Parameters** - Device ID, Revision ID, Memory sizes (ERSIZ, WLSIZ, URSIZ, EESIZ), Program Counter size (PCNT), and other device-specific information
+- **Programmer Parameters** - Hardware UART baud rate and other programmer settings
+
 ### Reading Memory Regions
 
 After connecting to the programmer, you can read the entire contents of the target PIC device:
@@ -77,9 +81,30 @@ After connecting to the programmer, you can read the entire contents of the targ
 
 The memory viewer organizes data into collapsible sections:
 - **Program Flash** - The main program memory (displayed in rows of 16 words)
-- **EEPROM** - Data EEPROM memory (displayed in rows of 8 bytes)
+- **EEPROM** - Data EEPROM memory (if available on the device, displayed in rows of 8 bytes)
 - **UserId** - User ID locations (displayed in rows of 4 words)
 - **Config Words** - Configuration bits
 
 You can also access previously read memory using the **"Show Memory"** option without reading the device again. This is useful for comparing data or reviewing what was last read from the device.
+
+### Programming Settings
+
+The **Settings** dropdown provides options to customize which memory regions are programmed and whether verification is performed:
+
+**Default Behavior:**
+- All memory regions are programmed: **Program** (Flash), **EEPROM**, **UserId**, and **Config Bits**
+- After programming, the code is automatically **verified** to ensure it was written correctly
+
+**Customizing Memory Regions:**
+
+Click the **Settings** dropdown to access programming options. You can selectively choose which memory regions to program by checking/unchecking:
+- **Program** - Main program flash memory
+- **EEPROM** - Data EEPROM memory (if available on the device)
+- **UserId** - User ID locations
+- **Config Bits** - Configuration bits
+
+**Verification:**
+- The **Verify** option (enabled by default) checks that the programmed memory matches the expected values
+- This ensures programming integrity but may increase programming time slightly
+- You can disable verification if faster programming is needed, though this is not recommended
 
