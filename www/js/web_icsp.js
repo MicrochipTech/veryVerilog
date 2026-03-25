@@ -142,17 +142,17 @@ const ModalManager = {
 };
 
 function loadLessons(){
-    const lessonsContainer = document.getElementById('lessonsContainer');
+    const $lessonsContainer = $('#lessonsContainer');
     for (var i = 0; i < lessons; i++) {
         console.log('Iteration:', i);
-        const button = document.createElement('button');
-        button.classList.add('lesson-button');
-        button.textContent = `Lesson${i}`;
-        button.addEventListener('click', () => {
-            const buttonText = button.textContent.toLowerCase();
-            window.open(`lessons/${buttonText}/index2.html`, '_blank');
-        });
-        lessonsContainer.appendChild(button);
+        const $button = $('<button>')
+            .addClass('lesson-button')
+            .text(`Lesson${i}`)
+            .on('click', function() {
+                const buttonText = $(this).text().toLowerCase();
+                window.open(`lessons/${buttonText}/index2.html`, '_blank');
+            });
+        $lessonsContainer.append($button);
     }
 }
 
@@ -286,28 +286,29 @@ async function showMemory() {
         // create table header and body. header spans over the amount of columns defined on 'value'
         $('#' + key + 'Table').append(`<thead><tr><th>Address</th><th colspan="${value[1]}">Data</th></tr></thead>`);
         $('#' + key + 'Table').append(`<tbody></tbody>`);
-        const tableBody = document.getElementById(key + 'Table').getElementsByTagName('tbody')[0];
+        const $tableBody = $('#' + key + 'Table tbody');
 
         if(key in memory) {
             let offset = memory[key + "Address"];
             for (let i = 0; i < memory[key].length;) {
-                const row = tableBody.insertRow();
-                const cell1 = row.insertCell(0);
-                cell1.textContent = `0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`;
+                const $row = $('<tr>');
+                const $cell1 = $('<td>').text(`0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`);
+                $row.append($cell1);
                 for (let j = 0; j < value[1]; j++) {
-                    const cell = row.insertCell();
-                    cell.textContent = `${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`;
+                    const $cell = $('<td>').text(`${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`);
+                    $row.append($cell);
                     i++;
                 }
+                $tableBody.append($row);
             }
         } else {
             // replace colspan to 1 as we have only one column
             $('#' + key + 'Table thead th:last-child').attr('colspan', 1);
-            const row = tableBody.insertRow();
-            const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
-            cell1.textContent = `-`;
-            cell2.textContent = `-`;
+            const $row = $('<tr>');
+            const $cell1 = $('<td>').text('-');
+            const $cell2 = $('<td>').text('-');
+            $row.append($cell1).append($cell2);
+            $tableBody.append($row);
         }
     }
 }
@@ -466,9 +467,8 @@ async function showProgrammerMemory() {
 
 // Display the version of the WEB ICSP Programmer
 function displayVersion() {
-    const versionElement = document.getElementById('versionInfo');
-    versionElement.textContent = `v${WEB_ICSP_VERSION}`;
-    document.title = `WebICSP v${WEB_ICSP_VERSION}`;
+    $('#versionInfo').text(`v${WEB_ICSP_VERSION}`);
+    $(document).attr('title', `WebICSP v${WEB_ICSP_VERSION}`);
 }
 
 // Check if the Web Serial API is supported
@@ -480,8 +480,7 @@ if ("serial" in navigator) {
     // The Web Serial API is supported.
     $(document).ready(function() {
 
-        const buttonContainer = document.getElementById('lessonsContainer');
-        buttonContainer.innerHTML = ''; 
+        $('#lessonsContainer').empty();
         loadLessons();
         $('#picInfo').hide();
         $('#drop-area').hide();
@@ -518,9 +517,10 @@ if ("serial" in navigator) {
 
         displayVersion(); // Call the function to display the version
 
-        //Initialize tooltips 
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        //Initialize tooltips
+        $('[data-bs-toggle="tooltip"]').each(function() {
+            new bootstrap.Tooltip(this);
+        });
 
         //handle programmer disconnected from usb
         navigator.hid.addEventListener('disconnect', (event) => {
@@ -532,28 +532,17 @@ if ("serial" in navigator) {
 }
 
 // Handle nested dropdowns
-var dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
-dropdownSubmenus.forEach(function (submenu) {
-  submenu.addEventListener('click', function (e) {
+$('.dropdown-submenu').on('click', function(e) {
     e.stopPropagation();
-    var subMenu = submenu.querySelector('.dropdown-menu');
-    subMenu.classList.toggle('show');
-  });
+    $(this).find('.dropdown-menu').toggleClass('show');
 });
 
 // Prevent closing the dropdown when clicking inside the submenu
-var dropdownItems = document.querySelectorAll('.dropdown-submenu .dropdown-menu li');
-dropdownItems.forEach(function (item) {
-  item.addEventListener('click', function (e) {
+$('.dropdown-submenu .dropdown-menu li').on('click', function(e) {
     e.stopPropagation();
-  });
 });
 
- // Hide submenus when the main dropdown collapses
- var mainDropdown = document.querySelector('.btn-group');
- mainDropdown.addEventListener('hidden.bs.dropdown', function () {
-   var subMenus = document.querySelectorAll('.dropdown-submenu .dropdown-menu');
-   subMenus.forEach(function (subMenu) {
-     subMenu.classList.remove('show');
-   });
- });
+// Hide submenus when the main dropdown collapses
+$('.btn-group').on('hidden.bs.dropdown', function() {
+    $('.dropdown-submenu .dropdown-menu').removeClass('show');
+});
