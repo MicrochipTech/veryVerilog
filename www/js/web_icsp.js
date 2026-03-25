@@ -25,6 +25,7 @@ function disconnectHID() {
     $('#connect').removeClass("btn-danger");
     $('#identify').prop('disabled', true);
     $('#settings').prop('disabled', true);
+    $('#reset-target').prop('disabled', true);
     $('#drop-area').hide();
     $('#picInfo').hide();
     memory = null;
@@ -294,6 +295,23 @@ async function identifyProgrammer() {
     $('#dataModal').modal('hide');
 }
 
+async function resetTarget() {
+    try {
+        showModalMessage("Status", "Resetting target device...");
+        console.log('Resetting target: lvpEnter');
+        await icsp_hid.lvpEnter();
+        console.log('Waiting 100ms');
+        await new Promise(resolve => setTimeout(resolve, 100));
+        console.log('Resetting target: lvpExit');
+        await icsp_hid.lvpExit();
+        $('#dataModal').modal('hide');
+        showModalMessage("Success", "Target device reset successfully.");
+    } catch (e) {
+        console.error('Error resetting target device:', e);
+        showModalMessage("Error", "Failed to reset target device: " + e.message);
+    }
+}
+
 async function connectProgrammer() {
     if($('#connect').hasClass("btn-primary")) {
         try {
@@ -306,6 +324,7 @@ async function connectProgrammer() {
                 $('#connect').addClass("btn-danger");
                 $('#identify').prop('disabled', false);
                 $('#settings').prop('disabled', false);
+                $('#reset-target').prop('disabled', false);
                 $('#drop-area').show();
             }
         } catch (e) {
@@ -409,10 +428,11 @@ if ("serial" in navigator) {
         $('#drop-area').on('drop', handleDroppedFile);
 
         $('#picInfo').click(showPicDetails);
-        $('#closeModal').click(function(){ 
+        $('#closeModal').click(function(){
             $('#dataModal').modal('toggle');
         });
         $('#identify').click(identifyProgrammer);
+        $('#reset-target').click(resetTarget);
         $('#programit').click(triggerProgrammer);
         $('#readit').click(readProgrammer);
         $('#showit').click(showProgrammerMemory);
