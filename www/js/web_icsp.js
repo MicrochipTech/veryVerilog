@@ -162,9 +162,9 @@ function disconnectHID() {
     $('#connect').text("Connect to Programmer");
     $('#connect').addClass("btn-primary");
     $('#connect').removeClass("btn-danger");
-    $('#identify').prop('disabled', true);
-    $('#settings').prop('disabled', true);
-    $('#reset-target').prop('disabled', true);
+    $('#identify').hide();
+    $('#settings').hide();
+    $('#reset-target').hide();
     $('#drop-area').hide();
     $('#picInfo').hide();
     memory = null;
@@ -368,9 +368,9 @@ async function connectProgrammer() {
                 $('#connect').text("Disconnect Programmer");
                 $('#connect').removeClass("btn-primary");
                 $('#connect').addClass("btn-danger");
-                $('#identify').prop('disabled', false);
-                $('#settings').prop('disabled', false);
-                $('#reset-target').prop('disabled', false);
+                $('#identify').show();
+                $('#settings').show();
+                $('#reset-target').show();
                 $('#drop-area').show();
             }
         } catch (e) {
@@ -484,6 +484,9 @@ if ("serial" in navigator) {
         loadLessons();
         $('#picInfo').hide();
         $('#drop-area').hide();
+        $('#identify').hide();
+        $('#settings').hide();
+        $('#reset-target').hide();
 
         $('#connect').click(connectProgrammer);
 
