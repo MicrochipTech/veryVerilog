@@ -89,8 +89,56 @@ function showNoValidHexFile(){
     showModalMessage("Error", "Drag a valid Hex File on the drop area to program the PIC.");
 }
 
-function showPicProgrammed(){
-    showModalMessage("Success", "PIC programmed successfully.");
+async function showPicProgrammed(){
+    const autoCloseSeconds = 5;
+    const updateInterval = 50; // Update every 50ms for smooth animation
+    const totalSteps = (autoCloseSeconds * 1000) / updateInterval;
+    let currentStep = 0;
+
+    // Create modal content with progress bar
+    const modalContent = `
+        <div class="mb-3">PIC programmed successfully.</div>
+        <div class="progress" style="height: 20px;">
+            <div id="autoCloseProgress" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                 role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                Closing in <span id="countdownText">${autoCloseSeconds}</span>s
+            </div>
+        </div>
+    `;
+
+    $('#modalTitle').text("Success");
+    $('#modalBody').empty();
+    $('#modalBody').html(modalContent);
+    $('#dataModal').modal('show');
+
+    // Setup interval for countdown and progress bar
+    const intervalId = setInterval(() => {
+        currentStep++;
+        const remainingPercent = 100 - (currentStep / totalSteps * 100);
+        const remainingSeconds = Math.ceil((totalSteps - currentStep) * updateInterval / 1000);
+
+        $('#autoCloseProgress').css('width', remainingPercent + '%');
+        $('#countdownText').text(remainingSeconds);
+
+        if (currentStep >= totalSteps) {
+            clearInterval(intervalId);
+            $('#dataModal').modal('hide');
+        }
+    }, updateInterval);
+
+    // Allow manual close and cleanup interval
+    const closeHandler = () => {
+        clearInterval(intervalId);
+        $('#dataModal').modal('hide');
+        $('#closeModal').off('click', closeHandler);
+    };
+    $('#closeModal').on('click', closeHandler);
+
+    // Cleanup if modal is hidden by other means (ESC key, backdrop click)
+    $('#dataModal').one('hidden.bs.modal', () => {
+        clearInterval(intervalId);
+        $('#closeModal').off('click', closeHandler);
+    });
 }
 
 async function programmDevice(){
