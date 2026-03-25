@@ -297,15 +297,12 @@ async function identifyProgrammer() {
 
 async function resetTarget() {
     try {
-        showModalMessage("Status", "Resetting target device...");
         console.log('Resetting target: lvpEnter');
         await icsp_hid.lvpEnter();
         console.log('Waiting 100ms');
         await new Promise(resolve => setTimeout(resolve, 100));
         console.log('Resetting target: lvpExit');
         await icsp_hid.lvpExit();
-        $('#dataModal').modal('hide');
-        showModalMessage("Success", "Target device reset successfully.");
     } catch (e) {
         console.error('Error resetting target device:', e);
         showModalMessage("Error", "Failed to reset target device: " + e.message);
@@ -378,7 +375,11 @@ function handleDroppedFile(event) {
 
 function handleFileSelect(event) {
     const file = event.target.files[0];
-    loadHexFile(file);
+    if (file) {
+        loadHexFile(file);
+    }
+    // Reset the input value so the same file can be selected again
+    event.target.value = '';
 }
 
 async function triggerProgrammer() {
