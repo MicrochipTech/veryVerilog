@@ -2,6 +2,145 @@ let icsp_hid = null;
 let hexObject = '';
 let memory = null;
 
+// Modal Manager - Centralized modal handling
+const ModalManager = {
+    _currentTimer: null,
+    _onCloseCallback: null,
+
+    show(title, content, options = {}) {
+        // Clear any existing timer or callback
+        this._cleanup();
+
+        // Set modal content
+        $('#modalTitle').text(title);
+        $('#modalBody').empty();
+
+        if (typeof content === 'string') {
+            $('#modalBody').html(content);
+        } else {
+            $('#modalBody').append(content);
+        }
+
+        // Handle close button visibility
+        if (options.hideCloseButton) {
+            $('#closeModal').hide();
+        } else {
+            $('#closeModal').show();
+        }
+
+        // Setup close callback if provided
+        if (options.onClose) {
+            this._onCloseCallback = options.onClose;
+            $('#closeModal').off('click').on('click', () => {
+                this.hide();
+                if (this._onCloseCallback) {
+                    this._onCloseCallback();
+                    this._onCloseCallback = null;
+                }
+            });
+        } else {
+            $('#closeModal').off('click').on('click', () => this.hide());
+        }
+
+        // Auto-close timer
+        if (options.autoCloseMs) {
+            this._currentTimer = setTimeout(() => {
+                this.hide();
+                if (this._onCloseCallback) {
+                    this._onCloseCallback();
+                    this._onCloseCallback = null;
+                }
+            }, options.autoCloseMs);
+        }
+
+        $('#dataModal').modal('show');
+    },
+
+    hide() {
+        this._cleanup();
+        $('#dataModal').modal('hide');
+    },
+
+    _cleanup() {
+        if (this._currentTimer) {
+            clearTimeout(this._currentTimer);
+            this._currentTimer = null;
+        }
+        $('#closeModal').off('click');
+    },
+
+    // Specific modal types
+    showMessage(title, message, isHtml = false) {
+        const content = isHtml ? message : $('<div>').text(message).html();
+        this.show(title, content);
+    },
+
+    showError(message) {
+        this.showMessage('Error', message);
+    },
+
+    showSuccess(message, autoCloseSeconds = null) {
+        if (autoCloseSeconds) {
+            const autoCloseMs = autoCloseSeconds * 1000;
+            const updateInterval = 50;
+            const totalSteps = autoCloseMs / updateInterval;
+            let currentStep = 0;
+
+            const progressHtml = `
+                <div class="mb-3">${message}</div>
+                <div class="progress" style="height: 20px;">
+                    <div id="autoCloseProgress" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                         role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                        Closing in <span id="countdownText">${autoCloseSeconds}</span>s
+                    </div>
+                </div>
+            `;
+
+            this.show('Success', progressHtml, { autoCloseMs });
+
+            // Update countdown
+            const intervalId = setInterval(() => {
+                currentStep++;
+                const remainingPercent = 100 - (currentStep / totalSteps * 100);
+                const remainingSeconds = Math.ceil((autoCloseSeconds * 1000 - currentStep * updateInterval) / 1000);
+
+                $('#autoCloseProgress').css('width', remainingPercent + '%');
+                $('#autoCloseProgress').attr('aria-valuenow', remainingPercent);
+                $('#countdownText').text(remainingSeconds);
+
+                if (currentStep >= totalSteps) {
+                    clearInterval(intervalId);
+                }
+            }, updateInterval);
+
+            // Store interval ID for cleanup
+            this._currentTimer = intervalId;
+        } else {
+            this.showMessage('Success', message);
+        }
+    },
+
+    showProgress(title, initialMessage) {
+        const progressHtml = `
+            <div id="progressMessage" class="mb-2">${initialMessage}</div>
+            <div class="progress" style="height: 8px;">
+                <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                     role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+        `;
+        this.show(title, progressHtml, { hideCloseButton: true });
+    },
+
+    updateProgress(percent, message) {
+        $('#progressBar').css('width', percent + '%');
+        $('#progressBar').attr('aria-valuenow', percent);
+        if (message) {
+            $('#progressMessage').text(message);
+        }
+    }
+};
+
 function loadLessons(){
     const lessonsContainer = document.getElementById('lessonsContainer');
     for (var i = 0; i < lessons; i++) {
@@ -38,25 +177,21 @@ function showInfoHID(params) {
 }
 
 function showPicDetails(){
-    $('#modalTitle').text($('#picName').text());
-    $('#modalBody').empty();
-    $('#modalBody').html('<table class="table table-bordered" id="picInfoTable">'
-        +'<thead><tr><th>MCU Parameter</th><th>Value</th></tr></thead>'
-        +'<tbody></tbody></table>'
-        +'<table class="table table-bordered" id="programmerInfoTable">'
-        +'<thead><tr><th>Programmer parameter</th><th>Value</th></tr></thead>'
-        +'<tbody></tbody></table>'
-    );
-    fields = ["devIDx", "revIDx", "MUI", "ERSIZ", "WLSIZ", "URSIZ", "EESIZ", "PCNT"];
+    const tableHtml = '<table class="table table-bordered" id="picInfoTable">'
+        +'<thead><tr><th>Parameter</th><th>Value</th></tr></thead>'
+        +'<tbody></tbody></table>';
+
+    ModalManager.show($('#picName').text(), tableHtml);
+
+    const fields = ["devIDx", "revIDx", "MUI", "ERSIZ", "WLSIZ", "URSIZ", "EESIZ", "PCNT"];
     fields.forEach(element => {
-        $('#modalBody #picInfoTable tbody').append(
+        $('#picInfoTable tbody').append(
             '<tr><td>' + element + '</td><td>' + icsp_hid.pic[element] + '</td></tr>'
         );
     });
-    $('#modalBody #programmerInfoTable tbody').append(
+    $('#programmerInfoTable tbody').append(
             '<tr><td>HW UART baud</td><td id="HWUART_BAUD_VALUE">Reading programmer...</td></tr>'
-        );
-    $('#dataModal').modal('show');
+    );
     icsp_hid.getHwBaudRate()
     .then(baud => {
         $('#HWUART_BAUD_VALUE').text(baud ? baud : "115200 (*)");
@@ -67,100 +202,17 @@ function showPicDetails(){
     })
 }
 
-function showProgressModal(title, message) {
-    const progressHtml = `
-        <div id="progressMessage" class="mb-2">${message}</div>
-        <div class="progress" style="height: 8px;">
-            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
-                 role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-            </div>
-        </div>
-    `;
-    $('#modalTitle').text(title);
-    $('#modalBody').empty();
-    $('#modalBody').html(progressHtml);
-    $('#dataModal').modal('show');
-}
-
-function updateProgress(percent, message) {
-    $('#progressBar').css('width', percent + '%');
-    $('#progressBar').attr('aria-valuenow', percent);
-    $('#progressMessage').text(message);
-}
-
-async function showModalMessage(title="", msg="", text=true){
-    $('#modalTitle').text(title);
-    $('#modalBody').empty();
-    if(text) $('#modalBody').text(msg);
-    else $('#modalBody').html(msg);
-    $('#dataModal').modal('show');
-    return new Promise(resolve =>
-        $('#closeModal').on('click', () => {
-                $('#dataModal').modal('hide');
-                resolve();
-            }
-        )
-    );
-}
-
+// Legacy function wrappers for compatibility
 function showNoPicDetected(){
-    showModalMessage("Error", "No PIC detected or PIC is unknown.");
+    ModalManager.showError("No PIC detected or PIC is unknown.");
 }
 
 function showNoValidHexFile(){
-    showModalMessage("Error", "Drag a valid Hex File on the drop area to program the PIC.");
+    ModalManager.showError("Drag a valid Hex File on the drop area to program the PIC.");
 }
 
-async function showPicProgrammed(){
-    const autoCloseSeconds = 5;
-    const updateInterval = 50; // Update every 50ms for smooth animation
-    const totalSteps = (autoCloseSeconds * 1000) / updateInterval;
-    let currentStep = 0;
-
-    // Create modal content with progress bar
-    const modalContent = `
-        <div class="mb-3">PIC programmed successfully.</div>
-        <div class="progress" style="height: 20px;">
-            <div id="autoCloseProgress" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                 role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                Closing in <span id="countdownText">${autoCloseSeconds}</span>s
-            </div>
-        </div>
-    `;
-
-    $('#modalTitle').text("Success");
-    $('#modalBody').empty();
-    $('#modalBody').html(modalContent);
-    $('#dataModal').modal('show');
-
-    // Setup interval for countdown and progress bar
-    const intervalId = setInterval(() => {
-        currentStep++;
-        const remainingPercent = 100 - (currentStep / totalSteps * 100);
-        const remainingSeconds = Math.ceil((totalSteps - currentStep) * updateInterval / 1000);
-
-        $('#autoCloseProgress').css('width', remainingPercent + '%');
-        $('#countdownText').text(remainingSeconds);
-
-        if (currentStep >= totalSteps) {
-            clearInterval(intervalId);
-            $('#dataModal').modal('hide');
-        }
-    }, updateInterval);
-
-    // Allow manual close and cleanup interval
-    const closeHandler = () => {
-        clearInterval(intervalId);
-        $('#dataModal').modal('hide');
-        $('#closeModal').off('click', closeHandler);
-    };
-    $('#closeModal').on('click', closeHandler);
-
-    // Cleanup if modal is hidden by other means (ESC key, backdrop click)
-    $('#dataModal').one('hidden.bs.modal', () => {
-        clearInterval(intervalId);
-        $('#closeModal').off('click', closeHandler);
-    });
+function showPicProgrammed(){
+    ModalManager.showSuccess("PIC programmed successfully.", 5);
 }
 
 async function programmDevice(){
@@ -172,11 +224,11 @@ async function programmDevice(){
     ];
 
     // Show progress modal
-    showProgressModal("Programming Device", "Erasing device...");
+    ModalManager.showProgress("Programming Device", "Erasing device...");
 
     if(!await icsp_hid.eraseDevice(...args)){
-        $('#dataModal').modal('hide');
-        showModalMessage("Error", "Could not erase device");
+        ModalManager.hide();
+        ModalManager.showError("Could not erase device");
         return false;
     }
 
@@ -187,43 +239,40 @@ async function programmDevice(){
 
     // Set progress callback
     icsp_hid.setProgressCallback((progress, status) => {
-        updateProgress(progress * 100, status);
+        ModalManager.updateProgress(progress * 100, status);
     });
 
     try {
         await icsp_hid.programEntireDevice(hexObject, ...args);
     } catch(e) {
         icsp_hid.setProgressCallback(null);
-        $('#dataModal').modal('hide');
-        showModalMessage("Error", e);
+        ModalManager.hide();
+        ModalManager.showError(String(e));
         return false;
     }
 
     icsp_hid.setProgressCallback(null);
-    $('#dataModal').modal('hide');
+    ModalManager.hide();
     $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
     return true;
 }
 
 async function showMemory() {
     if(memory == null){
-        $('#modalTitle').text("Device Memory");
-        $('#modalBody').empty();
-        $('#modalBody').text("No data to show. Read the device first.");
-        $('#dataModal').modal('show');
+        ModalManager.showMessage("Device Memory", "No data to show. Read the device first.");
         return;
     }
-    $('#modalTitle').text("Device Memory");
-    $('#modalBody').empty();
-    let fields = {
+
+    const fields = {
         "memory": ["Program Flash", 16],
         "eeprom": ["EEPROM", 8],
         "userId": ["UserId", 4],
         "configWords": ["Config Words", 1]
     };
-    $('#modalBody').html(
-        '<div class="btn-group" id="memmoryBtn"></div><div id="memmoryTables"></div>'
-    );
+
+    const contentHtml = '<div class="btn-group" id="memmoryBtn"></div><div id="memmoryTables"></div>';
+    ModalManager.show("Device Memory", contentHtml);
+
     for(const [key, value] of Object.entries(fields)) {
         // create entry for memory area
         $('#memmoryBtn').append(
@@ -261,38 +310,37 @@ async function showMemory() {
             cell2.textContent = `-`;
         }
     }
-    $('#dataModal').modal('show');
 }
 
 async function readDevice(){
     try {
         // Show progress modal
-        showProgressModal("Reading Device", "Starting read...");
+        ModalManager.showProgress("Reading Device", "Starting read...");
 
         // Set progress callback
         icsp_hid.setProgressCallback((progress, status) => {
-            updateProgress(progress * 100, status);
+            ModalManager.updateProgress(progress * 100, status);
         });
 
         memory = await icsp_hid.readDevice();
 
         icsp_hid.setProgressCallback(null);
-        $('#dataModal').modal('hide');
+        ModalManager.hide();
 
         await showMemory();
     }
     catch(e) {
         icsp_hid.setProgressCallback(null);
-        $('#dataModal').modal('hide');
+        ModalManager.hide();
         console.error('There was an error reading the HID device:', e);
-        showModalMessage("Error", "There was an error reading the HID device: " + e.message);
+        ModalManager.showError("There was an error reading the HID device: " + e.message);
     }
 }
 
 async function identifyProgrammer() {
-    showModalMessage("Status", "Leds on ICSP programmer are blinking...");
+    ModalManager.showMessage("Status", "Leds on ICSP programmer are blinking...");
     await icsp_hid.blinkLeds();
-    $('#dataModal').modal('hide');
+    ModalManager.hide();
 }
 
 async function resetTarget() {
@@ -305,7 +353,7 @@ async function resetTarget() {
         await icsp_hid.lvpExit();
     } catch (e) {
         console.error('Error resetting target device:', e);
-        showModalMessage("Error", "Failed to reset target device: " + e.message);
+        ModalManager.showError("Failed to reset target device: " + e.message);
     }
 }
 
@@ -326,7 +374,7 @@ async function connectProgrammer() {
             }
         } catch (e) {
             console.error('There was an error communicating with the HID device:', e);
-            showModalMessage("Error", "There was an error communicating with the HID device: " + e.message);
+            ModalManager.showError("There was an error communicating with the HID device: " + e.message);
             disconnectHID();
         }
     } else {
