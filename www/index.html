@@ -15,10 +15,11 @@
             <div class="col-md-6">
                 <h2>WEB ICSP Programmer <div id="versionInfo"></div></h2>
                 <button id="connect" class="btn btn-primary">Connect to Programmer</button>
+                <button id="reset-target" class="btn btn-info">Reset Target</button>
                 <div class="btn-group">
-                    <button type="button" id="identify" class="btn btn-secondary" disabled>Identify Programmer</button>
+                    <button type="button" id="identify" class="btn btn-secondary">Identify Programmer</button>
                     <button type="button" id="settings" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" 
-                        data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                        data-bs-toggle="dropdown" aria-expanded="false">
                       <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu">
@@ -82,7 +83,11 @@
             </div>
         </div>
         <div id="drop-area" class="border mt-3 p-5 text-center" disabled>
-            Drag and drop HEX file here
+            <div>Drag and drop HEX file here</div>
+            <div class="mt-3">
+                <button id="browse-file" class="btn btn-secondary">Browse for HEX file</button>
+                <input type="file" id="file-input" accept=".hex" style="display: none;">
+            </div>
         </div>
         <div class="d-none">
             <h2 class="my-4">Available lessons:</h2>
@@ -108,11 +113,24 @@
             Important weblinks
         </div>
         <div class="card-body">
-            <div>
-                <a class="card-link" href="https://try.microchip.com/training/logic-circuit-design-101">Logic Circuit Design 101</a>
-            </div>
-            <div>
-                <a class="card-link" href="https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/core-independent-and-analog-peripherals/system-flexibility/configurable-logic-block">Configurable Logic Block</a>
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <a class="card-link" href="https://try.microchip.com/training/logic-circuit-design-101">Logic Circuit Design 101</a>
+                    </div>
+                    <div>
+                        <a class="card-link" href="https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/core-independent-and-analog-peripherals/system-flexibility/configurable-logic-block">Configurable Logic Block</a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="text-muted" style="font-size: 0.75rem;">
+                        <div class="fw-bold mb-1">Authors</div>
+                        <ul class="list-unstyled mb-0" style="font-size: 0.7rem;">
+                            <li><a href="https://github.com/apshu" target="_blank" class="text-muted text-decoration-none">A. Kolinger</a></li>
+                            <li><a href="https://github.com/edras" target="_blank" class="text-muted text-decoration-none">E. Pacola</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
