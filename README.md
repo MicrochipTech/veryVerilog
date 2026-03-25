@@ -49,5 +49,37 @@ Drag a HEX file on the *"Drag and Drop"* area and the program will be transfered
 
 ![Web4](/doc/images/web4.png)
 
+Alternatively, you can click the **"Browse for HEX file"** button to select a HEX file from your file system. This is particularly useful when working with IDEs where you can copy and paste file paths.
+
 Have fun!
+
+## Additional Features
+
+### Reset Target Device
+
+After connecting to the programmer, a **"Reset Target"** button becomes available. Clicking this button will reset the target PIC.
+
+### Device Detection
+
+When you connect to a programmer:
+- If the device is **recognized**, the web page displays the PIC model name (e.g., "PIC16F13145") and its User ID
+- If the device is **not recognized** or reads an invalid ID (like 0x0000), the page will display: **"Unknown PIC with DEVID 0x[hex_value]"** along with the actual device ID that was read
+
+This helps in debugging connectivity issues or identifying when an unsupported PIC is connected.
+
+### Reading Memory Regions
+
+After connecting to the programmer, you can read the entire contents of the target PIC device:
+
+1. Click the **Settings** dropdown (split button next to "Identify Programmer")
+2. Select **"Read Device"** from the menu
+3. The device memory will be read and automatically displayed in a modal window
+
+The memory viewer organizes data into collapsible sections:
+- **Program Flash** - The main program memory (displayed in rows of 16 words)
+- **EEPROM** - Data EEPROM memory (displayed in rows of 8 bytes)
+- **UserId** - User ID locations (displayed in rows of 4 words)
+- **Config Words** - Configuration bits
+
+You can also access previously read memory using the **"Show Memory"** option without reading the device again. This is useful for comparing data or reviewing what was last read from the device.
 
