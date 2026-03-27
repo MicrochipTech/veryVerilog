@@ -6,13 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Education board for miniFPGA")
-<<<<<<< apshu/issue41
 		(date "2026-03-23")
 		(rev "v3.05")
-=======
-		(date "2024-05-23")
-		(rev "v3.0")
->>>>>>> main
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_PIC_ICSP_ICD"
@@ -311,108 +306,6 @@
 				)
 			)
 			(embedded_fonts no)
-		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.762) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
 		)
 		(symbol "Connector:USB_B"
 			(pin_names
@@ -742,13 +635,9 @@
 		)
 		(symbol "Connector_Generic:Conn_02x04_Counter_Clockwise"
 			(pin_names
-<<<<<<< apshu/issue41
 				(offset 1.016)
 				(hide yes)
 			)
-=======
-				(offset 1.016) hide)
->>>>>>> main
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -815,28 +704,10 @@
 			)
 			(symbol "Conn_02x04_Counter_Clockwise_1_1"
 				(rectangle
-<<<<<<< apshu/issue41
 					(start -1.27 3.81)
 					(end 3.81 -6.35)
 					(stroke
 						(width 0.254)
-=======
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
->>>>>>> main
 						(type default)
 					)
 					(fill
@@ -844,7 +715,6 @@
 					)
 				)
 				(rectangle
-<<<<<<< apshu/issue41
 					(start -1.27 2.667)
 					(end 0 2.413)
 					(stroke
@@ -880,9 +750,6 @@
 				(rectangle
 					(start -1.27 -4.953)
 					(end 0 -5.207)
-=======
-					(start -1.27 0.127)
-					(end 0 -0.127)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -892,47 +759,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 3.81)
-					(end 3.81 -6.35)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start 3.81 -4.953)
-					(end 2.54 -5.207)
->>>>>>> main
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-<<<<<<< apshu/issue41
 					(start 3.81 2.667)
 					(end 2.54 2.413)
-=======
-					(start 3.81 -2.413)
-					(end 2.54 -2.667)
->>>>>>> main
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -953,7 +781,6 @@
 					)
 				)
 				(rectangle
-<<<<<<< apshu/issue41
 					(start 3.81 -2.413)
 					(end 2.54 -2.667)
 					(stroke
@@ -967,10 +794,6 @@
 				(rectangle
 					(start 3.81 -4.953)
 					(end 2.54 -5.207)
-=======
-					(start 3.81 2.667)
-					(end 2.54 2.413)
->>>>>>> main
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -1024,7 +847,6 @@
 								(size 1.27 1.27)
 							)
 						)
-<<<<<<< apshu/issue41
 					)
 					(number "3"
 						(effects
@@ -1151,142 +973,6 @@
 				(effects
 					(font
 						(size 1.27 1.27)
-=======
->>>>>>> main
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-<<<<<<< apshu/issue41
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-=======
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
->>>>>>> main
-					)
-				)
-				(pin passive line
-					(at 7.62 -5.08 180)
-					(length 3.81)
-					(name "Pin_5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -2.54 180)
-					(length 3.81)
-					(name "Pin_6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "Pin_7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 2.54 180)
-					(length 3.81)
-					(name "Pin_8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "Device:C"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
 					)
 					(justify left)
 				)
@@ -1310,142 +996,6 @@
 				)
 			)
 			(property "Description" "Unpolarized capacitor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_0_1"
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "Device:C_Polarized"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Polarized"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.9652 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Polarized capacitor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3296,7 +2846,6 @@
 			(embedded_fonts no)
 		)
 	)
-<<<<<<< apshu/issue41
 	(rectangle
 		(start 90.17 158.75)
 		(end 143.51 186.69)
@@ -3318,31 +2867,6 @@
 			)
 		)
 		(uuid "088c8675-915b-4cb9-ab31-c3761ee4f578")
-=======
-	(junction
-		(at 152.4 44.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0794267e-3c62-4248-957a-5a830f0a1992")
-	)
-	(junction
-		(at 35.56 85.09)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0807c0c3-cf0a-4b0e-ad6f-a9ea51647140")
-	)
-	(junction
-		(at 57.15 85.09)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0cb33456-da6e-47c4-ba35-1e408638cb28")
-	)
-	(junction
-		(at 35.56 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "12ed9c60-0cfa-4753-beb8-99c5165af546")
->>>>>>> main
 	)
 	(text "RC1"
 		(exclude_from_sim no)
@@ -4013,11 +3537,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 180.34 62.23) (xy 190.5 62.23)
-=======
-			(xy 180.34 62.23) (xy 189.23 62.23)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4298,19 +3818,6 @@
 	(wire
 		(pts
 			(xy 128.27 168.91) (xy 121.92 168.91)
-<<<<<<< apshu/issue41
-=======
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a851ebc2-9edb-4cc7-92d9-b44f3441dc64")
-	)
-	(wire
-		(pts
-			(xy 219.71 44.45) (xy 219.71 48.26)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4330,31 +3837,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 248.92 134.62) (xy 252.73 134.62)
-=======
-			(xy 35.56 140.97) (xy 39.37 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2024fdb-3709-439c-9124-939507040664")
-	)
-	(wire
-		(pts
-			(xy 170.18 59.69) (xy 172.72 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2808d1a-22fd-4cf1-8ace-f580449f4c8e")
-	)
-	(wire
-		(pts
-			(xy 49.53 102.87) (xy 49.53 107.95)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4374,11 +3857,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 170.18 59.69) (xy 172.72 59.69)
-=======
-			(xy 73.66 102.87) (xy 82.55 102.87)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4388,21 +3867,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 49.53 102.87) (xy 49.53 107.95)
-=======
-			(xy 57.15 121.92) (xy 49.53 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf638098-453d-4777-97cf-9a44d9dad6c2")
-	)
-	(wire
-		(pts
-			(xy 66.04 121.92) (xy 57.15 121.92)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4432,31 +3897,13 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 57.15 121.92) (xy 49.53 121.92)
-=======
-			(xy 35.56 121.92) (xy 35.56 140.97)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c3e487c4-dabd-478b-8de1-1128982823f1")
-	)
-	(wire
-		(pts
-			(xy 57.15 85.09) (xy 49.53 85.09)
->>>>>>> main
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-<<<<<<< apshu/issue41
 		(uuid "bf638098-453d-4777-97cf-9a44d9dad6c2")
-=======
-		(uuid "c54f9df0-d94e-4b63-bb69-a41271b21dd8")
->>>>>>> main
 	)
 	(wire
 		(pts
@@ -4480,71 +3927,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 187.96 109.22) (xy 195.58 109.22)
-=======
-			(xy 57.15 121.92) (xy 57.15 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cb599600-27ec-4d1b-b2c4-c7773adb5ed3")
-	)
-	(wire
-		(pts
-			(xy 102.87 176.53) (xy 109.22 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc9ce42f-74df-4ccc-b7fc-a92292bc0edb")
-	)
-	(wire
-		(pts
-			(xy 170.18 55.88) (xy 170.18 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ccb2801d-d9a3-4940-9a3d-88efa8a66090")
-	)
-	(wire
-		(pts
-			(xy 179.07 55.88) (xy 170.18 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd70c7aa-f0dc-48ea-94b5-be8cd7ea8b6b")
-	)
-	(wire
-		(pts
-			(xy 57.15 102.87) (xy 57.15 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce924e0e-c5ca-4f9f-a4a9-616f117bbe86")
-	)
-	(wire
-		(pts
-			(xy 57.15 140.97) (xy 57.15 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d26bf6be-650c-4650-91b2-fcda6bcd039e")
-	)
-	(wire
-		(pts
-			(xy 59.69 44.45) (xy 68.58 44.45)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4554,31 +3937,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 35.56 121.92) (xy 35.56 140.97)
-=======
-			(xy 102.87 171.45) (xy 109.22 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3ff8d5d-d358-4799-808e-28bba071ec29")
-	)
-	(wire
-		(pts
-			(xy 57.15 149.86) (xy 57.15 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d42fed6a-32de-4e95-8d76-2f4f749b00e7")
-	)
-	(wire
-		(pts
-			(xy 66.04 102.87) (xy 57.15 102.87)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4588,21 +3947,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 57.15 85.09) (xy 49.53 85.09)
-=======
-			(xy 57.15 130.81) (xy 57.15 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d5c3777b-0709-4514-a51b-f536b1e43409")
-	)
-	(wire
-		(pts
-			(xy 162.56 62.23) (xy 172.72 62.23)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4622,11 +3967,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 241.3 134.62) (xy 232.41 134.62)
-=======
-			(xy 162.56 59.69) (xy 170.18 59.69)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4706,11 +4047,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 102.87 171.45) (xy 109.22 171.45)
-=======
-			(xy 59.69 49.53) (xy 68.58 49.53)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4770,11 +4107,7 @@
 	)
 	(wire
 		(pts
-<<<<<<< apshu/issue41
 			(xy 162.56 59.69) (xy 170.18 59.69)
-=======
-			(xy 59.69 39.37) (xy 68.58 39.37)
->>>>>>> main
 		)
 		(stroke
 			(width 0)
@@ -4962,18 +4295,6 @@
 		)
 		(uuid "ffcadb07-91f0-42c8-9d88-eeb158f06ffb")
 	)
-	(rectangle
-		(start 90.17 158.75)
-		(end 143.51 186.69)
-		(stroke
-			(width 0)
-			(type dash)
-		)
-		(fill
-			(type none)
-		)
-		(uuid b5c8690a-6b10-49f8-8c46-236f97f7575d)
-	)
 	(image
 		(at 234.315 173.99)
 		(scale 0.252866)
@@ -5079,100 +4400,6 @@
 			"ZTJz+OQbAJIkygRBTBb+H/nwcFsM/kgCAAAAAElFTkSuQmCC"
 		)
 	)
-<<<<<<< apshu/issue41
-=======
-	(text "RC3"
-		(exclude_from_sim no)
-		(at 152.4 72.39 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "088c8675-915b-4cb9-ab31-c3761ee4f578")
-	)
-	(text "RC1"
-		(exclude_from_sim no)
-		(at 157.48 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "18d4a02b-09b2-493c-8056-7ee350a1adf1")
-	)
-	(text "RC0"
-		(exclude_from_sim no)
-		(at 157.48 56.388 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "32cf9e1d-e0e9-4721-9bd0-8e58520f6297")
-	)
-	(text "RA5"
-		(exclude_from_sim no)
-		(at 152.4 67.31 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "4eb32a8f-a9df-471b-bfea-7464b32ad3d1")
-	)
-	(text "RC4"
-		(exclude_from_sim no)
-		(at 152.4 62.23 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "67e1bbbf-0316-4135-9b87-103bbfb20259")
-	)
-	(text "RA4"
-		(exclude_from_sim no)
-		(at 152.4 69.85 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "7fa629ef-da29-44d0-b99a-61b63eda1469")
-	)
-	(text "* All resistors 0.25W"
-		(exclude_from_sim no)
-		(at 17.018 191.262 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9433ac57-0c3e-4461-8153-f3891f24578c")
-	)
-	(text "RC2"
-		(exclude_from_sim no)
-		(at 156.718 76.708 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "9e4cd68a-77ab-4339-b3cd-7541f9e3110e")
-	)
-	(text "RC5"
-		(exclude_from_sim no)
-		(at 152.4 59.69 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "a756d1b8-8b1a-4c53-aa49-dd636452c33b")
-	)
->>>>>>> main
 	(label "RC2"
 		(at 134.62 111.76 180)
 		(effects
@@ -5185,10 +4412,6 @@
 	)
 	(label "RC5"
 		(at 74.93 102.87 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5219,10 +4442,6 @@
 	)
 	(label "RA2"
 		(at 60.96 49.53 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5263,10 +4482,6 @@
 	)
 	(label "RC3"
 		(at 74.93 140.97 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5297,10 +4512,6 @@
 	)
 	(label "RA4"
 		(at 74.93 121.92 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5351,10 +4562,6 @@
 	)
 	(label "RC4"
 		(at 74.93 85.09 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5405,10 +4612,6 @@
 	)
 	(label "RA1"
 		(at 60.96 46.99 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5429,10 +4632,6 @@
 	)
 	(label "RA0"
 		(at 60.96 44.45 0)
-<<<<<<< apshu/issue41
-=======
-		(fields_autoplaced yes)
->>>>>>> main
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6582,7 +5781,6 @@
 			)
 		)
 	)
-<<<<<<< apshu/issue41
 	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 109.22 168.91 90)
@@ -6598,14 +5796,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-=======
-	(label "~{MCLR}"
-		(at 60.96 39.37 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
->>>>>>> main
 			)
 		)
 		(property "Value" "1"
@@ -6664,16 +5854,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "3a40b056-c34a-44bc-ae16-bbf45abfeada")
 		(property "Reference" "PB2"
 			(at 44.45 97.79 0)
-=======
-		(fields_autoplaced yes)
-		(uuid "02f99a5b-2984-453b-a2cd-f4965dd5ca9c")
-		(property "Reference" "#PWR08"
-			(at 152.4 88.9 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6734,65 +5917,40 @@
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "PB2")
-=======
-					(reference "#PWR08")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "Device:R")
 		(at 69.85 85.09 270)
 		(mirror x)
-=======
-		(lib_id "Connector:TestPoint")
-		(at 121.92 176.53 270)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "3a8343b3-c400-4e92-964e-8e126263146d")
 		(property "Reference" "R1"
 			(at 69.85 85.09 90)
-=======
-		(uuid "046d6b4c-9f74-4059-9a6a-f1943824f969")
-		(property "Reference" "TP5"
-			(at 128.778 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "680Ω"
 			(at 69.85 87.63 90)
-=======
-		(property "Value" "5"
-			(at 127 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
 			(at 69.85 86.868 90)
-=======
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 121.92 181.61 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6801,11 +5959,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
 			(at 69.85 85.09 0)
-=======
-			(at 121.92 181.61 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6813,13 +5967,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Description" ""
 			(at 69.85 85.09 0)
-=======
-		(property "Description" "test point"
-			(at 121.92 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6828,77 +5977,49 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
 			(uuid "dc3f4d6e-fb61-476a-b33e-08fce965d056")
 		)
 		(pin "2"
 			(uuid "4f4f88b1-ff62-4831-9438-8aa7a7fd4fa7")
-=======
-			(uuid "722abf2d-acd4-4c94-907b-fb023feffa00")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "R1")
-=======
-					(reference "TP5")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "Jumper:Jumper_2_Open")
 		(at 44.45 146.05 0)
 		(mirror y)
-=======
-		(lib_id "Device:R")
-		(at 219.71 52.07 180)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "3a8e86a5-6b8b-4587-a538-f4cb3b86d0bb")
 		(property "Reference" "JP4"
 			(at 44.45 148.59 0)
-=======
-		(uuid "0bae355b-c6b0-4011-8062-6ee862fe2b64")
-		(property "Reference" "R12"
-			(at 219.71 52.07 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "RC3"
 			(at 44.45 142.24 0)
-=======
-		(property "Value" "680Ω"
-			(at 217.17 52.07 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 44.45 146.05 0)
-=======
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 221.488 52.07 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6907,11 +6028,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
 			(at 44.45 146.05 0)
-=======
-			(at 219.71 52.07 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6920,11 +6037,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
 			(at 44.45 146.05 0)
-=======
-			(at 219.71 52.07 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6933,81 +6046,47 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
 			(uuid "05d76254-f42e-46ee-8532-9449a2e2c379")
 		)
 		(pin "2"
 			(uuid "187cec95-cc8a-4be6-a4a5-da015774c958")
-=======
-			(uuid "c392e859-81a5-467d-b5c6-724dd861860d")
-		)
-		(pin "2"
-			(uuid "850ffee4-012d-4a0e-9b38-0b88d7390b7e")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "JP4")
-=======
-					(reference "R12")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "Device:R")
 		(at 176.53 59.69 90)
-=======
-		(lib_id "Switch:SW_Push")
-		(at 44.45 85.09 0)
-		(mirror y)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "3e64abeb-0e70-4f8e-8e97-e12b381c8217")
 		(property "Reference" "R7"
 			(at 176.53 59.69 90)
-=======
-		(uuid "0ec8ec4a-99a7-4f03-b8d8-8777daf50482")
-		(property "Reference" "PB1"
-			(at 44.45 80.01 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "680Ω"
 			(at 176.53 57.658 90)
-=======
-		(property "Value" "RC4"
-			(at 30.48 86.36 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
 			(at 176.53 61.468 90)
-=======
-		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H5mm"
-			(at 44.45 80.01 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7015,13 +6094,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Datasheet" "~"
 			(at 176.53 59.69 0)
-=======
-		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
-			(at 44.45 80.01 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7030,20 +6104,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
 			(at 176.53 59.69 0)
-=======
-			(at 44.45 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
-			(at 44.45 85.09 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7052,81 +6113,47 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
 			(uuid "c1bc7a66-6d22-4b11-bcc5-ed81fcb0b2c4")
 		)
 		(pin "2"
 			(uuid "e426f581-21a4-477a-b138-c2775c79b20b")
-=======
-			(uuid "2a90334c-e94a-4899-961b-89043a749051")
-		)
-		(pin "2"
-			(uuid "bb359685-97c9-49fb-902d-253fce55feb1")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "R7")
-=======
-					(reference "PB1")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "Device:R")
 		(at 184.15 106.68 90)
-=======
-		(lib_id "power:GNDD")
-		(at 168.91 45.72 0)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "490532fe-097c-442d-8098-efaa24f48fa4")
 		(property "Reference" "R9"
 			(at 184.15 106.68 90)
-=======
-		(fields_autoplaced yes)
-		(uuid "0ed7b45a-a96f-4f64-946d-8d53056c57b5")
-		(property "Reference" "#PWR011"
-			(at 168.91 52.07 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "680Ω"
 			(at 184.15 104.14 90)
-=======
-		(property "Value" "GNDD"
-			(at 168.91 49.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
 			(at 184.15 108.458 90)
-=======
-		(property "Footprint" ""
-			(at 168.91 45.72 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7134,13 +6161,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Datasheet" "~"
 			(at 184.15 106.68 0)
-=======
-		(property "Datasheet" ""
-			(at 168.91 45.72 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7149,11 +6171,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
 			(at 184.15 106.68 0)
-=======
-			(at 168.91 45.72 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7162,51 +6180,32 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
 			(uuid "1fa5521e-b29a-44f3-8b77-ba7f1871863f")
 		)
 		(pin "2"
 			(uuid "57deada0-8ae8-4e90-83ed-536d892b528c")
-=======
-			(uuid "f07313a4-2f06-42bc-a737-f47faa914436")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "R9")
-=======
-					(reference "#PWR011")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "power:GNDD")
 		(at 265.43 139.7 0)
-=======
-		(lib_id "Connector:TestPoint")
-		(at 121.92 171.45 270)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(fields_autoplaced yes)
 		(uuid "4cd5312b-05e8-46ec-819e-7910afeb69f7")
 		(property "Reference" "#PWR014"
 			(at 265.43 146.05 0)
-=======
-		(uuid "0fecdeef-bc0d-4fa4-a8da-65130a97396e")
-		(property "Reference" "TP7"
-			(at 128.778 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7214,26 +6213,16 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "GNDD"
 			(at 265.43 143.51 0)
-=======
-		(property "Value" "7"
-			(at 127 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" ""
 			(at 265.43 139.7 0)
-=======
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 121.92 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7241,13 +6230,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Datasheet" ""
 			(at 265.43 139.7 0)
-=======
-		(property "Datasheet" "~"
-			(at 121.92 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7255,13 +6239,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Description" ""
 			(at 265.43 139.7 0)
-=======
-		(property "Description" "test point"
-			(at 121.92 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7270,75 +6249,44 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
 			(uuid "2a80cf7e-4848-41bf-a79d-ce672f4f6fcd")
-=======
-			(uuid "51f5f324-e4cc-425b-93ba-df94a8454bb2")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
 					(reference "#PWR014")
-=======
-					(reference "TP7")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
 		(lib_id "Device:R")
 		(at 138.43 48.26 180)
-=======
-		(lib_id "power:VDD")
-		(at 35.56 76.2 0)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
 		(uuid "513319f4-3cf3-4bc5-ba75-b08ee64d92a3")
 		(property "Reference" "R5"
 			(at 138.43 48.26 90)
-=======
-		(fields_autoplaced yes)
-		(uuid "134a74ef-b595-4272-b9a8-c65a25394a66")
-		(property "Reference" "#PWR016"
-			(at 35.56 80.01 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Value" "4k7"
 			(at 140.97 48.26 90)
-=======
-		(property "Value" "VDD"
-			(at 35.56 71.12 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
 			(at 140.208 48.26 90)
-=======
-		(property "Footprint" ""
-			(at 35.56 76.2 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7346,1851 +6294,6 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "~"
-			(at 138.43 48.26 0)
-=======
-		(property "Datasheet" ""
-			(at 35.56 76.2 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 138.43 48.26 0)
-=======
-			(at 35.56 76.2 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "5ae4cf5c-a50e-4f22-900e-fd5fbddbcc2c")
-		)
-		(pin "2"
-			(uuid "7939a6bd-06d9-45b6-af0d-f131483d2b63")
-=======
-			(uuid "8095c996-4e57-402e-9637-04eb429e7305")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R5")
-=======
-					(reference "#PWR016")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:GNDD")
-		(at 96.52 82.55 0)
-=======
-		(lib_id "Device:C")
-		(at 162.56 44.45 90)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "51523ce3-9182-462c-8315-e3c13147c8f3")
-		(property "Reference" "#PWR02"
-			(at 96.52 88.9 0)
-=======
-		(uuid "1fe04913-0ea5-40dc-ba8a-8433fa0d0d00")
-		(property "Reference" "C2"
-			(at 162.56 38.1 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "GNDD"
-			(at 96.52 86.36 0)
-=======
-		(property "Value" "470nF"
-			(at 162.56 40.64 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" ""
-			(at 96.52 82.55 0)
-=======
-		(property "Footprint" "Capacitor_THT:C_Rect_L4.6mm_W2.0mm_P2.50mm_MKS02_FKP02"
-			(at 166.37 43.4848 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 96.52 82.55 0)
-=======
-		(property "Datasheet" "~"
-			(at 162.56 44.45 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 96.52 82.55 0)
-=======
-			(at 162.56 44.45 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "5746b081-cb71-42f9-82eb-3fcbb61a9284")
-=======
-			(uuid "d37f89f5-cc10-442a-a9b9-89110a005cb4")
-		)
-		(pin "2"
-			(uuid "28e1f5ef-8999-481f-b904-ac13d0325929")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR02")
-=======
-					(reference "C2")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Connector:Conn_PIC_ICSP_ICD")
-		(at 46.99 44.45 0)
-=======
-		(lib_id "Device:R")
-		(at 57.15 127 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "52bb04b4-b5ac-4683-8144-10e02a736438")
-		(property "Reference" "J2"
-			(at 37.846 44.45 0)
-=======
-		(uuid "23b56c5b-0d01-4623-a17f-09418a39fa3d")
-		(property "Reference" "R19"
-			(at 57.15 127 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "ICSP_DEBUG_miniFPGA"
-			(at 65.278 54.102 0)
-=======
-		(property "Value" "680Ω"
-			(at 59.69 127 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-<<<<<<< apshu/issue41
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal"
-			(at 48.26 40.64 0)
-=======
-			)
-		)
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 55.372 127 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
-			(at 39.37 48.26 90)
-=======
-		(property "Datasheet" "~"
-			(at 57.15 127 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 46.99 44.45 0)
-=======
-			(at 57.15 127 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "41a548f8-cc6d-4d2c-8618-b70b91c1126a")
-		)
-		(pin "2"
-			(uuid "d94416c7-3314-4f49-9b0e-4d866d60eef1")
-		)
-		(pin "3"
-			(uuid "ebe71b2a-9255-41e5-a4cb-c64e17fc0ef3")
-		)
-		(pin "4"
-			(uuid "0c89c2b2-c9b7-4ade-b4b7-e13e38ff070d")
-		)
-		(pin "5"
-			(uuid "b1947c58-8be0-4553-ae4f-4352c41135ae")
-		)
-		(pin "6"
-			(uuid "a4b91db3-74b3-4f6e-986d-238e53bfc344")
-=======
-			(uuid "f1f2093d-c7ef-43e2-81ee-8a27664cb96b")
-		)
-		(pin "2"
-			(uuid "75c8e9e2-ff57-4182-92ff-97d57c64c21b")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "J2")
-=======
-					(reference "R19")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Connector:TestPoint")
-		(at 102.87 176.53 90)
-=======
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 44.45 88.9 0)
-		(mirror y)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "52d0d351-29e4-4eb7-aded-5e0c23d13f1c")
-		(property "Reference" "TP4"
-			(at 96.012 176.53 0)
-=======
-		(uuid "2403a4c1-9393-44b0-bb12-303792e3c7fa")
-		(property "Reference" "JP1"
-			(at 44.45 91.44 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "4"
-			(at 97.79 176.53 0)
-=======
-		(property "Value" "RC4"
-			(at 44.45 85.09 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 102.87 171.45 0)
-=======
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 44.45 88.9 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 102.87 171.45 0)
-=======
-			(at 44.45 88.9 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Description" "test point"
-			(at 102.87 176.53 0)
-=======
-		(property "Description" ""
-			(at 44.45 88.9 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "83c8329e-0652-4532-9d29-afe09490cd67")
-=======
-			(uuid "a201e37d-d2ed-4ceb-b99b-7211820ee0f6")
-		)
-		(pin "2"
-			(uuid "5450341c-5961-4ce7-92d1-c0633dae093c")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "TP4")
-=======
-					(reference "JP1")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Connector:TestPoint")
-		(at 102.87 171.45 90)
-=======
-		(lib_id "power:GNDD")
-		(at 57.15 113.03 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "58d619ee-0d42-4e2d-bee8-c38e1e20eb40")
-		(property "Reference" "TP2"
-			(at 96.012 171.45 0)
-=======
-		(fields_autoplaced yes)
-		(uuid "266876c7-24d5-4be6-a9f5-f8df3f30e937")
-		(property "Reference" "#PWR018"
-			(at 57.15 119.38 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "2"
-			(at 97.79 171.45 0)
-=======
-		(property "Value" "GNDD"
-			(at 57.15 116.84 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 102.87 166.37 0)
-=======
-		(property "Footprint" ""
-			(at 57.15 113.03 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "~"
-			(at 102.87 166.37 0)
-=======
-		(property "Datasheet" ""
-			(at 57.15 113.03 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Description" "test point"
-			(at 102.87 171.45 0)
-=======
-		(property "Description" ""
-			(at 57.15 113.03 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "95d89af2-8971-44c1-b834-f28874d2e2e1")
-=======
-			(uuid "4c912414-4ee4-48a9-8480-ab87bfd229e0")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "TP2")
-=======
-					(reference "#PWR018")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-<<<<<<< apshu/issue41
-		(at 69.85 102.87 270)
-=======
-		(at 57.15 90.17 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "5a55a29a-9968-4ead-a687-e5255d6b7bc4")
-		(property "Reference" "R2"
-			(at 69.85 102.87 90)
-=======
-		(uuid "29b6f093-869b-47ae-a072-fe8dc229c2d4")
-		(property "Reference" "R21"
-			(at 57.15 90.17 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "680Ω"
-<<<<<<< apshu/issue41
-			(at 69.85 105.41 90)
-=======
-			(at 59.69 90.17 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-<<<<<<< apshu/issue41
-			(at 69.85 101.092 90)
-=======
-			(at 55.372 90.17 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 69.85 102.87 0)
-=======
-			(at 57.15 90.17 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 69.85 102.87 0)
-=======
-			(at 57.15 90.17 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "4e6c7cf4-3fdd-4d92-99d0-db45d484ad1a")
-		)
-		(pin "2"
-			(uuid "be4be244-729d-4ea1-b170-ca8b217ccad7")
-=======
-			(uuid "2b3b4aca-0418-44ce-93d0-564bbcb32a53")
-		)
-		(pin "2"
-			(uuid "acfd733d-d961-46d6-a29e-8d77a950f39d")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R2")
-=======
-					(reference "R21")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:VDD")
-		(at 223.52 39.37 0)
-=======
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 44.45 127 0)
->>>>>>> main
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "5cd40a6a-d88a-4301-a109-84dedadffeea")
-		(property "Reference" "#PWR013"
-			(at 223.52 43.18 0)
-=======
-		(uuid "2ad16d4f-674d-4b17-bf4d-d639ac164bb8")
-		(property "Reference" "JP3"
-			(at 44.45 129.54 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "VDD"
-			(at 223.52 34.29 0)
-=======
-		(property "Value" "RA4"
-			(at 44.45 123.19 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" ""
-			(at 223.52 39.37 0)
-=======
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 44.45 127 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 223.52 39.37 0)
-=======
-		(property "Datasheet" "~"
-			(at 44.45 127 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 223.52 39.37 0)
-=======
-			(at 44.45 127 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "18acaeba-6f9c-421c-863c-2a4174d89443")
-=======
-			(uuid "b9b09fdc-541e-4db0-a9fc-24688b3cba6b")
-		)
-		(pin "2"
-			(uuid "f859d3c2-a6c5-4f92-b487-fd546e790f68")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR013")
-=======
-					(reference "JP3")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:VDD")
-		(at 41.91 34.29 0)
-=======
-		(lib_id "Connector_Generic:Conn_02x04_Counter_Clockwise")
-		(at 114.3 171.45 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "6090610f-6b21-4da0-8254-c089a7680e3c")
-		(property "Reference" "#PWR03"
-			(at 41.91 38.1 0)
-=======
-		(uuid "2cf135ed-c042-40dd-9111-100212f71cb2")
-		(property "Reference" "A1"
-			(at 115.57 166.37 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "VDD"
-			(at 41.91 29.21 0)
-=======
-		(property "Value" "8pin proto area"
-			(at 115.57 179.07 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" ""
-			(at 41.91 34.29 0)
-=======
-		(property "Footprint" "Attila:8pin_proto"
-			(at 114.3 171.45 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 41.91 34.29 0)
-=======
-		(property "Datasheet" "~"
-			(at 114.3 171.45 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Description" ""
-			(at 41.91 34.29 0)
-=======
-		(property "Description" "Generic connector, double row, 02x04, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 114.3 171.45 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "dd19d876-c30a-465c-b06a-851d5421e348")
-		)
-		(pin "3"
-			(uuid "f7b1a370-7423-4488-ac7e-b49fdba151cc")
-		)
-		(pin "5"
-			(uuid "a8edc033-04cd-40a3-acbc-4f4a67b467ad")
-		)
-		(pin "8"
-			(uuid "e556e6b9-0dda-411d-ace3-03dae9d0567e")
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "4261793f-5d9b-4b2a-82c5-11a542745fc2")
-=======
-			(uuid "65b39ba7-ebaf-473e-9ac5-e5dfc5ddd8a5")
-		)
-		(pin "4"
-			(uuid "6cbc8512-ba3c-425a-aaae-2738e6e12b9a")
-		)
-		(pin "2"
-			(uuid "91f185a5-b0bd-4ffa-93ff-532c5a4e11b4")
-		)
-		(pin "7"
-			(uuid "5c17f8e6-57c6-434e-a9cc-121260c96363")
->>>>>>> main
-		)
-		(instances
-			(project ""
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR03")
-=======
-					(reference "A1")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:R")
-		(at 245.11 119.38 270)
-		(mirror x)
-=======
-		(lib_id "power:GNDD")
-		(at 152.4 139.7 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "699a4d10-d4b6-47b1-8137-211b1ea82074")
-		(property "Reference" "R15"
-			(at 245.11 119.38 90)
-=======
-		(fields_autoplaced yes)
-		(uuid "2e425d22-e4ed-4756-bed0-0c20e3c5025e")
-		(property "Reference" "#PWR010"
-			(at 152.4 146.05 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "680Ω"
-			(at 245.11 121.92 90)
-=======
-		(property "Value" "GNDD"
-			(at 152.4 143.51 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 245.11 121.158 90)
-=======
-		(property "Footprint" ""
-			(at 152.4 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "~"
-			(at 245.11 119.38 0)
-=======
-		(property "Datasheet" ""
-			(at 152.4 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 245.11 119.38 0)
-=======
-			(at 152.4 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "8d0a1788-3616-4081-a55a-23f055a9ff26")
-		)
-		(pin "2"
-			(uuid "1ab8951b-ac7a-4a2b-aeff-872d38fca594")
-=======
-			(uuid "a11163a2-5d61-49d1-b83f-64a29c124151")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R15")
-=======
-					(reference "#PWR010")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:R")
-		(at 69.85 140.97 270)
-=======
-		(lib_id "Connector:TestPoint")
-		(at 109.22 168.91 90)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "78a10039-5f61-4d86-950d-5b7062742d28")
-		(property "Reference" "R4"
-			(at 69.85 140.97 90)
-=======
-		(uuid "316e50a3-6cc1-4512-98cc-101478512d4b")
-		(property "Reference" "TP1"
-			(at 102.362 168.91 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "680Ω"
-			(at 69.85 143.51 90)
-=======
-		(property "Value" "1"
-			(at 104.14 168.91 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 69.85 139.192 90)
-=======
-		(property "Footprint" "TestPoint:TestPoint_Pad_1.5x1.5mm"
-			(at 109.22 163.83 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 69.85 140.97 0)
-=======
-			(at 109.22 163.83 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Description" ""
-			(at 69.85 140.97 0)
-=======
-		(property "Description" "test point"
-			(at 109.22 168.91 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "d280e9ec-0679-437e-a07a-bfb7a8e5cb54")
-		)
-		(pin "2"
-			(uuid "9062e03f-c275-4c38-834a-7a4c0f1a52d8")
-=======
-			(uuid "d7eec051-7265-4daa-bb78-5b62a8d0554f")
->>>>>>> main
-		)
-		(instances
-			(project ""
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R4")
-=======
-					(reference "TP1")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:VDD")
-		(at 203.2 97.79 0)
-=======
-		(lib_id "Switch:SW_Push")
-		(at 44.45 102.87 0)
-		(mirror y)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "80de5457-7fde-47d7-b5ca-627feea1838e")
-		(property "Reference" "#PWR012"
-			(at 203.2 101.6 0)
-=======
-		(uuid "3a40b056-c34a-44bc-ae16-bbf45abfeada")
-		(property "Reference" "PB2"
-			(at 44.45 97.79 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-<<<<<<< apshu/issue41
-				(hide yes)
-			)
-		)
-		(property "Value" "VDD"
-			(at 203.2 93.98 0)
-=======
-			)
-		)
-		(property "Value" "RC5"
-			(at 30.48 104.14 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-<<<<<<< apshu/issue41
-			)
-		)
-		(property "Footprint" ""
-			(at 203.2 97.79 0)
-=======
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H5mm"
-			(at 44.45 97.79 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 203.2 97.79 0)
-=======
-		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
-			(at 44.45 97.79 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 203.2 97.79 0)
-=======
-			(at 44.45 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
-			(at 44.45 102.87 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "f93d0698-827a-419e-a8bc-c2751a65f0b5")
-=======
-			(uuid "124cceff-a3d5-4189-9b23-5665a96eb36e")
-		)
-		(pin "2"
-			(uuid "3f6aa34d-d964-4d51-afd8-84c2cce94f8c")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR012")
-=======
-					(reference "PB2")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:VDD")
-		(at 115.57 41.91 0)
-=======
-		(lib_id "Device:R")
-		(at 69.85 85.09 270)
-		(mirror x)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "8422f27a-8fb5-4faa-b531-3515fe597ac6")
-		(property "Reference" "#PWR06"
-			(at 115.57 45.72 0)
-=======
-		(uuid "3a8343b3-c400-4e92-964e-8e126263146d")
-		(property "Reference" "R1"
-			(at 69.85 85.09 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "VDD"
-			(at 115.57 36.83 0)
-=======
-		(property "Value" "680Ω"
-			(at 69.85 87.63 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" ""
-			(at 115.57 41.91 0)
-=======
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 69.85 86.868 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 115.57 41.91 0)
-=======
-		(property "Datasheet" "~"
-			(at 69.85 85.09 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 115.57 41.91 0)
-=======
-			(at 69.85 85.09 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "9807838c-86fb-4a6c-ad2d-a07ea2ec77dc")
-=======
-			(uuid "dc3f4d6e-fb61-476a-b33e-08fce965d056")
-		)
-		(pin "2"
-			(uuid "4f4f88b1-ff62-4831-9438-8aa7a7fd4fa7")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR06")
-=======
-					(reference "R1")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:R")
-		(at 245.11 134.62 270)
-=======
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 44.45 146.05 0)
-		(mirror y)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "8570c038-571c-4fd7-bc83-84a5e9dcd478")
-		(property "Reference" "R16"
-			(at 245.11 134.62 90)
-=======
-		(uuid "3a8e86a5-6b8b-4587-a538-f4cb3b86d0bb")
-		(property "Reference" "JP4"
-			(at 44.45 148.59 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "680Ω"
-			(at 245.11 137.16 90)
-=======
-		(property "Value" "RC3"
-			(at 44.45 142.24 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 245.11 132.842 90)
-=======
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 44.45 146.05 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 245.11 134.62 0)
-=======
-			(at 44.45 146.05 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 245.11 134.62 0)
-=======
-			(at 44.45 146.05 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "0e559624-66c5-40ef-8055-3888c8e80ae8")
-		)
-		(pin "2"
-			(uuid "6c11682e-aec1-4aa0-9fcc-5da7251226e6")
-=======
-			(uuid "05d76254-f42e-46ee-8532-9449a2e2c379")
-		)
-		(pin "2"
-			(uuid "187cec95-cc8a-4be6-a4a5-da015774c958")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R16")
-=======
-					(reference "JP4")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Switch:SW_Push")
-		(at 44.45 121.92 0)
-		(mirror y)
-=======
-		(lib_id "Device:R")
-		(at 176.53 59.69 90)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "8bb39c56-8c4e-4327-90d4-72dae91e6597")
-		(property "Reference" "PB3"
-			(at 44.45 116.84 0)
-=======
-		(uuid "3e64abeb-0e70-4f8e-8e97-e12b381c8217")
-		(property "Reference" "R7"
-			(at 176.53 59.69 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "RA4"
-			(at 30.48 123.19 0)
-=======
-		(property "Value" "680Ω"
-			(at 176.53 57.658 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H5mm"
-			(at 44.45 116.84 0)
-=======
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 176.53 61.468 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "https://www.farnell.com/cad/2585918.pdf"
-			(at 44.45 116.84 0)
-=======
-		(property "Datasheet" "~"
-			(at 176.53 59.69 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 44.45 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Farnell" "https://at.farnell.com/alcoswitch-te-connectivity/1825910-1/taster-0-05a-24v-dc-100gf-tht/dp/3792734"
-			(at 44.45 121.92 0)
-=======
-			(at 176.53 59.69 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "78b32514-6d70-4320-882e-2b9859a17608")
-		)
-		(pin "2"
-			(uuid "aad07b0b-c556-4825-ab4b-22615bbb497c")
-=======
-			(uuid "c1bc7a66-6d22-4b11-bcc5-ed81fcb0b2c4")
-		)
-		(pin "2"
-			(uuid "e426f581-21a4-477a-b138-c2775c79b20b")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "PB3")
-=======
-					(reference "R7")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-<<<<<<< apshu/issue41
-		(at 69.85 121.92 270)
-		(mirror x)
-=======
-		(at 184.15 106.68 90)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "912736da-3cc3-4a86-8b0b-4133121edbda")
-		(property "Reference" "R3"
-			(at 69.85 121.92 90)
-=======
-		(uuid "490532fe-097c-442d-8098-efaa24f48fa4")
-		(property "Reference" "R9"
-			(at 184.15 106.68 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "680Ω"
-<<<<<<< apshu/issue41
-			(at 69.85 124.46 90)
-=======
-			(at 184.15 104.14 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-<<<<<<< apshu/issue41
-			(at 69.85 123.698 90)
-=======
-			(at 184.15 108.458 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 69.85 121.92 0)
-=======
-			(at 184.15 106.68 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 69.85 121.92 0)
-=======
-			(at 184.15 106.68 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "7850a612-7e90-4511-aeb7-906f4a1d4cee")
-		)
-		(pin "2"
-			(uuid "0e5bfadf-494c-4fcf-aaf5-5aa238ed8d2d")
-=======
-			(uuid "1fa5521e-b29a-44f3-8b77-ba7f1871863f")
-		)
-		(pin "2"
-			(uuid "57deada0-8ae8-4e90-83ed-536d892b528c")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R3")
-=======
-					(reference "R9")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:LED")
-		(at 256.54 119.38 180)
-=======
-		(lib_id "power:GNDD")
-		(at 265.43 139.7 0)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "91f93ba1-c692-4293-b0bd-72b0826e4542")
-		(property "Reference" "LED4"
-			(at 255.27 116.84 0)
-=======
-		(fields_autoplaced yes)
-		(uuid "4cd5312b-05e8-46ec-819e-7910afeb69f7")
-		(property "Reference" "#PWR014"
-			(at 265.43 146.05 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "RC2"
-			(at 256.54 121.92 0)
-=======
-		(property "Value" "GNDD"
-			(at 265.43 143.51 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "LED_THT:LED_D3.0mm"
-			(at 256.54 119.38 0)
-=======
-		(property "Footprint" ""
-			(at 265.43 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "~"
-			(at 256.54 119.38 0)
-=======
-		(property "Datasheet" ""
-			(at 265.43 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 256.54 119.38 0)
-=======
-			(at 265.43 139.7 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "13b5643f-c810-49c7-aeab-6df8c2c65736")
-		)
-		(pin "2"
-			(uuid "998c9b05-3896-456e-8930-38ff710a102f")
-=======
-			(uuid "2a80cf7e-4848-41bf-a79d-ce672f4f6fcd")
->>>>>>> main
-		)
-		(instances
-			(project "miniFPGA"
-				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "LED4")
-=======
-					(reference "#PWR014")
->>>>>>> main
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "attila:PIC16F13145-IP")
-		(at 152.4 106.68 0)
-=======
-		(lib_id "Device:R")
-		(at 138.43 48.26 180)
->>>>>>> main
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "928d5251-0725-4365-95d2-f353a3ceacee")
-		(property "Reference" "U2"
-			(at 140.97 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PIC16F13145-IP"
-			(at 161.29 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_DIP:DIP-20_W7.62mm"
-			(at 168.91 137.16 0)
-=======
-		(uuid "513319f4-3cf3-4bc5-ba75-b08ee64d92a3")
-		(property "Reference" "R5"
-			(at 138.43 48.26 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC16F13145-Family-Microcontroller-Data-Sheet-DS40002519.pdf"
-			(at 162.56 130.81 0)
-=======
-		(property "Value" "4k7"
-			(at 140.97 48.26 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Description" "MCU8+mini FPGA"
-			(at 152.4 106.68 0)
-=======
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal"
-			(at 140.208 48.26 90)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-<<<<<<< apshu/issue41
-		(pin "11"
-			(uuid "0e968700-1e9f-43c1-8670-5dd4a1a30459")
-		)
-		(pin "7"
-			(uuid "bbde227d-85e7-44fa-9bb7-c2d6d57dec45")
-		)
-		(pin "17"
-			(uuid "1b1e1263-304d-415d-b695-2a8ba58d8b6f")
-		)
-		(pin "20"
-			(uuid "2c11c092-3747-4427-bffb-3286ea9968fd")
-		)
-		(pin "1"
-			(uuid "ce651234-5309-405a-b21a-a685bf12f157")
-		)
-		(pin "10"
-			(uuid "2d99419c-063b-4e2d-8fda-7020e236ec59")
-		)
-		(pin "12"
-			(uuid "db5c41b6-59ac-474e-a7eb-0e3fde657259")
-		)
-		(pin "19"
-			(uuid "a269c2b2-2222-4cba-95d0-2fad0bfc24d7")
-		)
-		(pin "5"
-			(uuid "db89f197-5422-4c03-8dae-fca4ecfa47ef")
-		)
-		(pin "4"
-			(uuid "2774b69c-cb2f-492c-8e86-df17d4c90e1b")
-		)
-		(pin "14"
-			(uuid "64d9cce0-5b6b-4429-ad90-f9b1af005b34")
-		)
-		(pin "16"
-			(uuid "d702c523-31bb-48dd-b7a9-26a406729b8e")
-		)
-		(pin "2"
-			(uuid "9bed5f4a-1b2f-4d31-85cb-a604c4170058")
-		)
-		(pin "6"
-			(uuid "feeb9fcb-451c-4cd9-8f38-1295e8fb4250")
-		)
-		(pin "8"
-			(uuid "aa47b740-ab06-4077-a3f1-efe8bb5e0db0")
-		)
-		(pin "15"
-			(uuid "e1b5db47-84ea-4b53-9beb-88755b371684")
-		)
-		(pin "13"
-			(uuid "88884223-4063-4a69-a5dd-a8fa77e82aa5")
-		)
-		(pin "18"
-			(uuid "4bfb12c7-40da-4fa1-8b8c-4379747bbb5c")
-		)
-		(pin "3"
-			(uuid "44cad1aa-3dc4-454d-9e5c-8c18476c6231")
-		)
-		(pin "9"
-			(uuid "3b6a1238-7995-48e0-9b0a-2793538c639f")
-=======
 		(property "Datasheet" "~"
 			(at 138.43 48.26 0)
 			(effects
@@ -9214,70 +6317,28 @@
 		)
 		(pin "2"
 			(uuid "7939a6bd-06d9-45b6-af0d-f131483d2b63")
->>>>>>> main
 		)
 		(instances
-			(project ""
+			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "U2")
-=======
 					(reference "R5")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:R")
-		(at 184.15 109.22 270)
-=======
 		(lib_id "power:GNDD")
 		(at 96.52 82.55 0)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "95eaeff6-c238-4966-a39c-4dd07a3797a9")
-		(property "Reference" "R10"
-			(at 184.15 109.22 90)
-=======
 		(fields_autoplaced yes)
 		(uuid "51523ce3-9182-462c-8315-e3c13147c8f3")
 		(property "Reference" "#PWR02"
 			(at 96.52 88.9 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "680Ω"
-			(at 184.15 111.76 90)
-=======
-		(property "Value" "GNDD"
-			(at 96.52 86.36 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 184.15 107.442 90)
-=======
-		(property "Footprint" ""
-			(at 96.52 82.55 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9285,13 +6346,25 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" "~"
-			(at 184.15 109.22 0)
-=======
+		(property "Value" "GNDD"
+			(at 96.52 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 96.52 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Datasheet" ""
 			(at 96.52 82.55 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9300,11 +6373,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 184.15 109.22 0)
-=======
 			(at 96.52 82.55 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9313,68 +6382,37 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "68e1032a-9b65-46a4-9868-a823aff5559c")
-		)
-		(pin "2"
-			(uuid "5311cc45-d305-40d2-b364-475e092aa756")
-=======
 			(uuid "5746b081-cb71-42f9-82eb-3fcbb61a9284")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "R10")
-=======
 					(reference "#PWR02")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "power:GNDD")
-		(at 57.15 95.25 0)
-=======
 		(lib_id "Connector:Conn_PIC_ICSP_ICD")
 		(at 46.99 44.45 0)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "9cb35849-2d89-4623-8395-1bce49ff51e7")
-		(property "Reference" "#PWR019"
-			(at 57.15 101.6 0)
-=======
 		(uuid "52bb04b4-b5ac-4683-8144-10e02a736438")
 		(property "Reference" "J2"
 			(at 37.846 44.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-<<<<<<< apshu/issue41
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDD"
-			(at 57.15 99.06 0)
-=======
 				(justify right)
 			)
 		)
 		(property "Value" "ICSP_DEBUG_miniFPGA"
 			(at 65.278 54.102 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9382,13 +6420,8 @@
 				(justify right)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Footprint" ""
-			(at 57.15 95.25 0)
-=======
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal"
 			(at 48.26 40.64 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9396,13 +6429,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Datasheet" ""
-			(at 57.15 95.25 0)
-=======
 		(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
 			(at 39.37 48.26 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9411,11 +6439,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 57.15 95.25 0)
-=======
 			(at 46.99 44.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9424,9 +6448,6 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "2564b1ca-3358-4f07-a06f-37dd4dce1bad")
-=======
 			(uuid "41a548f8-cc6d-4d2c-8618-b70b91c1126a")
 		)
 		(pin "2"
@@ -9443,70 +6464,43 @@
 		)
 		(pin "6"
 			(uuid "a4b91db3-74b3-4f6e-986d-238e53bfc344")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "#PWR019")
-=======
 					(reference "J2")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:LED")
-		(at 219.71 62.23 270)
-		(mirror x)
-=======
 		(lib_id "Connector:TestPoint")
 		(at 102.87 176.53 90)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "a0be0bc6-d727-40f8-b014-e620354ba130")
-		(property "Reference" "LED1"
-			(at 213.36 62.23 0)
-=======
 		(uuid "52d0d351-29e4-4eb7-aded-5e0c23d13f1c")
 		(property "Reference" "TP4"
 			(at 96.012 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Value" "RX"
-			(at 215.9 62.23 0)
-=======
 		(property "Value" "4"
 			(at 97.79 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "LED_THT:LED_D3.0mm"
-			(at 219.71 62.23 0)
-=======
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 102.87 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9515,11 +6509,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 219.71 62.23 0)
-=======
 			(at 102.87 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9527,13 +6517,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Description" ""
-			(at 219.71 62.23 0)
-=======
 		(property "Description" "test point"
 			(at 102.87 176.53 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9542,78 +6527,44 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "b15bc803-525e-4404-a6b0-22cab2cfdc4c")
-		)
-		(pin "2"
-			(uuid "0fe80a2d-2d23-42cb-b9f5-eb924034687c")
-=======
 			(uuid "83c8329e-0652-4532-9d29-afe09490cd67")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "LED1")
-=======
 					(reference "TP4")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 44.45 107.95 0)
-		(mirror y)
-=======
 		(lib_id "Connector:TestPoint")
 		(at 102.87 171.45 90)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "a322f642-6ca6-425c-9a2d-8dfcb2733328")
-		(property "Reference" "JP2"
-			(at 44.45 110.49 0)
-=======
 		(uuid "58d619ee-0d42-4e2d-bee8-c38e1e20eb40")
 		(property "Reference" "TP2"
 			(at 96.012 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Value" "RC5"
-			(at 44.45 104.14 0)
-=======
 		(property "Value" "2"
 			(at 97.79 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 44.45 107.95 0)
-=======
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 102.87 166.37 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9622,11 +6573,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 44.45 107.95 0)
-=======
 			(at 102.87 166.37 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9634,13 +6581,8 @@
 				(hide yes)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Description" ""
-			(at 44.45 107.95 0)
-=======
 		(property "Description" "test point"
 			(at 102.87 171.45 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9649,80 +6591,44 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "f5fbf10b-50ff-406e-85c0-9674de01e9d0")
-		)
-		(pin "2"
-			(uuid "ab616f90-ac9e-41c5-b3c1-1a5239875296")
-=======
 			(uuid "95d89af2-8971-44c1-b834-f28874d2e2e1")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "JP2")
-=======
 					(reference "TP2")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:C_Polarized")
-		(at 96.52 62.23 0)
-		(mirror y)
-=======
 		(lib_id "Device:R")
 		(at 69.85 102.87 270)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(fields_autoplaced yes)
-		(uuid "a3c31d42-9faf-4137-878f-a47d73d97e85")
-		(property "Reference" "C1"
-			(at 92.71 60.071 0)
-=======
 		(uuid "5a55a29a-9968-4ead-a687-e5255d6b7bc4")
 		(property "Reference" "R2"
 			(at 69.85 102.87 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Value" "4µ7"
-			(at 92.71 62.611 0)
-=======
 		(property "Value" "680Ω"
 			(at 69.85 105.41 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Capacitor_THT:CP_Radial_D4.0mm_P2.00mm"
-			(at 95.5548 66.04 0)
-=======
 		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
 			(at 69.85 101.092 90)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9731,11 +6637,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-<<<<<<< apshu/issue41
-			(at 96.52 62.23 0)
-=======
 			(at 69.85 102.87 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9744,11 +6646,7 @@
 			)
 		)
 		(property "Description" ""
-<<<<<<< apshu/issue41
-			(at 96.52 62.23 0)
-=======
 			(at 69.85 102.87 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9757,51 +6655,29 @@
 			)
 		)
 		(pin "1"
-<<<<<<< apshu/issue41
-			(uuid "d415c6b2-2d67-4668-908e-39af839f551e")
-		)
-		(pin "2"
-			(uuid "1a45e8cc-fce3-407c-9b65-e9883f1b89a7")
-=======
 			(uuid "4e6c7cf4-3fdd-4d92-99d0-db45d484ad1a")
 		)
 		(pin "2"
 			(uuid "be4be244-729d-4ea1-b170-ca8b217ccad7")
->>>>>>> main
 		)
 		(instances
 			(project "miniFPGA"
 				(path "/a02bb0c8-ab81-4edc-aae2-0b6141d09911"
-<<<<<<< apshu/issue41
-					(reference "C1")
-=======
 					(reference "R2")
->>>>>>> main
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-<<<<<<< apshu/issue41
-		(lib_id "Device:R")
-		(at 176.53 62.23 90)
-		(mirror x)
-=======
 		(lib_id "power:VDD")
 		(at 223.52 39.37 0)
 		(mirror y)
->>>>>>> main
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-<<<<<<< apshu/issue41
-		(uuid "abae4f0d-bb8a-4571-b14e-ef650b98c203")
-		(property "Reference" "R8"
-			(at 176.53 62.23 90)
-=======
 		(fields_autoplaced yes)
 		(uuid "5cd40a6a-d88a-4301-a109-84dedadffeea")
 		(property "Reference" "#PWR013"
@@ -9823,41 +6699,30 @@
 		)
 		(property "Footprint" ""
 			(at 223.52 39.37 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Value" "680Ω"
-			(at 176.53 64.516 90)
-=======
-		(property "Datasheet" ""
-			(at 223.52 39.37 0)
->>>>>>> main
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-<<<<<<< apshu/issue41
-		(property "Footprint" "Attila:R_Axial_L3.6mm_D1.6mm_P1.90mm_Vertical"
-			(at 176.53 60.452 90)
-=======
-		(property "Description" ""
-			(at 223.52 39.37 0)
->>>>>>> main
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-<<<<<<< apshu/issue41
-=======
+		)
+		(property "Datasheet" ""
+			(at 223.52 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
 		(pin "1"
 			(uuid "18acaeba-6f9c-421c-863c-2a4174d89443")
@@ -10979,7 +7844,6 @@
 				)
 				(hide yes)
 			)
->>>>>>> main
 		)
 		(property "Datasheet" "~"
 			(at 176.53 62.23 0)
