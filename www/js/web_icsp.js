@@ -400,11 +400,7 @@ function loadHexFile(file) {
                     <input type="file" id="file-input" accept=".hex" style="display: none;">
                 </div>
             `);
-            // Re-attach event listeners after updating HTML
-            $('#browse-file').click(function() {
-                $('#file-input').click();
-            });
-            $('#file-input').change(handleFileSelect);
+            // No need to re-attach event listeners - event delegation in $(document).ready() handles it
 
             if($("#drag-and-flash").prop("checked")) {
                 $('#programit').click();
@@ -505,9 +501,10 @@ if ("serial" in navigator) {
         });
         $('#drop-area').on('drop', handleDroppedFile);
 
-        // Browse button and file input handlers
-        $(document).on('click', '#browse-file', function() {
-            $('#file-input').click();
+        // Browse button and file input handlers (using event delegation for dynamically created elements)
+        $(document).on('click', '#browse-file', function(e) {
+            e.preventDefault();
+            $('#file-input').trigger('click');
         });
         $(document).on('change', '#file-input', handleFileSelect);
 
