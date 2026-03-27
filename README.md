@@ -1,6 +1,11 @@
 # veryVerilog
 
-veryVerilog enables an easy way to program PICs from family **PIC16F180xy** and **PIC16F131xy** over a Web Browser without the need to install any software using a PIC as a USB HiD device. 
+veryVerilog enables an easy way to program PICs from family 
+- **PIC16F131xy**
+- **PIC16F132xy**
+- **PIC16F180xy**
+
+over a Web Browser without the need to install any software using a PIC as a USB HiD device. 
 
 The project is based on 3 parts:
 - USB-HID PCB (hardware)
