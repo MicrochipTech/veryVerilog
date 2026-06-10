@@ -226,12 +226,15 @@ async function programmDevice(){
         config = $("#config-bits-space").prop('checked'),
     ];
 
+    SerialTerminal.setPaused(true);
+
     // Show progress modal
     ModalManager.showProgress("Programming Device", "Erasing device...");
 
     if(!await icsp_hid.eraseDevice(...args)){
         ModalManager.hide();
         ModalManager.showError("Could not erase device");
+        SerialTerminal.setPaused(false);
         return false;
     }
 
@@ -251,12 +254,14 @@ async function programmDevice(){
         icsp_hid.setProgressCallback(null);
         ModalManager.hide();
         ModalManager.showError(String(e));
+        SerialTerminal.setPaused(false);
         return false;
     }
 
     icsp_hid.setProgressCallback(null);
     ModalManager.hide();
     $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
+    SerialTerminal.setPaused(false);
     return true;
 }
 
@@ -317,6 +322,7 @@ async function showMemory() {
 }
 
 async function readDevice(){
+    SerialTerminal.setPaused(true);
     try {
         // Show progress modal
         ModalManager.showProgress("Reading Device", "Starting read...");
@@ -339,6 +345,7 @@ async function readDevice(){
         console.error('There was an error reading the HID device:', e);
         ModalManager.showError("There was an error reading the HID device: " + e.message);
     }
+    SerialTerminal.setPaused(false);
 }
 
 async function identifyProgrammer() {
@@ -363,6 +370,7 @@ async function resetTarget() {
 
 async function connectProgrammer() {
     if($('#connect').hasClass("btn-primary")) {
+        SerialTerminal.setPaused(true);
         try {
             icsp_hid = new ICSP_HID();
             if(await icsp_hid.connect()) {
@@ -381,6 +389,7 @@ async function connectProgrammer() {
             ModalManager.showError("There was an error communicating with the HID device: " + e.message);
             disconnectHID();
         }
+        SerialTerminal.setPaused(false);
     } else {
         disconnectHID();
     }
@@ -519,6 +528,9 @@ if ("serial" in navigator) {
         $('#showit').click(showProgrammerMemory);
 
         displayVersion(); // Call the function to display the version
+
+        // Initialize serial terminal
+        SerialTerminal.init();
 
         //Initialize tooltips
         $('[data-bs-toggle="tooltip"]').each(function() {

@@ -3,6 +3,7 @@
 
 #VSCode
 .vscode
+.claude
 
 # MPLabX ignore files
 **/*.X/.generated_files

@@ -7,6 +7,8 @@
     <!-- CSS -->
     <link href="css/bootstrap-5.3.3.min.css" rel="stylesheet">
     <link href="css/web-icsp.css" rel="stylesheet">
+    <!-- Chart.js (served from CDN for offline-optional use; swap to local if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Main Page -->
@@ -92,8 +94,50 @@
         <div class="d-none">
             <h2 class="my-4">Available lessons:</h2>
             <div id="lessonsContainer"></div>
-        </div>        
+        </div>
+
+        <!-- Serial Terminal Panel (hidden by default, toggled by the floating button) -->
+        <div id="serial-terminal-panel" class="mt-3 mb-5 d-none" style="border:1px solid #dee2e6;border-radius:6px;overflow:hidden;">
+            <!-- Panel header -->
+            <div class="serial-terminal-header d-flex align-items-center justify-content-between px-3 py-2">
+                <div class="d-flex align-items-center gap-2">
+                    <span id="serial-status-dot" class="serial-status-dot serial-status-off"></span>
+                    <strong>Serial Terminal</strong>
+                    <span id="serial-status-txt" class="text-muted small ms-1">Disconnected</span>
+                </div>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <button id="serial-open-btn" class="btn btn-sm btn-success">Connect</button>
+                    <button id="serial-play-stop" class="btn btn-sm btn-outline-secondary" title="Pause display" disabled>Pause</button>
+                    <button id="serial-graph-mode" class="btn btn-sm btn-outline-secondary" title="Toggle CSV graph mode">&#128200; Graph</button>
+                    <button id="serial-clear" class="btn btn-sm btn-outline-secondary" title="Clear terminal">&#10006;</button>
+                </div>
+            </div>
+            <!-- Output + chart -->
+            <div id="serial-text-area">
+                <div id="serial-output" class="serial-output font-monospace small"></div>
+            </div>
+            <div id="serial-chart-area" class="d-none serial-chart-area">
+                <canvas id="serial-chart-canvas"></canvas>
+            </div>
+            <!-- Input row -->
+            <div class="serial-input-row d-flex gap-2 px-2 py-1">
+                <input id="serial-input" type="text" class="form-control form-control-sm font-monospace"
+                       placeholder="Type command and press Enter or Send…" disabled>
+                <select id="serial-line-ending" class="form-select form-select-sm" title="Line ending" style="width:auto;min-width:85px">
+                    <option value="\r\n" selected>CR+LF</option>
+                    <option value="\n">LF</option>
+                    <option value="\r">CR</option>
+                    <option value="">None</option>
+                </select>
+                <button id="serial-send" class="btn btn-sm btn-primary" disabled>Send</button>
+            </div>
+        </div>
     </div>
+
+    <!-- Floating toggle button above the footer -->
+    <button id="serial-fab" class="btn btn-secondary serial-fab" title="Open Serial Terminal">
+        Serial Terminal
+    </button>
     <!-- Modal -->
     <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -142,6 +186,7 @@
     <script src="js/pic/pic.js"></script>
     <script src="lessons/lessons.js"></script>
     <script src="js/version.js"></script>
+    <script src="js/serial_terminal.js"></script>
     <script src="js/web_icsp.js"></script>
 </body>
 </html>

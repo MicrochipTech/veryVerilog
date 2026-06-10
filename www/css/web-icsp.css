@@ -27,6 +27,85 @@
     max-width: 850px; /* 800px is the default */
 }
 
+/* =============================================
+   Serial Terminal
+   ============================================= */
+
+/* Floating button anchored bottom-right, just above the footer */
+.serial-fab {
+    position: fixed;
+    bottom: 92px;
+    right: 16px;
+    z-index: 1021;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 4px 4px 0 0;
+    opacity: 0.85;
+}
+.serial-fab:hover { opacity: 1; }
+
+.serial-terminal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    user-select: none;
+}
+
+.serial-status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.serial-status-off { background-color: #adb5bd; }
+.serial-status-on  { background-color: #198754; box-shadow: 0 0 4px #198754; }
+
+
+#serial-output {
+    height: 220px;
+    overflow-y: auto;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
+
+.serial-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.4;
+}
+.serial-rx   { color: #9cdcfe; }
+.serial-tx   { color: #ce9178; }
+.serial-info { color: #6a9955; font-style: italic; }
+
+.serial-chart-area {
+    height: 280px;
+    background-color: #fff;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.serial-chart-area canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.serial-input-row {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+#serial-graph-mode.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* =============================================
+   End Serial Terminal
+   ============================================= */
+
 .fixed-bottom-card {
     position: fixed; /* Fix the card to the viewport */
     bottom: 0; /* Position it at the bottom */
