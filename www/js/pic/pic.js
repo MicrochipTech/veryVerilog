@@ -123,9 +123,31 @@ class GenericPIC {
         return 0x2000;
     }
 
+    /**
+     * Returns true if this PIC uses dedicated Read Device ID / Revision ID commands
+     * instead of setPC + readWord. Override in families that have these commands.
+     */
+    hasDirectDeviceIdCmd() {
+        return false;
+    }
+
+    /**
+     * Returns the opcode for the Read Device ID command (used when hasDirectDeviceIdCmd() is true).
+     */
+    getReadDeviceIdCmd() {
+        return 0x24;
+    }
+
+    /**
+     * Returns the opcode for the Read Revision ID command (used when hasDirectDeviceIdCmd() is true).
+     */
+    getReadRevisionIdCmd() {
+        return 0x28;
+    }
+
     /*** virtual methods ***/
     // the methods defined here must be implemented by a child class of ICSP_HID
-    
+
     getTpIntDelayMs() {
         throw new Error('Function getTpIntDelayMs is abstract and must be implemented');
     }
@@ -265,3 +287,82 @@ class PIC16F132XY extends GenericPIC {
     }
 }
 GenericPIC.registerPic(PIC16F132XY);
+
+class PIC18FQ35 extends GenericPIC {
+
+    static deviceIdMap = {
+        0x7C20: "PIC18F24Q35",
+        0x7C40: "PIC18F25Q35",
+        0x7C60: "PIC18F26Q35",
+        0x7C80: "PIC18F44Q35",
+        0x7CA0: "PIC18F45Q35",
+        0x7CC0: "PIC18F46Q35",
+        0x7CE0: "PIC18F54Q35",
+        0x7D00: "PIC18F55Q35",
+        0x7D20: "PIC18F56Q35",
+    }
+
+    constructor() {
+        super();
+    }
+
+    // PIC18F-Q35 DS40002659A §2.2: Device ID at 0x3FFFFEh, Revision ID at 0x3FFFFCh
+    getDeviceIdAddress()   { return 0x3FFFFE; }
+    getRevisionIdAddress() { return 0x3FFFFC; }
+
+    // DS40002659A §2.1: User IDs — 32 words at 0x200000–0x20003F
+    getUserIdAddress()     { return 0x200000; }
+
+    // DS40002659A §2.5: Configuration Bytes at 0x300000–0x300014 (13 bytes)
+    getConfigWordsAddress() { return 0x300000; }
+    getConfigWordsSize()    { return 13; }
+
+    // DS40002659A §2.3: DIA at 0x2C0000–0x2C00FFh
+    getDiaAddress() { return 0x2C0000; }
+    getDiaSize()    { return 32; }
+
+    // DS40002659A §2.4: DCI at 0x3C0000–0x3C0009h
+    getDciAddress() { return 0x3C0000; }
+    getDciSize()    { return 5; }
+
+    // DS40002659A §2 Table 2-1: Data EEPROM at 0x380000–0x3800FFh
+    getEEPROMAddress() { return 0x380000; }
+
+    // LVP config bit is at CONFIG4 (offset 0x300003), bit 5 (LVP)
+    getLVPConfigAddress() { return 0x300003; }
+    getLVPSafeMask()      { return 0x20; }
+
+    // PIC18F-Q35 has dedicated Read Device ID (0x24) and Read Revision ID (0x28) commands
+    // DS40002659A Table 3-1
+    hasDirectDeviceIdCmd()  { return true; }
+    getReadDeviceIdCmd()    { return 0x24; }
+    getReadRevisionIdCmd()  { return 0x28; }
+
+    // DS40002659A §4 Table 4-1 electrical specs
+    // T_PINT = 75 µs (PFM and User IDs)
+    // T_PDFM = 11 ms (EEPROM and Config bytes)
+    // T_ERAB = 11 ms (bulk erase)
+    // T_ERAS = 11 ms (page erase)
+    getTpIntDelayMs()         { return 0.075; }  // 75 µs
+    getTpIntConfWordDelayMs() { return 11; }      // 11 ms
+    getBulkEraseTimeMs()      { return 11; }      // 11 ms
+    getRowEraseTimeMs()       { return 11; }      // 11 ms
+
+    readDiaFields(diaFields) {
+        // DIA layout (DS40002659A Table 2-2): same offsets as PIC16F families
+        // MUI0-8: words 0-8 (9 words), MUI9 reserved (1 word), EUI0-7: words 10-17 (8 words)
+        // TSLR/TSHR/FVRA/FVRC follow
+        this.MUI = diaFields.slice(0, 9).map(v => v.toString(16).padStart(4, '0')).join('');
+        this.OEUI = diaFields.slice(10, 18).map(v => v.toString(16).padStart(4, '0')).join('');
+    }
+
+    readDciFields(dciFields) {
+        // DCI layout (DS40002659A Table 2-3): addresses 0x3C0000–0x3C0008 (5 words)
+        this.ERSIZ = dciFields[0]; // 128 words
+        this.WLSIZ = dciFields[1]; // 0 (one-word-at-a-time write)
+        this.URSIZ = dciFields[2]; // 64/128/256 pages depending on variant
+        this.EESIZ = dciFields[3]; // 256 bytes
+        this.PCNT  = dciFields[4]; // 28/40/48 pins
+    }
+}
+GenericPIC.registerPic(PIC18FQ35);

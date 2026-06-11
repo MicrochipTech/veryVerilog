@@ -364,15 +364,47 @@ class ICSP_HID {
         this.pic.userId = userId.map(byte => byte.toString(16).toUpperCase().padStart(4, '0')).join('.');
     }
 
+    async readDeviceId() {
+        // Try dedicated Read Device ID command (0x24) first — used by PIC18F-Q35 and similar.
+        // These commands return 0xA5A5 when PDID is locked; a real device ID is never 0xA5A5.
+        let reply = await this.xchgCommandBlock(
+            this.getCommandBytes(0x24, 0x00, false)
+        );
+        if (reply.length > 0) reply = reply[0];
+        // The 16-bit device ID is embedded in bits [22:7] of the 24-bit payload (start/stop bits stripped)
+        let raw = (reply[1] + (reply[2] << 8) + (reply[3] << 16));
+        let devID = (raw >> 1) & 0xFFFF;
+        if (devID !== 0xA5A5 && devID !== 0x0000) return devID;
+        return null; // not a PIC18F-Q35 style device
+    }
+
+    async readRevisionId() {
+        let reply = await this.xchgCommandBlock(
+            this.getCommandBytes(0x28, 0x00, false)
+        );
+        if (reply.length > 0) reply = reply[0];
+        let raw = (reply[1] + (reply[2] << 8) + (reply[3] << 16));
+        return (raw >> 1) & 0xFFFF;
+    }
+
     async getConnectionInfo() {
         console.log('lvpExit');
         await this.lvpExit();
         console.log('lvpEnter');
         await this.lvpEnter();
-        let devIDaddress = this.pic.getDeviceIdAddress();
-        console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
-        await this.setPC(devIDaddress * 2);
-        let devID = await this.readWord();
+
+        // Try dedicated Read Device ID command first (PIC18F-Q35 and similar families).
+        // Fall back to setPC + readWord for PIC16F families.
+        let devID = await this.readDeviceId();
+        let usedDirectCmd = (devID !== null);
+
+        if (!usedDirectCmd) {
+            let devIDaddress = this.pic.getDeviceIdAddress();
+            console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
+            await this.setPC(devIDaddress * 2);
+            devID = await this.readWord();
+        }
+
         let devIDx = '0x' + devID.toString(16).toUpperCase();
         console.log(`DEVID=${devIDx}`);
 
@@ -380,9 +412,14 @@ class ICSP_HID {
         this.pic.devIDx = devIDx;
 
         let revIDaddress = this.pic.getRevisionIdAddress();
-        console.log('GetRevID: setPC 0x' + revIDaddress.toString(16));
-        await this.setPC(revIDaddress * 2);
-        this.pic.revID = await this.readWord();
+        if (this.pic.hasDirectDeviceIdCmd()) {
+            console.log('GetRevID: dedicated command 0x28');
+            this.pic.revID = await this.readRevisionId();
+        } else {
+            console.log('GetRevID: setPC 0x' + revIDaddress.toString(16));
+            await this.setPC(revIDaddress * 2);
+            this.pic.revID = await this.readWord();
+        }
         this.pic.revIDx = '0x' + this.pic.revID.toString(16).toUpperCase();
         console.log(`REVID=${this.pic.revIDx}`);
         await this.setPC(this.pic.getDiaAddress() * 2);
