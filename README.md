@@ -113,3 +113,92 @@ Click the **Settings** dropdown to access programming options. You can selective
 - This ensures programming integrity but may increase programming time slightly
 - You can disable verification if faster programming is needed, though this is not recommended
 
+### Serial Terminal
+
+The veryVerilog web page includes a built-in **Serial Terminal** for communicating directly with the target PIC over a serial (UART) connection.
+
+#### Opening the Serial Terminal
+
+Click the **"Serial Terminal"** tab to open the terminal window:
+
+![Serial Terminal](/doc/images/web5.png)
+
+#### Connecting to a Serial Port
+
+Click the **"Connect"** button and a browser popup will appear listing the available serial ports on your computer. Select the desired port (e.g., the miniFPGA board) and click **Connect**:
+
+![Serial Port Selection](/doc/images/web6.png)
+
+Once connected, the status indicator turns green and the terminal displays a confirmation message with a timestamp:
+
+![Serial Terminal Connected](/doc/images/web7.png)
+
+#### Sending Data
+
+Type a command in the input field at the bottom of the terminal and press **Enter** or click the **"Send"** button. Use the **line ending** dropdown (default: **CR+LF**) to choose the line termination characters appended to each message.
+
+#### Terminal Controls
+
+The toolbar at the top of the terminal provides the following controls:
+
+| Button | Description |
+|--------|-------------|
+| **Connect** / **Disconnect** | Connect to or disconnect from a serial port. The button label changes depending on the connection state. |
+| **Pause** | Pause the terminal output. Incoming data is still received but the display stops scrolling. Click again to resume. |
+| **Graph** | Open a graphing view to plot numeric data received from the serial port in real time (see [Graph Mode](#graph-mode) below). |
+| **X** (Clear Terminal) | Clear all text currently displayed in the terminal window. |
+| **Hide Terminal** | Collapse the serial terminal panel to free up screen space. Click the **"Serial Terminal"** tab again to reopen it. |
+
+#### Graph Mode
+
+Click the **"Graph"** button to switch the terminal into a real-time plotting view. The graph plots numeric data received over the serial port in **CSV format** — each line of text represents one data point in time, with comma-separated values mapping to individual channels.
+
+**Expected data format:**
+
+The PIC should send an optional **header line** followed by **numeric data lines**, all in CSV format terminated by a newline:
+
+```
+header1,header2,header3\n   ← optional: names for each channel
+value1,value2,value3\n      ← numeric data (one sample per line)
+value1,value2,value3\n
+...
+```
+
+The first non-numeric line received is used as the **channel names** displayed in the graph legend. If no header is sent, channels are automatically named `Ch1`, `Ch2`, etc.
+
+> **Tip:** Always send a header line at PIC startup to get meaningful trace names. Without it, UART noise or partial bytes at connection time may produce garbled labels.
+
+**Example — single channel** (e.g., ADC reading):
+```
+ADC
+512
+523
+531
+548
+```
+
+**Example — multiple channels** (e.g., temperature and humidity sensors):
+```
+Temperature,Humidity
+23.5,65.2
+23.6,64.8
+23.7,65.0
+23.8,64.5
+```
+
+**Example C code** to send plottable data from a PIC:
+```c
+// Send header once at startup
+printf("ADC,Temperature\r\n");
+
+// Then send data periodically
+while (1) {
+    printf("%d,%d\r\n", adc_value, temperature);
+    __delay_ms(100);
+}
+```
+
+Each comma-separated value is plotted as a separate trace on the graph, allowing you to monitor multiple signals simultaneously. The example below shows two channels — one counting up from 0 to 10 and the other counting down from 10 to 0 — plotted in real time:
+
+![Graph Mode](/doc/images/web8.png)
+
