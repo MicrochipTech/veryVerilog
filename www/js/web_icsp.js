@@ -172,7 +172,8 @@ function disconnectHID() {
 
 function showInfoHID(params) {
     $("#picName").text(icsp_hid.pic.name);
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>" + (icsp_hid.pic.userIdShort || icsp_hid.pic.userId));
+    $("#userId").attr("title", icsp_hid.pic.userId);
     $('#picInfo').show();
 }
 
@@ -260,7 +261,8 @@ async function programmDevice(){
 
     icsp_hid.setProgressCallback(null);
     ModalManager.hide();
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>" + (icsp_hid.pic.userIdShort || icsp_hid.pic.userId));
+    $("#userId").attr("title", icsp_hid.pic.userId);
     SerialTerminal.setPaused(false);
     return true;
 }
@@ -274,7 +276,7 @@ async function showMemory() {
     const fields = {
         "memory": ["Program Flash", 16],
         "eeprom": ["EEPROM", 8],
-        "userId": ["UserId", 4],
+        "userId": ["UserId", Math.min(icsp_hid.pic.getUserIdSize(), 8)],
         "configWords": ["Config Words", 1]
     };
 
@@ -298,9 +300,10 @@ async function showMemory() {
 
         if(key in memory) {
             let offset = memory[key + "Address"];
+            const addressStep = (key === "memory" || key === "userId") ? 2 : 1;
             for (let i = 0; i < memory[key].length;) {
                 const $row = $('<tr>');
-                const $cell1 = $('<td>').text(`0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`);
+                const $cell1 = $('<td>').text(`0x${(offset + i * addressStep).toString(16).padStart(4, '0').toUpperCase()}`);
                 $row.append($cell1);
                 for (let j = 0; j < value[1]; j++) {
                     const $cell = $('<td>').text(`${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`);

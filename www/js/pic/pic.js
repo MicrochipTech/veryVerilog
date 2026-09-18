@@ -51,12 +51,25 @@ class GenericPIC {
         return 0x8006;
     }
 
+    getPCAddress(address) {
+        return address * 2;
+    }
+
     getConfigWordsAddress() {
         return 0x8007;
     }
 
     getConfigWordsSize() {
         return 5;
+    }
+
+    getConfigWordAddresses() {
+        return Array.from({length: this.getConfigWordsSize()}, (_, i) =>
+            this.getConfigWordsAddress() + i);
+    }
+
+    getUserIdSize() {
+        return 4;
     }
 
     getDiaAddress() {
@@ -145,8 +158,109 @@ class GenericPIC {
         return 0x28;
     }
 
+    /*** flash geometry ***/
+
+    getFlashSizeWords() {
+        return this.WLSIZ * this.URSIZ;
+    }
+
+    getFlashLoopSize() {
+        return this.WLSIZ * this.URSIZ;
+    }
+
+    getFlashRowStep() {
+        return this.ERSIZ;
+    }
+
+    getWordMask() {
+        return 0x3FFF;
+    }
+
+    getEmptyWord() {
+        return 0x3FFF;
+    }
+
+    getEmptyConfigWord() {
+        return 0x3FFF;
+    }
+
+    /*** hex data extraction ***/
+
+    hexOffsetForFlashPC(pc) {
+        return pc * 2;
+    }
+
+    extractEEPROMData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return d[0];
+    }
+
+    getEEPROMWriteWaitMs() {
+        return this.getTpIntDelayMs() * 2;
+    }
+
+    getUserIdIterationPC(index) {
+        return this.getUserIdAddress() + index;
+    }
+
+    extractUserIdData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return (d[0] + (d[1] << 8)) & 0x3FFF;
+    }
+
+    extractConfigData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return (d[0] + (d[1] << 8)) & 0x3FFF;
+    }
+
+    /*** write command builders ***/
+
+    _timedWriteCmds(getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(4, 0, true));
+        cmds.push(...getCommandBytes(0xE0, 0x00));
+        cmds.push(...getCommandBytes(4, dataBits, true));
+        if (waitTime > 60000) {
+            cmds.push(...getCommandBytes(7, waitTime / 2, true));
+            cmds.push(...getCommandBytes(7, waitTime / 2, true));
+        } else {
+            cmds.push(...getCommandBytes(7, waitTime, true));
+        }
+        return cmds;
+    }
+
+    buildFlashRowCmds(row16, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        for (let i = 0; i < this.ERSIZ; i++) {
+            cmds.push(...getCommandBytes(i === (this.ERSIZ - 1) ? 0x00 : 0x02, row16[i] << 1));
+        }
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildEEPROMWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildUserIdWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildConfigWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
     /*** virtual methods ***/
-    // the methods defined here must be implemented by a child class of ICSP_HID
+    // the methods defined here must be implemented by a child class
 
     getTpIntDelayMs() {
         throw new Error('Function getTpIntDelayMs is abstract and must be implemented');
@@ -316,6 +430,13 @@ class PIC18FQ35 extends GenericPIC {
     // DS40002659A §2.5: Configuration Bytes at 0x300000–0x300014 (13 bytes)
     getConfigWordsAddress() { return 0x300000; }
     getConfigWordsSize()    { return 13; }
+    getConfigWordAddresses() {
+        return [0x300000, 0x300001, 0x300002, 0x300003,
+            0x300004, 0x300005, 0x300006, 0x300007,
+            0x300008, 0x300009, 0x30000A, 0x30000B,
+            0x30000C];
+    }
+    getUserIdSize()         { return 32; }
 
     // DS40002659A §2.3: DIA at 0x2C0000–0x2C00FFh
     getDiaAddress() { return 0x2C0000; }
@@ -337,6 +458,72 @@ class PIC18FQ35 extends GenericPIC {
     hasDirectDeviceIdCmd()  { return true; }
     getReadDeviceIdCmd()    { return 0x24; }
     getReadRevisionIdCmd()  { return 0x28; }
+
+    /*** flash geometry overrides ***/
+
+    getFlashSizeWords()  { return this.ERSIZ * this.URSIZ; }
+    getFlashLoopSize()   { return this.ERSIZ * this.URSIZ * 2; }
+    getFlashRowStep()    { return this.ERSIZ * 2; }
+    getWordMask()        { return 0xFFFF; }
+    getEmptyWord()       { return 0xFFFF; }
+    getEmptyConfigWord() { return 0xFF; }
+
+    /*** hex data extraction overrides ***/
+
+    hexOffsetForFlashPC(pc) { return pc; }
+
+    extractEEPROMData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 1);
+        return d[0];
+    }
+
+    getEEPROMWriteWaitMs() { return this.getTpIntConfWordDelayMs(); }
+
+    getUserIdIterationPC(index) {
+        return this.getUserIdAddress() + index * 2;
+    }
+
+    extractUserIdData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 2);
+        return (d[0] + (d[1] << 8)) & 0xFFFF;
+    }
+
+    extractConfigData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 1);
+        return d[0];
+    }
+
+    /*** write command builder overrides ***/
+
+    buildFlashRowCmds(row16, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        for (let i = 0; i < this.ERSIZ; i++) {
+            cmds.push(...getCommandBytes(0xE0, row16[i] << 1));
+            cmds.push(...getCommandBytes(7, waitTime, true));
+        }
+        return cmds;
+    }
+
+    buildEEPROMWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xC0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
+
+    buildUserIdWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xE0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
+
+    buildConfigWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xC0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
 
     // DS40002659A §4 Table 4-1 electrical specs
     // T_PINT = 75 µs (PFM and User IDs)

@@ -27,6 +27,17 @@
     max-width: 850px; /* 800px is the default */
 }
 
+#userId {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#memmoryTables {
+    overflow-x: auto;
+}
+
 /* =============================================
    Serial Terminal
    ============================================= */

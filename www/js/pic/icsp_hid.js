@@ -81,9 +81,9 @@ class ICSP_HID {
     }
 
     async readFlash(){
-        console.log('Get contents of FLASH: setPC 0x0000');        
+        console.log('Get contents of FLASH: setPC 0x0000');
         await this.setPC(0x0000);
-        return await this.readWordBlock(this.pic.WLSIZ * this.pic.URSIZ);
+        return await this.readWordBlock(this.pic.getFlashSizeWords());
     }
 
     async readEEPROM() {
@@ -91,7 +91,7 @@ class ICSP_HID {
         let eepromAddress = this.pic.getEEPROMAddress();
         let _eeprom = [];
         if(eepromAddress != null && this.pic.EESIZ != 0) {
-            await this.setPC(eepromAddress * 2);
+            await this.setPC(this.pic.getPCAddress(eepromAddress));
             _eeprom = await this.readWordBlock(this.pic.EESIZ);    
         }
         return _eeprom;
@@ -100,15 +100,18 @@ class ICSP_HID {
     async readUserID() {
         console.log('Get contents of UserId: setPC 0x8000');        
         let userIdAddress = this.pic.getUserIdAddress();
-        await this.setPC(userIdAddress * 2);
-        return await this.readWordBlock(4);
+        await this.setPC(this.pic.getPCAddress(userIdAddress));
+        return await this.readWordBlock(this.pic.getUserIdSize());
     }
 
     async readConfigWords() {
-        console.log('Get contents of Config Words: setPC 0x8000');        
-        let configWordsAddress = this.pic.getConfigWordsAddress();
-        await this.setPC(configWordsAddress * 2);
-        return await this.readWordBlock(this.pic.getConfigWordsSize());
+        console.log('Get contents of Config Words');
+        let configWords = [];
+        for (const address of this.pic.getConfigWordAddresses()) {
+            await this.setPC(this.pic.getPCAddress(address));
+            configWords.push(await this.readWord());
+        }
+        return configWords;
     }
 
     async readDevice() {
@@ -148,91 +151,65 @@ class ICSP_HID {
         };
     }
 
-    // Fill the buffer with the procedures to flash this row
-    insertWriteCmds(buffer, waitTime) {
-        // Set payload to 0 bits
-        buffer.push(...this.getCommandBytes(4, 0, true));
-        // begin internally timed programming
-        buffer.push(...this.getCommandBytes(0xE0, 0x00));
-        // Set payload to 24 bits
-        buffer.push(...this.getCommandBytes(4, this.dataBits, true));
-        // wait for command to complete
-        if(waitTime > 60000) {
-            buffer.push(...this.getCommandBytes(7, waitTime / 2, true));
-            buffer.push(...this.getCommandBytes(7, waitTime / 2, true));
-        }
-        else {
-            buffer.push(...this.getCommandBytes(7, waitTime, true));
-        }
-    }
-
     async writeFlash(hexObject, verify = false) {
-        // this function considers that the memory is already erased        
         let verify_ok = true;
         let buffer = [];
-        let flashSize = this.pic.ERSIZ * this.pic.URSIZ; // erasable row size * number of user erasable rows.
-        let checkEmpty = arr => arr.every(v => v === 0xFFFF);
+        const flashLoopSize = this.pic.getFlashLoopSize();
+        const rowStep = this.pic.getFlashRowStep();
+        const wordMask = this.pic.getWordMask();
         let waitTime = this.pic.getTpIntDelayMs() * 1000;
-        // let rowEraseWaitTime = this.pic.getRowEraseTimeMss() * 1000;
-        for (let pc = 0x0000; pc < flashSize; pc += this.pic.ERSIZ){
-            let row = hexObject.slicePad(pc * 2, this.pic.ERSIZ * 2);
+        const cmdBuilder = this.getCommandBytes.bind(this);
+
+        for (let pc = 0x0000; pc < flashLoopSize; pc += rowStep) {
+            let row = hexObject.slicePad(this.pic.hexOffsetForFlashPC(pc), this.pic.ERSIZ * 2);
             let row16 = new Uint16Array(row.buffer);
-            // check if row is empty, it it is empty, we don't need to program it.
-            if(checkEmpty(row16)) continue; 
-            // check if the existing row at flash is the same row to be programmed, if yes skip it,
-            // otherwise include the row to be programmed into the buffer.
-            if(verify) {
+            if (row16.every(v => v === 0xFFFF))
+                continue;
+
+            if (verify) {
                 await this.setPC(pc << 1);
                 let programmed_row16 = await this.readWordBlock(this.pic.ERSIZ);
-                if(programmed_row16.every((value, index) => value === (row16[index] & 0x3FFF)))                     
-                   continue;
+                if (programmed_row16.every((value, index) => value === (row16[index] & wordMask)))
+                    continue;
+                const mismatchIndex = programmed_row16.findIndex((value, index) =>
+                    value !== (row16[index] & wordMask));
+                console.warn(`Flash verify mismatch at PC 0x${pc.toString(16)}, word ${mismatchIndex}: expected 0x${(row16[mismatchIndex] & wordMask).toString(16)}, got 0x${programmed_row16[mismatchIndex].toString(16)}`);
                 verify_ok = false;
-                   continue;
+                continue;
             }
-            // set new PC before loading data
-            buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
-            // load data into one row in NVM
-            for(let i = 0; i < this.pic.ERSIZ; i++) {
-                // load Data for NVM and increment PC. Do not increment PC if it is the last one
-                buffer.push(...this.getCommandBytes(i==(this.pic.ERSIZ-1) ? 0x00:0x02, row16[i] << 1));    
-            }
-            // Fill the buffer with the procedures to flash this row
-            this.insertWriteCmds(buffer, waitTime);
+
+            buffer.push(...this.getCommandBytes(0x80, pc << 1));
+            buffer.push(...this.pic.buildFlashRowCmds(row16, cmdBuilder, this.dataBits, waitTime));
         }
         await this.xchgCommandBlock(buffer);
-        return verify_ok;    
+        return verify_ok;
     }
 
     async writeEEPROM(hexObject, verify = false) {
-        // this function considers that the memory is already erased        
         let verify_ok = true;
         let buffer = [];
-        let eepromSize = this.pic.EESIZ; 
-        if(eepromSize === 0) return true;
+        let eepromSize = this.pic.EESIZ;
+        if (eepromSize === 0) return true;
         eepromSize += this.pic.getEEPROMAddress();
-        let waitTime = this.pic.getTpIntDelayMs() * 1000 * 2; // less than 2 will store wrong data
-        for (let pc = this.pic.getEEPROMAddress(); pc < eepromSize; pc++){
-            let eepromWord = hexObject.slicePad(pc * 2, 2);
-            let data = eepromWord[0];
-            // check if row is empty
-            if(data == 0xFF) continue; 
-            // check if the existing data at EEPROM is the same data to be programmed, if yes skip it,
-            // otherwise include the row to be programmed into the buffer.
-            // we consider that the flash is already programmed.
-            if(verify) {
+        let waitTime = this.pic.getEEPROMWriteWaitMs() * 1000;
+        const cmdBuilder = this.getCommandBytes.bind(this);
+
+        for (let pc = this.pic.getEEPROMAddress(); pc < eepromSize; pc++) {
+            let data = this.pic.extractEEPROMData(hexObject, pc);
+            if (data === 0xFF) continue;
+
+            if (verify) {
                 await this.setPC(pc << 1);
                 let programmed_data = await this.readWordBlock(1);
-                if(programmed_data[0] === data)                     
-                   continue;
-                verify_ok = false;
+                if (programmed_data[0] === data)
                     continue;
+                console.warn(`EEPROM verify mismatch at 0x${pc.toString(16)}: expected 0x${data.toString(16).padStart(2, '0')}, got 0x${programmed_data[0].toString(16)}`);
+                verify_ok = false;
+                continue;
             }
-            // set new PC before loading data
-            buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
-            // load data into one byte of EEPROM address
-            buffer.push(...this.getCommandBytes(0x00, data << 1));   
-            // write the data to EEPROM 
-            this.insertWriteCmds(buffer, waitTime);
+
+            buffer.push(...this.getCommandBytes(0x80, pc << 1));
+            buffer.push(...this.pic.buildEEPROMWriteCmd(data, cmdBuilder, this.dataBits, waitTime));
         }
         await this.xchgCommandBlock(buffer);
         return verify_ok;
@@ -242,28 +219,29 @@ class ICSP_HID {
         let verify_ok = true;
         let buffer = [];
         let userId = [];
-        let userIdSize = this.pic.getUserIdAddress() + 4; // userID: four 14 bits words.
+        let userIdSize = this.pic.getUserIdSize();
         let waitTime = this.pic.getTpIntDelayMs() * 1000;
-        for (let pc = this.pic.getUserIdAddress(); pc < userIdSize; pc++){
-            let userIdx = hexObject.slicePad(pc * 2, 2);
-            let data = (userIdx[0] + (userIdx[1] << 8)) & 0x3FFF;
+        const emptyWord = this.pic.getEmptyWord();
+        const cmdBuilder = this.getCommandBytes.bind(this);
+
+        for (let index = 0; index < userIdSize; index++) {
+            let pc = this.pic.getUserIdIterationPC(index);
+            let data = this.pic.extractUserIdData(hexObject, pc);
             userId.push(data);
-            // check if row is empty
-            if(data === 0x3FFF) continue; 
-            if(verify) {
+            if (data === emptyWord) continue;
+
+            if (verify) {
                 await this.setPC(pc << 1);
                 let programmed_userId = await this.readWordBlock(1);
-                if(programmed_userId[0] === data)                    
+                if (programmed_userId[0] === data)
                     continue;
+                console.warn(`User ID verify mismatch at 0x${pc.toString(16)}: expected 0x${data.toString(16)}, got 0x${programmed_userId[0].toString(16)}`);
                 verify_ok = false;
-                    continue;
+                continue;
             }
-            // set new PC before loading data
-            buffer.push(...this.getCommandBytes(0x80, pc << 1)); 
-            // load data into one word of userID area, do not increase PC
-            buffer.push(...this.getCommandBytes(0x00, data << 1));    
-            // write the data to userId area 
-            this.insertWriteCmds(buffer, waitTime);
+
+            buffer.push(...this.getCommandBytes(0x80, pc << 1));
+            buffer.push(...this.pic.buildUserIdWriteCmd(data, cmdBuilder, this.dataBits, waitTime));
         }
         await this.xchgCommandBlock(buffer);
         this.readUserIdFields(userId);
@@ -273,37 +251,35 @@ class ICSP_HID {
     async writeConfigWord(hexObject, verify = false) {
         let verify_ok = true;
         let waitTime = this.pic.getTpIntConfWordDelayMs() * 1000 * 5;
-        let configWordSize = this.pic.getConfigWordsAddress() + this.pic.getConfigWordsSize();
-        for (let pc = this.pic.getConfigWordsAddress(); pc < configWordSize; pc++) {
-            let buffer = [];
-            let confWord = hexObject.slicePad(pc * 2, 2);
-            let data = (confWord[0] + (confWord[1] << 8)) & 0x3FFF;
-            if(data === 0x3FFF) continue;
-            if(verify) {
+        const emptyConfig = this.pic.getEmptyConfigWord();
+        const cmdBuilder = this.getCommandBytes.bind(this);
+
+        for (let pc of this.pic.getConfigWordAddresses()) {
+            let data = this.pic.extractConfigData(hexObject, pc);
+            if (data === emptyConfig) continue;
+
+            if (verify) {
                 await this.setPC(pc << 1);
                 let programmed_confWord = await this.readWordBlock(1);
-                if(programmed_confWord[0] === data)                     
+                if (programmed_confWord[0] === data)
                     continue;
+                console.warn(`Config verify mismatch at 0x${pc.toString(16)}: expected 0x${data.toString(16)}, got 0x${programmed_confWord[0].toString(16)}`);
                 verify_ok = false;
-                    continue;
+                continue;
             }
-            // load PC with config word address
-            buffer = this.getCommandBytes(0x80, pc << 1);
-            // load NVM with config word, do not increase PC
-            buffer.push(...this.getCommandBytes(0x00, data << 1));
-            // write the config word
-            this.insertWriteCmds(buffer, waitTime);
-            // store each config word once 
-            await this.xchgCommandBlock(buffer, 2000);        
+
+            let buffer = this.getCommandBytes(0x80, pc << 1);
+            buffer.push(...this.pic.buildConfigWriteCmd(data, cmdBuilder, this.dataBits, waitTime));
+            await this.xchgCommandBlock(buffer, 2000);
         }
         return verify_ok;
     }
 
-    async verifyFlashedData(trials, label, verifyFunction) {
+    async verifyFlashedData(trials, label, verifyFunction, hexObject) {
         console.log(`Verifying ${label}...`);
         for (let i = 0; i < trials; i++) {
             if (await verifyFunction.call(this, hexObject, true)) {
-                return; // Verification succeeded
+                return;
             }
         }
         throw new Error(`${label} verification failed`);
@@ -343,7 +319,7 @@ class ICSP_HID {
                     if (this.progressCallback) {
                         this.progressCallback(currentOp / totalOps, `Verifying ${label}...`);
                     }
-                    await this.verifyFlashedData(trials, label, writeMethod);
+                    await this.verifyFlashedData(trials, label, writeMethod, hexObject);
                     currentOp++;
                 }
             }
@@ -360,27 +336,34 @@ class ICSP_HID {
         }
     }
 
-    readUserIdFields(userId){
-        this.pic.userId = userId.map(byte => byte.toString(16).toUpperCase().padStart(4, '0')).join('.');
+    readUserIdFields(userId) {
+        const hex = userId.map(w => w.toString(16).toUpperCase().padStart(4, '0'));
+        this.pic.userId = hex.join('.');
+        if (hex.length > 8) {
+            this.pic.userIdShort = hex.slice(0, 8).join('.') + '…';
+        } else {
+            this.pic.userIdShort = this.pic.userId;
+        }
     }
 
     async readDeviceId() {
-        // Try dedicated Read Device ID command (0x24) first — used by PIC18F-Q35 and similar.
-        // These commands return 0xA5A5 when PDID is locked; a real device ID is never 0xA5A5.
+        // Use the HID bridge read meta-command to execute the target's Read Device ID instruction.
+        // These commands return 0xA5A5 when ICSP/debug are not locked. In that case
+        // the device ID must be read from its memory-mapped address instead.
         let reply = await this.xchgCommandBlock(
-            this.getCommandBytes(0x24, 0x00, false)
+            this.getCommandBytes(8, 0x24, true)
         );
         if (reply.length > 0) reply = reply[0];
         // The 16-bit device ID is embedded in bits [22:7] of the 24-bit payload (start/stop bits stripped)
         let raw = (reply[1] + (reply[2] << 8) + (reply[3] << 16));
         let devID = (raw >> 1) & 0xFFFF;
-        if (devID !== 0xA5A5 && devID !== 0x0000) return devID;
-        return null; // not a PIC18F-Q35 style device
+        if (PIC18FQ35.deviceIdMap[devID] != null) return devID;
+        return null; // use the memory-mapped ID path
     }
 
     async readRevisionId() {
         let reply = await this.xchgCommandBlock(
-            this.getCommandBytes(0x28, 0x00, false)
+            this.getCommandBytes(8, 0x28, true)
         );
         if (reply.length > 0) reply = reply[0];
         let raw = (reply[1] + (reply[2] << 8) + (reply[3] << 16));
@@ -393,16 +376,26 @@ class ICSP_HID {
         console.log('lvpEnter');
         await this.lvpEnter();
 
-        // Try dedicated Read Device ID command first (PIC18F-Q35 and similar families).
-        // Fall back to setPC + readWord for PIC16F families.
+        // The Q35 dedicated command returns 0xA5A5 unless ICSP/debug are locked.
+        // Fall back to the memory-mapped ID address for normal unlocked devices.
         let devID = await this.readDeviceId();
         let usedDirectCmd = (devID !== null);
 
         if (!usedDirectCmd) {
-            let devIDaddress = this.pic.getDeviceIdAddress();
-            console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
-            await this.setPC(devIDaddress * 2);
-            devID = await this.readWord();
+            // Probe the Q35 memory-mapped ID first. This is the normal Q35 path;
+            // older families fall through to their configured ID address.
+            const q35DeviceId = 0x3FFFFE;
+            console.log('GetDeviceID: setPC 0x' + q35DeviceId.toString(16));
+            await this.setPC(this.pic.getPCAddress(q35DeviceId));
+            const q35DevID = await this.readWord();
+            if (PIC18FQ35.deviceIdMap[q35DevID] != null) {
+                devID = q35DevID;
+            } else {
+                let devIDaddress = this.pic.getDeviceIdAddress();
+                console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
+                await this.setPC(this.pic.getPCAddress(devIDaddress));
+                devID = await this.readWord();
+            }
         }
 
         let devIDx = '0x' + devID.toString(16).toUpperCase();
@@ -412,22 +405,22 @@ class ICSP_HID {
         this.pic.devIDx = devIDx;
 
         let revIDaddress = this.pic.getRevisionIdAddress();
-        if (this.pic.hasDirectDeviceIdCmd()) {
+        if (usedDirectCmd && this.pic.hasDirectDeviceIdCmd()) {
             console.log('GetRevID: dedicated command 0x28');
             this.pic.revID = await this.readRevisionId();
         } else {
             console.log('GetRevID: setPC 0x' + revIDaddress.toString(16));
-            await this.setPC(revIDaddress * 2);
+            await this.setPC(this.pic.getPCAddress(revIDaddress));
             this.pic.revID = await this.readWord();
         }
         this.pic.revIDx = '0x' + this.pic.revID.toString(16).toUpperCase();
         console.log(`REVID=${this.pic.revIDx}`);
-        await this.setPC(this.pic.getDiaAddress() * 2);
+        await this.setPC(this.pic.getPCAddress(this.pic.getDiaAddress()));
         this.pic.readDiaFields(await this.readWordBlock(this.pic.getDiaSize()));
-        await this.setPC(this.pic.getDciAddress() * 2);
+        await this.setPC(this.pic.getPCAddress(this.pic.getDciAddress()));
         this.pic.readDciFields(await this.readWordBlock(this.pic.getDciSize()));
-        await this.setPC(this.pic.getUserIdAddress() * 2);
-        this.readUserIdFields(await this.readWordBlock(4));
+        await this.setPC(this.pic.getPCAddress(this.pic.getUserIdAddress()));
+        this.readUserIdFields(await this.readWordBlock(this.pic.getUserIdSize()));
         console.log(`UserId=${this.pic.userId}`);
         console.log('Get contents of FLASH init: setPC 0x0000');        
         await this.setPC(0x0000);
@@ -619,7 +612,7 @@ class ICSP_HID {
         );
         if(reply.length > 0) reply = reply[0];
         if (reply[0] === 0xFC) {
-            return (reply[1] + (reply[2] << 8) + (reply[3] << 16)) >> 1;
+            return ((reply[1] + (reply[2] << 8) + (reply[3] << 16)) >> 1) & 0xFFFF;
         } else {
             throw new Error('Unexpected reply on command "readWord", expected 0xFC got 0x' + reply[0].toString(16).toUpperCase());
         }
@@ -650,7 +643,7 @@ class ICSP_HID {
             for(let i=0; i < reply.length; i += 4) {
                 if (reply[i] === 0xFF && reply[i+1] == 0x00) continue; // NOP
                 else if (reply[i] === 0xFE) {
-                    words.push((reply[i+1] + (reply[i+2] << 8) + (reply[i+3] << 16)) >> 1);
+                    words.push(((reply[i+1] + (reply[i+2] << 8) + (reply[i+3] << 16)) >> 1) & 0xFFFF);
                 } else {
                     throw new Error('Unexpected reply on command "readWord", expected 0xFC got 0x' + reply[0].toString(16).to);
                 }    
