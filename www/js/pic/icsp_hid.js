@@ -347,18 +347,32 @@ class ICSP_HID {
     }
 
     async readDeviceId() {
-        // Use the HID bridge read meta-command to execute the target's Read Device ID instruction.
-        // These commands return 0xA5A5 when ICSP/debug are not locked. In that case
-        // the device ID must be read from its memory-mapped address instead.
+        // Try the Q35 dedicated Read Device ID command (0x24) first.
         let reply = await this.xchgCommandBlock(
             this.getCommandBytes(8, 0x24, true)
         );
         if (reply.length > 0) reply = reply[0];
-        // The 16-bit device ID is embedded in bits [22:7] of the 24-bit payload (start/stop bits stripped)
         let raw = (reply[1] + (reply[2] << 8) + (reply[3] << 16));
         let devID = (raw >> 1) & 0xFFFF;
         if (PIC18FQ35.deviceIdMap[devID] != null) return devID;
-        return null; // use the memory-mapped ID path
+
+        // The 0x24 command can corrupt ICSP state on PIC16 devices that
+        // don't understand it. Re-enter LVP to reset the bus.
+        await this.lvpExit();
+        await this.lvpEnter();
+
+        // Probe the Q35 memory-mapped Device ID address.
+        const q35DeviceId = 0x3FFFFE;
+        console.log('GetDeviceID: setPC 0x' + q35DeviceId.toString(16));
+        await this.setPC(this.pic.getPCAddress(q35DeviceId));
+        const q35DevID = await this.readWord();
+        if (PIC18FQ35.deviceIdMap[q35DevID] != null) return q35DevID;
+
+        // Fall back to the generic PIC16 Device ID address.
+        let devIDaddress = this.pic.getDeviceIdAddress();
+        console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
+        await this.setPC(this.pic.getPCAddress(devIDaddress));
+        return await this.readWord();
     }
 
     async readRevisionId() {
@@ -376,27 +390,7 @@ class ICSP_HID {
         console.log('lvpEnter');
         await this.lvpEnter();
 
-        // The Q35 dedicated command returns 0xA5A5 unless ICSP/debug are locked.
-        // Fall back to the memory-mapped ID address for normal unlocked devices.
         let devID = await this.readDeviceId();
-        let usedDirectCmd = (devID !== null);
-
-        if (!usedDirectCmd) {
-            // Probe the Q35 memory-mapped ID first. This is the normal Q35 path;
-            // older families fall through to their configured ID address.
-            const q35DeviceId = 0x3FFFFE;
-            console.log('GetDeviceID: setPC 0x' + q35DeviceId.toString(16));
-            await this.setPC(this.pic.getPCAddress(q35DeviceId));
-            const q35DevID = await this.readWord();
-            if (PIC18FQ35.deviceIdMap[q35DevID] != null) {
-                devID = q35DevID;
-            } else {
-                let devIDaddress = this.pic.getDeviceIdAddress();
-                console.log('GetDeviceID: setPC 0x' + devIDaddress.toString(16));
-                await this.setPC(this.pic.getPCAddress(devIDaddress));
-                devID = await this.readWord();
-            }
-        }
 
         let devIDx = '0x' + devID.toString(16).toUpperCase();
         console.log(`DEVID=${devIDx}`);
@@ -404,11 +398,11 @@ class ICSP_HID {
         this.pic = GenericPIC.getPicByDevId(devID);
         this.pic.devIDx = devIDx;
 
-        let revIDaddress = this.pic.getRevisionIdAddress();
-        if (usedDirectCmd && this.pic.hasDirectDeviceIdCmd()) {
+        if (this.pic.hasDirectDeviceIdCmd()) {
             console.log('GetRevID: dedicated command 0x28');
             this.pic.revID = await this.readRevisionId();
         } else {
+            let revIDaddress = this.pic.getRevisionIdAddress();
             console.log('GetRevID: setPC 0x' + revIDaddress.toString(16));
             await this.setPC(this.pic.getPCAddress(revIDaddress));
             this.pic.revID = await this.readWord();
