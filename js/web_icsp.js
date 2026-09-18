@@ -172,7 +172,8 @@ function disconnectHID() {
 
 function showInfoHID(params) {
     $("#picName").text(icsp_hid.pic.name);
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>" + (icsp_hid.pic.userIdShort || icsp_hid.pic.userId));
+    $("#userId").attr("title", icsp_hid.pic.userId);
     $('#picInfo').show();
 }
 
@@ -226,12 +227,15 @@ async function programmDevice(){
         config = $("#config-bits-space").prop('checked'),
     ];
 
+    SerialTerminal.setPaused(true);
+
     // Show progress modal
     ModalManager.showProgress("Programming Device", "Erasing device...");
 
     if(!await icsp_hid.eraseDevice(...args)){
         ModalManager.hide();
         ModalManager.showError("Could not erase device");
+        SerialTerminal.setPaused(false);
         return false;
     }
 
@@ -251,12 +255,15 @@ async function programmDevice(){
         icsp_hid.setProgressCallback(null);
         ModalManager.hide();
         ModalManager.showError(String(e));
+        SerialTerminal.setPaused(false);
         return false;
     }
 
     icsp_hid.setProgressCallback(null);
     ModalManager.hide();
-    $("#userId").html("<strong>UserId:&nbsp;</strong>"+icsp_hid.pic.userId);
+    $("#userId").html("<strong>UserId:&nbsp;</strong>" + (icsp_hid.pic.userIdShort || icsp_hid.pic.userId));
+    $("#userId").attr("title", icsp_hid.pic.userId);
+    SerialTerminal.setPaused(false);
     return true;
 }
 
@@ -269,7 +276,7 @@ async function showMemory() {
     const fields = {
         "memory": ["Program Flash", 16],
         "eeprom": ["EEPROM", 8],
-        "userId": ["UserId", 4],
+        "userId": ["UserId", Math.min(icsp_hid.pic.getUserIdSize(), 8)],
         "configWords": ["Config Words", 1]
     };
 
@@ -293,9 +300,10 @@ async function showMemory() {
 
         if(key in memory) {
             let offset = memory[key + "Address"];
+            const addressStep = (key === "memory" || key === "userId") ? 2 : 1;
             for (let i = 0; i < memory[key].length;) {
                 const $row = $('<tr>');
-                const $cell1 = $('<td>').text(`0x${(i + offset).toString(16).padStart(4, '0').toUpperCase()}`);
+                const $cell1 = $('<td>').text(`0x${(offset + i * addressStep).toString(16).padStart(4, '0').toUpperCase()}`);
                 $row.append($cell1);
                 for (let j = 0; j < value[1]; j++) {
                     const $cell = $('<td>').text(`${memory[key][i].toString(16).padStart(key === "eeprom" ? 2 : 4, '0').toUpperCase()}`);
@@ -317,6 +325,7 @@ async function showMemory() {
 }
 
 async function readDevice(){
+    SerialTerminal.setPaused(true);
     try {
         // Show progress modal
         ModalManager.showProgress("Reading Device", "Starting read...");
@@ -339,6 +348,7 @@ async function readDevice(){
         console.error('There was an error reading the HID device:', e);
         ModalManager.showError("There was an error reading the HID device: " + e.message);
     }
+    SerialTerminal.setPaused(false);
 }
 
 async function identifyProgrammer() {
@@ -363,6 +373,7 @@ async function resetTarget() {
 
 async function connectProgrammer() {
     if($('#connect').hasClass("btn-primary")) {
+        SerialTerminal.setPaused(true);
         try {
             icsp_hid = new ICSP_HID();
             if(await icsp_hid.connect()) {
@@ -381,6 +392,7 @@ async function connectProgrammer() {
             ModalManager.showError("There was an error communicating with the HID device: " + e.message);
             disconnectHID();
         }
+        SerialTerminal.setPaused(false);
     } else {
         disconnectHID();
     }
@@ -519,6 +531,9 @@ if ("serial" in navigator) {
         $('#showit').click(showProgrammerMemory);
 
         displayVersion(); // Call the function to display the version
+
+        // Initialize serial terminal
+        SerialTerminal.init();
 
         //Initialize tooltips
         $('[data-bs-toggle="tooltip"]').each(function() {

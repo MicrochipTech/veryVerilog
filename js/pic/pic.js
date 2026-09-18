@@ -51,12 +51,25 @@ class GenericPIC {
         return 0x8006;
     }
 
+    getPCAddress(address) {
+        return address * 2;
+    }
+
     getConfigWordsAddress() {
         return 0x8007;
     }
 
     getConfigWordsSize() {
         return 5;
+    }
+
+    getConfigWordAddresses() {
+        return Array.from({length: this.getConfigWordsSize()}, (_, i) =>
+            this.getConfigWordsAddress() + i);
+    }
+
+    getUserIdSize() {
+        return 4;
     }
 
     getDiaAddress() {
@@ -123,9 +136,132 @@ class GenericPIC {
         return 0x2000;
     }
 
+    /**
+     * Returns true if this PIC uses dedicated Read Device ID / Revision ID commands
+     * instead of setPC + readWord. Override in families that have these commands.
+     */
+    hasDirectDeviceIdCmd() {
+        return false;
+    }
+
+    /**
+     * Returns the opcode for the Read Device ID command (used when hasDirectDeviceIdCmd() is true).
+     */
+    getReadDeviceIdCmd() {
+        return 0x24;
+    }
+
+    /**
+     * Returns the opcode for the Read Revision ID command (used when hasDirectDeviceIdCmd() is true).
+     */
+    getReadRevisionIdCmd() {
+        return 0x28;
+    }
+
+    /*** flash geometry ***/
+
+    getFlashSizeWords() {
+        return this.WLSIZ * this.URSIZ;
+    }
+
+    getFlashLoopSize() {
+        return this.WLSIZ * this.URSIZ;
+    }
+
+    getFlashRowStep() {
+        return this.ERSIZ;
+    }
+
+    getWordMask() {
+        return 0x3FFF;
+    }
+
+    getEmptyWord() {
+        return 0x3FFF;
+    }
+
+    getEmptyConfigWord() {
+        return 0x3FFF;
+    }
+
+    /*** hex data extraction ***/
+
+    hexOffsetForFlashPC(pc) {
+        return pc * 2;
+    }
+
+    extractEEPROMData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return d[0];
+    }
+
+    getEEPROMWriteWaitMs() {
+        return this.getTpIntDelayMs() * 2;
+    }
+
+    getUserIdIterationPC(index) {
+        return this.getUserIdAddress() + index;
+    }
+
+    extractUserIdData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return (d[0] + (d[1] << 8)) & 0x3FFF;
+    }
+
+    extractConfigData(hexObject, pc) {
+        let d = hexObject.slicePad(pc * 2, 2);
+        return (d[0] + (d[1] << 8)) & 0x3FFF;
+    }
+
+    /*** write command builders ***/
+
+    _timedWriteCmds(getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(4, 0, true));
+        cmds.push(...getCommandBytes(0xE0, 0x00));
+        cmds.push(...getCommandBytes(4, dataBits, true));
+        if (waitTime > 60000) {
+            cmds.push(...getCommandBytes(7, waitTime / 2, true));
+            cmds.push(...getCommandBytes(7, waitTime / 2, true));
+        } else {
+            cmds.push(...getCommandBytes(7, waitTime, true));
+        }
+        return cmds;
+    }
+
+    buildFlashRowCmds(row16, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        for (let i = 0; i < this.ERSIZ; i++) {
+            cmds.push(...getCommandBytes(i === (this.ERSIZ - 1) ? 0x00 : 0x02, row16[i] << 1));
+        }
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildEEPROMWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildUserIdWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
+    buildConfigWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0x00, data << 1));
+        cmds.push(...this._timedWriteCmds(getCommandBytes, dataBits, waitTime));
+        return cmds;
+    }
+
     /*** virtual methods ***/
-    // the methods defined here must be implemented by a child class of ICSP_HID
-    
+    // the methods defined here must be implemented by a child class
+
     getTpIntDelayMs() {
         throw new Error('Function getTpIntDelayMs is abstract and must be implemented');
     }
@@ -265,3 +401,155 @@ class PIC16F132XY extends GenericPIC {
     }
 }
 GenericPIC.registerPic(PIC16F132XY);
+
+class PIC18FQ35 extends GenericPIC {
+
+    static deviceIdMap = {
+        0x7C20: "PIC18F24Q35",
+        0x7C40: "PIC18F25Q35",
+        0x7C60: "PIC18F26Q35",
+        0x7C80: "PIC18F44Q35",
+        0x7CA0: "PIC18F45Q35",
+        0x7CC0: "PIC18F46Q35",
+        0x7CE0: "PIC18F54Q35",
+        0x7D00: "PIC18F55Q35",
+        0x7D20: "PIC18F56Q35",
+    }
+
+    constructor() {
+        super();
+    }
+
+    // PIC18F-Q35 DS40002659A §2.2: Device ID at 0x3FFFFEh, Revision ID at 0x3FFFFCh
+    getDeviceIdAddress()   { return 0x3FFFFE; }
+    getRevisionIdAddress() { return 0x3FFFFC; }
+
+    // DS40002659A §2.1: User IDs — 32 words at 0x200000–0x20003F
+    getUserIdAddress()     { return 0x200000; }
+
+    // DS40002659A §2.5: Configuration Bytes at 0x300000–0x300014 (13 bytes)
+    getConfigWordsAddress() { return 0x300000; }
+    getConfigWordsSize()    { return 13; }
+    getConfigWordAddresses() {
+        return [0x300000, 0x300001, 0x300002, 0x300003,
+            0x300004, 0x300005, 0x300006, 0x300007,
+            0x300008, 0x300009, 0x30000A, 0x30000B,
+            0x30000C];
+    }
+    getUserIdSize()         { return 32; }
+
+    // DS40002659A §2.3: DIA at 0x2C0000–0x2C00FFh
+    getDiaAddress() { return 0x2C0000; }
+    getDiaSize()    { return 32; }
+
+    // DS40002659A §2.4: DCI at 0x3C0000–0x3C0009h
+    getDciAddress() { return 0x3C0000; }
+    getDciSize()    { return 5; }
+
+    // DS40002659A §2 Table 2-1: Data EEPROM at 0x380000–0x3800FFh
+    getEEPROMAddress() { return 0x380000; }
+
+    // LVP config bit is at CONFIG4 (offset 0x300003), bit 5 (LVP)
+    getLVPConfigAddress() { return 0x300003; }
+    getLVPSafeMask()      { return 0x20; }
+
+    // PIC18F-Q35 has dedicated Read Device ID (0x24) and Read Revision ID (0x28) commands
+    // DS40002659A Table 3-1
+    hasDirectDeviceIdCmd()  { return true; }
+    getReadDeviceIdCmd()    { return 0x24; }
+    getReadRevisionIdCmd()  { return 0x28; }
+
+    /*** flash geometry overrides ***/
+
+    getFlashSizeWords()  { return this.ERSIZ * this.URSIZ; }
+    getFlashLoopSize()   { return this.ERSIZ * this.URSIZ * 2; }
+    getFlashRowStep()    { return this.ERSIZ * 2; }
+    getWordMask()        { return 0xFFFF; }
+    getEmptyWord()       { return 0xFFFF; }
+    getEmptyConfigWord() { return 0xFF; }
+
+    /*** hex data extraction overrides ***/
+
+    hexOffsetForFlashPC(pc) { return pc; }
+
+    extractEEPROMData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 1);
+        return d[0];
+    }
+
+    getEEPROMWriteWaitMs() { return this.getTpIntConfWordDelayMs(); }
+
+    getUserIdIterationPC(index) {
+        return this.getUserIdAddress() + index * 2;
+    }
+
+    extractUserIdData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 2);
+        return (d[0] + (d[1] << 8)) & 0xFFFF;
+    }
+
+    extractConfigData(hexObject, pc) {
+        let d = hexObject.slicePad(pc, 1);
+        return d[0];
+    }
+
+    /*** write command builder overrides ***/
+
+    buildFlashRowCmds(row16, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        for (let i = 0; i < this.ERSIZ; i++) {
+            cmds.push(...getCommandBytes(0xE0, row16[i] << 1));
+            cmds.push(...getCommandBytes(7, waitTime, true));
+        }
+        return cmds;
+    }
+
+    buildEEPROMWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xC0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
+
+    buildUserIdWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xE0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
+
+    buildConfigWriteCmd(data, getCommandBytes, dataBits, waitTime) {
+        let cmds = [];
+        cmds.push(...getCommandBytes(0xC0, data << 1));
+        cmds.push(...getCommandBytes(7, waitTime, true));
+        return cmds;
+    }
+
+    // DS40002659A §4 Table 4-1 electrical specs
+    // T_PINT = 75 µs (PFM and User IDs)
+    // T_PDFM = 11 ms (EEPROM and Config bytes)
+    // T_ERAB = 11 ms (bulk erase)
+    // T_ERAS = 11 ms (page erase)
+    getTpIntDelayMs()         { return 0.075; }  // 75 µs
+    getTpIntConfWordDelayMs() { return 11; }      // 11 ms
+    getBulkEraseTimeMs()      { return 11; }      // 11 ms
+    getRowEraseTimeMs()       { return 11; }      // 11 ms
+
+    readDiaFields(diaFields) {
+        // DIA layout (DS40002659A Table 2-2): same offsets as PIC16F families
+        // MUI0-8: words 0-8 (9 words), MUI9 reserved (1 word), EUI0-7: words 10-17 (8 words)
+        // TSLR/TSHR/FVRA/FVRC follow
+        this.MUI = diaFields.slice(0, 9).map(v => v.toString(16).padStart(4, '0')).join('');
+        this.OEUI = diaFields.slice(10, 18).map(v => v.toString(16).padStart(4, '0')).join('');
+    }
+
+    readDciFields(dciFields) {
+        // DCI layout (DS40002659A Table 2-3): addresses 0x3C0000–0x3C0008 (5 words)
+        this.ERSIZ = dciFields[0]; // 128 words
+        this.WLSIZ = dciFields[1]; // 0 (one-word-at-a-time write)
+        this.URSIZ = dciFields[2]; // 64/128/256 pages depending on variant
+        this.EESIZ = dciFields[3]; // 256 bytes
+        this.PCNT  = dciFields[4]; // 28/40/48 pins
+    }
+}
+GenericPIC.registerPic(PIC18FQ35);
