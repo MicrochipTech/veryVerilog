@@ -1,1 +1,1 @@
-const WEB_ICSP_VERSION = '1.8';
+const WEB_ICSP_VERSION = '1.9';
