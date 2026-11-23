@@ -157,8 +157,10 @@ function loadLessons(){
 }
 
 function disconnectHID() {
-    icsp_hid.disconnect();
-    icsp_hid = null;
+    if (icsp_hid) {
+        icsp_hid.disconnect().catch(() => {});
+        icsp_hid = null;
+    }
     $('#connect').text("Connect to Programmer");
     $('#connect').addClass("btn-primary");
     $('#connect').removeClass("btn-danger");
@@ -482,13 +484,13 @@ function displayVersion() {
     $(document).attr('title', `WebICSP v${WEB_ICSP_VERSION}`);
 }
 
-// Check if the Web Serial API is supported
-if ("serial" in navigator) {
+// The programmer uses WebHID. Web Serial is only needed by the optional
+// serial terminal, which disables itself when the API is unavailable.
+if (navigator.hid) {
 
     // comment this line for debugging
     console.log = function() {}
 
-    // The Web Serial API is supported.
     $(document).ready(function() {
 
         $('#lessonsContainer').empty();
@@ -542,11 +544,11 @@ if ("serial" in navigator) {
 
         //handle programmer disconnected from usb
         navigator.hid.addEventListener('disconnect', (event) => {
-            if (event.device === icsp_hid.hid) { disconnectHID(); }
+            if (icsp_hid && event.device === icsp_hid.hid) { disconnectHID(); }
         });
     });
 } else {
-    alert("Web Serial API not supported.");
+    alert("This browser does not support WebHID. Please open this page in a desktop Chromium-based browser such as Chrome or Edge.");
 }
 
 // Handle nested dropdowns
