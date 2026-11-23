@@ -25,6 +25,10 @@ The IC on the left-hand side is the [**PIC16F1455**](https://www.microchip.com/e
 
 It is that easy:
 
+> **Browser support:** The programmer uses the WebHID API, so use a desktop
+> Chromium-based browser (Chrome, Edge or Opera). Firefox and Safari do not
+> support WebHID. The optional Serial Terminal also requires the Web Serial API.
+
 ## 1. Insert the Hardware
 
 Plug the miniFPGA dongle in your computer.
